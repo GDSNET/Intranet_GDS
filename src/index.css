@@ -1,0 +1,450 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: #445566;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+h1, h2,h3, p, ul, li {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #FFF;
+}
+.header{
+  margin-top: 0px;
+}
+
+ul.header li {
+  display: inline;
+  list-style-type: none;
+  margin: 0px;
+}
+ul.header {
+  background-color: #334455;
+  padding: 0px;
+}
+ul.header li a {
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 5px;
+  display: inline-block;
+}
+.content {
+  background-color: #445566;
+  padding: 0px;
+  width: 100%;
+}
+
+.li_menu {
+  align-items: center;  
+}
+
+.style_div_li {
+  align-items: center;
+}
+.style_div_li_text {
+font-size: 15px;
+}
+
+.style_image {
+  color: #FFF;
+  font-size: 50px;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0px;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  }
+
+  .style_image_home {
+    position: relative;
+    animation: App-logo-home 2s infinite;
+    animation-direction:alternate;
+    color: #FFF;
+    font-size: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0px;
+  }
+
+  @keyframes App-logo-home {
+    from {
+      left: -100px;
+      transform: rotate(0deg);
+      animation-timing-function: ease-in;
+    }
+    to {
+      left: 100px;
+      transform: rotate(360deg);
+      animation-timing-function: ease-in;
+    }
+ 
+  }
+  .style_image_home_izq  {
+    position: relative;
+    animation: App-logo-home-izq 2s infinite;
+    animation-direction:alternate;
+    color: #FFF;
+    font-size: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0px;
+  }
+
+  @keyframes App-logo-home-izq {
+    from {
+      left: 100px;
+      transform: rotate(0deg);
+      animation-timing-function: ease-in;
+    }
+    to {
+      left: -100px;
+      transform: rotate(360deg);
+      animation-timing-function: ease-in;
+    }
+ 
+  }
+  
+  
+.divTouchable{
+  width: 20%;
+  height: 10%;
+  position: fixed;
+  align-content: center;
+  align-items: center;
+  margin-left: 10%;
+  background: #33FF93;
+    border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+  
+.style_image_insert {
+  color: #33FF93;
+  font-size: 50px;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0px;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  
+  }
+
+  .style_boton_2:hover {
+    background-color: #33FF93;
+  }
+
+  .style_boton_alertas:hover {
+    background-color: #33FF93;
+  }
+
+  .style_image_ir
+  {
+    color: #FFF;
+    font-size: 40px;   
+    }
+  
+
+  .style_picker{
+    color: #FFF;
+    font-size: 20px;
+    background-color:  #FF7E51;
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    
+  }
+  
+.style_buton_back{
+  position: fixed;
+  left: 10px;
+  top: 10px;
+}
+
+.style_status{
+  background: #111;
+
+
+  position: fixed;
+  right: 0px;
+  padding-left: 10px;
+  bottom: 0px;
+  border-radius: 100px 10px 10px 10px;
+  -moz-border-radius: 100px 10px 10px 10px;
+  -webkit-border-radius: 100px 10px 10px 10px;
+  border: 0px solid #000000;
+}
+
+.style_status_text{
+  padding-right: 100px;
+  text-align: left;
+  margin: 10px;
+  color: #FFF;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+ a:hover, .style_image:hover, .style_image_ir:hover ,.style_image_insert:hover {
+  background-color: #FF7E51;
+}
+
+
+.style_text_titulo{
+  color: #FFF;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  padding: 5px;
+}
+
+
+th{
+  font-family: Lato-Bold;
+  font-size: 15px;
+  color:  #beb6b6;
+  line-height: 1.4;
+  text-transform: uppercase;
+  background-color: #393939;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+td{
+font-family: Lato-Regular;
+font-size: 15px;
+color: white;
+line-height: 1.4;
+background-color: #222222;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+table{
+  -webkit-box-shadow: 9px 10px 5px 0px rgba(13,0,13,1);
+  -moz-box-shadow: 9px 10px 5px 0px rgba(13,0,13,1);
+  box-shadow: 9px 10px 5px 0px rgba(13,0,13,1);
+   text-align: center;
+}
+
+.tabla{
+  margin: 0 auto;
+  display: table;
+  margin-bottom: 50px;
+}
+
+.div_left_50{
+  margin: 0 auto;
+  display: table;
+  width: 50%;
+}
+
+
+
+.div_left_30{
+  float: left;
+  width: 30%;
+}
+
+.div_left{
+float: left;
+margin-left: 15%;
+margin-right: 15%;
+  
+}
+
+.p_alarma_retenida{
+  color: red;  
+}
+
+.p_alarma_liberada{
+  color: green;  
+}
+
+.div_right{
+  float: left;
+  margin-left: 5%;
+  margin-right: 5%;
+  }
+
+.container {
+  align-items: center
+}
+ 
+.div_prof{
+  color: white;
+  background-color: #1c1a16;
+  margin: 5%;
+  padding: 2%;
+  border-radius: 32px 33px 31px 35px;
+-moz-border-radius: 32px 33px 31px 35px;
+-webkit-border-radius: 32px 33px 31px 35px;
+border: 2px solid #f7eaf7;
+border-color: #FFF;
+-webkit-box-shadow: 13px 14px 11px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 13px 14px 11px -1px rgba(0,0,0,0.75);
+box-shadow: 13px 14px 11px -1px rgba(0,0,0,0.75);
+}
+
+.CircleAdd{
+  margin: 1%;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #FF7E51;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.container_2 {
+  align-items: center;
+}
+
+
+/* CSS MENU BG */
+
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+ 
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #FF7E51;
+}
+ 
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+ 
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+ 
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+ 
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  transition: '' !important;
+}
+ 
+/* General sidebar styles */
+.bm-menu {
+  background: #222222;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+ 
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+ 
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  
+}
+ 
+/* Individual item */
+.bm-item {
+  display: inline-block;
+  color: #FFF;
+}
+ 
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+
+.h1_info {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #2196F3;
+  font-size: 100%;
+}
