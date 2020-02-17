@@ -106,7 +106,7 @@ class gdsAlarmasHtml extends Component {
               .then((response) => {
                return response.json()})
               .then((json) => {
-                console.log("guardando datos" + JSON.stringify(json))       
+                console.log("guardando datos :)" + JSON.stringify(json))       
                 window.alert(JSON.stringify(json))
                 
               });
