@@ -103,7 +103,7 @@ let body_data = JSON.stringify({
 
         const {sala, semana, cliente,funCalCambiaEstado, history,validacion,tipo_modificacion} = this.props;
 if(!sala) {funCalCambiaEstado('favor revise sala')}
-else if(!validacion) { funCalCambiaEstado('favor revisar sku')}
+else if(!validacion) { funCalCambiaEstado('favor revise sku')}
 else if(!semana) {funCalCambiaEstado('favor revise semana')}
 else if(!cliente) {funCalCambiaEstado('favor revise cliente')}
 else if(tipo_modificacion==1) {history.push('/CalidadN1')}
