@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions/index";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
-import GoBack from '../components/control/ButtonGoBack';
 import {ActivityIndicator} from 'react-native-web';
+import GoBack from '../publica/ButtonGoBack';
  
 class controlPageNivel3 extends Component {
 

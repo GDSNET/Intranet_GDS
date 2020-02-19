@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions/index";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet,TouchableOpacity,ActivityIndicator} from 'react-native-web';
 import { MdDeleteSweep } from "react-icons/md";
-import GoBack from '../components/control/ButtonGoBack';
+import GoBack from '../publica/ButtonGoBack';
 
 
 class GdsEliminaMedicion1 extends Component {

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TextInput, ActivityIndicator} from 'react-native-web';
-import PickerExh from "../components/calidad/CalPickerExhComponents";
-import PickerPromo from "../components/calidad/CalPickerPromoComponents";
-import Botton from "../components/publica/buttonComponents";
-import GoBack from '../components/control/ButtonGoBack';
-
+import PickerExh from "./CalPickerExhComponents";
+import PickerPromo from "./CalPickerPromoComponents";
+import GoBack from '../publica/ButtonGoBack';
+import Botton from "../publica/buttonComponents";
 class CalidadN3Update extends Component {
  
 
@@ -132,10 +131,10 @@ class CalidadN3Update extends Component {
 
 async funInsert(){
 
-  const {funCalGuardaRespuesta,cliente,semana,sala,id_sku,exh,frentes,nro_exhibidor,promo,predominante} = this.props;
+  const {funCalGuardaRespuesta,cliente,semana,sala,id_sku,exh,frentes,precio,promo,item} = this.props;
 
  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  const url = 'http://api.gdsnet.com:3005/api_calidad_insert_exhibidores';
+  const url = 'http://api.gdsnet.com:3005/api_calidad_insert';
 
   let body_data = JSON.stringify({
     "cliente" : cliente,
@@ -145,8 +144,7 @@ async funInsert(){
     "exh" : exh,
     "prom" : promo,
     "frentes" : frentes,
-    "predominante" : predominante,
-    "nro_exhibidor" : nro_exhibidor
+    "precio" : precio,
     })
 
     console.log('IMPRIMIENDO BODY:' + body_data);
@@ -235,18 +233,18 @@ async funIr(){
   await this.funInsert();
   await this.funCargaSelect();
   await funActivacionOff();
- await history.push('/CalidadN1Exh')
+ await history.push('/CalidadN1')
 
 }
 
   render() {
-    const {estado,id_sku, sala,frentes,predominante,nro_exhibidor,funGuardaPredominante,respuesta, funGuardaNroExhibidor, funCalGuardaFrentes, activation,nombre_cliente} = this.props;
+    const {estado,id_sku, sala,frentes,precio,respuesta, funCalGuardaPrecio, funCalGuardaFrentes, activation,nombre_cliente} = this.props;
     
     if(activation){
       return (
         <div>
         <ActivityIndicator  color='#FFF' size='200' />
-        <GoBack history={this.props.history} varIr={'CalidadN1Exh'}/>
+        <GoBack history={this.props.history} varIr={'CalidadN1'}/>
         </div>
       )
     }
@@ -254,9 +252,9 @@ async funIr(){
 
     return (
       <div>
-           <GoBack history={this.props.history} varIr={'CalidadN1Exh'}/>
+           <GoBack history={this.props.history} varIr={'CalidadN1'}/>
            <h2>{nombre_cliente}</h2>
-           <h1> Calidad Insert Exhibicion {JSON.stringify(respuesta)}</h1>
+           <h1> Calidad Insert {JSON.stringify(respuesta)}</h1>
            <View style={styles.styles_view_principal}> 
     <View style={styles.styles_view_encabezado}> 
       <View style={styles.styles_view_titulo}> 
@@ -272,23 +270,17 @@ async funIr(){
     </View> 
 
 <div className= 'div_left_30'>    
-<h2>Ingrese Frentes:</h2>
+    <h2>Ingrese Frentes:</h2>
          <TextInput style={styles.textinput} 
          keyboardType='numeric'
          onChangeText={(text)=> funCalGuardaFrentes(text)}
          value={frentes}
         />
-        <h2>Ingrese Predominante:  </h2>
+        <h2>Ingrese Precio:  </h2>
           <TextInput style={styles.textinput} 
           keyboardType='numeric'
-          onChangeText={(text)=> funGuardaPredominante(text)}
-          value={predominante}
-        />
-        <h2>Ingrese Numero Exhibidor:  </h2>
-          <TextInput style={styles.textinput} 
-          keyboardType='numeric'
-          onChangeText={(text)=> funGuardaNroExhibidor(text)}
-          value={nro_exhibidor}
+          onChangeText={(text)=> funCalGuardaPrecio(text)}
+          value={precio}
         />
 </div>
 
@@ -337,9 +329,6 @@ function mapStateToProps(state){
     respuesta: state.calidad.respuesta,
     activation: state.calidad.activation,
     nombre_cliente: state.calidad.nombre_cliente,
-    nro_exhibidor: state.calidad.nro_exhibidor,
-    predominante: state.calidad.predominante
-
   }
 }
 

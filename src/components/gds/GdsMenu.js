@@ -19,6 +19,7 @@ class GdsMenu extends React.Component {
         <a id="home" className="menu-item" href="/#/gdsAlarmasHtml00"><IoIosMail/> Liberar Alertas</a>
         <a id="about" className="menu-item" href="/#/gdsEliminaMedicion"><IoMdTrash/> Eliminar Mediciones</a>
         <a id="about" className="menu-item" href="/#/gdsActualizaSalaLog"><IoMdRefresh/> Modifica Estado Log</a>
+        <a id="log" className="menu-item" href="/#/gdsLog"><IoMdRefresh/>Control - Log</a>
       </Menu>
     );
   }

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TextInput,Button} from 'react-native-web';
-import PickerExh from "../components/calidad/CalPickerExhComponents";
-import PickerPromo from "../components/calidad/CalPickerPromoComponents";
-import GoBack from '../components/control/ButtonGoBack';
-import Botton from "../components/publica/buttonComponents";
+import PickerExh from "./CalPickerExhComponents";
+import PickerPromo from "./CalPickerPromoComponents";
+import GoBack from '../publica/ButtonGoBack';
+import Botton from "../publica/buttonComponents";
 
-class CalidadN3UpdateExh extends Component {
+class CalidadN3Update extends Component {
  
 
   componentDidMount(){
@@ -132,10 +132,10 @@ class CalidadN3UpdateExh extends Component {
 
 async funModifica(){
 
-  const {funCalGuardaRespuesta,cliente,semana,sala,id_sku,exh,frentes,predominante,promo,item,nro_exhibidor} = this.props;
+  const {funCalGuardaRespuesta,cliente,semana,sala,id_sku,exh,frentes,precio,promo,item} = this.props;
 
  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  const url = 'http://api.gdsnet.com:3005/api_calidad_update_exhibidores';
+  const url = 'http://api.gdsnet.com:3005/api_calidad_update';
 
   let body_data = JSON.stringify({
     "cliente" : cliente,
@@ -147,8 +147,7 @@ async funModifica(){
     "exhmod" : exh,
     "promod" : promo,
     "frentes" : frentes,
-    "predominatemod" : predominante,
-    "nro_exhmod" : nro_exhibidor, 
+    "precio" : precio,
     "presencia" : 1,
     })
 
@@ -234,18 +233,18 @@ async funIr(){
   await this.funModifica();
   await this.funCargaSelect();
 
- await history.push('/CalidadN1Exh')
+ await history.push('/CalidadN1')
 
 }
 
   render() {
-    const {estado,item,frentes,nro_exhibidor,predominante,respuesta, funGuardaPredominante, funCalGuardaFrentes,funGuardaNroExhibidor} = this.props;
+    const {estado,item,frentes,precio,respuesta, funCalGuardaPrecio, funCalGuardaFrentes} = this.props;
     
     
     return (
       <div>
-           <GoBack history={this.props.history} varIr={'CalidadN1Exh'}/>
-           <h1> Calidad Nivel 1 Exhibidores {JSON.stringify(respuesta)}</h1>
+           <GoBack history={this.props.history} varIr={'CalidadN1'}/>
+           <h1> Calidad Nivel 1 {JSON.stringify(respuesta)}</h1>
            <View style={styles.styles_view_principal}> 
     <View style={styles.styles_view_encabezado}> 
       <View style={styles.styles_view_titulo}> 
@@ -253,14 +252,13 @@ async funIr(){
           <Text style={styles.style_text}>id_sku: {item.id_pro_sku} </Text>
 
 
-                  <Text style={styles.style_text}>id_exh_tip_exhibicion: {item.id_exh_tip_exhibicion}</Text>
-                  <Text style={styles.style_text}>desc_exh: {item.desc_exh}</Text>
-                  <Text style={styles.style_text}>id_prm_tip_promo: {item.id_prm_tip_promo}</Text>
-                  <Text style={styles.style_text}>desc_promo: {item.desc_promo}</Text>
-                  <Text style={styles.style_text}>f_q_frentes_abs: {item.f_frentes}</Text>
-                  <Text style={styles.style_text}>id_numero_exhibidor: {item.id_numero_exhibidor}</Text>
-                  <Text style={styles.style_text}>f_predominante: {item.f_predominante}</Text>
-                  <Text style={styles.style_text}>f_q_presencia: {item.f_q_presencia}</Text>
+          <Text style={styles.style_text}>id_exh_tip_exhibicion: {item.id_exh_tip_exhibicion} </Text>
+          <Text style={styles.style_text}>desc_exh: {item.desc_exh} </Text>
+          <Text style={styles.style_text}>id_prm_tip_promo: {item.id_prm_tip_promo} </Text>
+          <Text style={styles.style_text}>desc_promo: {item.desc_promo} </Text>
+          <Text style={styles.style_text}>f_q_frentes_abs: {item.f_q_frentes_abs} </Text>
+          <Text style={styles.style_text}>f_precio: {item.f_precio} </Text>
+          <Text style={styles.style_text}>f_q_presencia: {item.f_q_presencia} </Text>
       </View> 
 
       
@@ -275,17 +273,11 @@ async funIr(){
          onChangeText={(text)=> funCalGuardaFrentes(text)}
          value={frentes}
         />
-        <h2>Ingrese Predominante:  </h2>
+        <h2>Ingrese Precio:  </h2>
           <TextInput style={styles.textinput} 
           keyboardType='numeric'
-          onChangeText={(text)=> funGuardaPredominante(text)}
-          value={predominante}
-        />
-        <h2>Ingrese Numero Exhibidor:  </h2>
-          <TextInput style={styles.textinput} 
-          keyboardType='numeric'
-          onChangeText={(text)=> funGuardaNroExhibidor(text)}
-          value={nro_exhibidor}
+          onChangeText={(text)=> funCalGuardaPrecio(text)}
+          value={precio}
         />
 </div>
 
@@ -331,9 +323,6 @@ function mapStateToProps(state){
     exh_old: state.calidad.exh_old,
     promo_old: state.calidad.promo_old,
     respuesta: state.calidad.respuesta,
-    predominante: state.calidad.predominante,
-    nro_exhibidor: state.calidad.nro_exhibidor
-
   }
 }
 
@@ -348,7 +337,7 @@ return bindActionCreators(
 );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CalidadN3UpdateExh);
+export default connect(mapStateToProps, mapDispatchToProps)(CalidadN3Update);
 
 
 

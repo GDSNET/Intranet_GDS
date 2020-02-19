@@ -108,8 +108,7 @@ else {
 
       <div className="App">
       
-        
-            {this.funiflogin()}
+      <Main />
   
           
      

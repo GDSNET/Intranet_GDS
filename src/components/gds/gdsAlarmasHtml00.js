@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions/index";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
-import Picker from '../components/gds/GdsPickerComponents';
+import Picker from './GdsPickerComponents';
 import {TextInput, StyleSheet} from 'react-native-web';
-import Button from '../components/publica/buttonComponents';
-import Menu from "../components/gds/GdsMenu";
+import Button from '../publica/buttonComponents';
+import Menu from "./GdsMenu";
 
 class Gds extends Component {
 

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions/index";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {TouchableOpacity,ActivityIndicator} from 'react-native-web';
 import { IoIosEye } from "react-icons/io";
-import GoBack from '../components/control/ButtonGoBack';
+import GoBack from '../publica/ButtonGoBack';
+
 
 
  

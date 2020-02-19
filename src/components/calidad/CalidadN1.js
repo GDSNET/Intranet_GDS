@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions/index";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
 import { MdDeleteSweep } from "react-icons/md";
 import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
-import GoBack from '../components/control/ButtonGoBack';
+import GoBack from '../publica/ButtonGoBack';
 
 
-class CalidadN1Exh extends Component {
+class CalidadN1 extends Component {
  
 async funCargaSelect(){
   const { semana, cliente, sala, id_sku, funCalGuardaDataDetalle} = this.props;
 
  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const url = 'http://api.gdsnet.com:3005/api_calidad_exhibidores_select';
+const url = 'http://api.gdsnet.com:3005/api_calidad_select';
 
 let body_data = JSON.stringify({
   "cliente" : cliente,
@@ -65,25 +65,21 @@ componentDidMount(){
 }
 
 funTouchableNivel1(item){
-  const {funCalGuardaItem, history, funCalGuardaExhOld, funCalGuardaPromoOld,funGuardaNroExhibidorOld,funGuardaPredominanteOld} = this.props;
+  const {funCalGuardaItem, history, funCalGuardaExhOld, funCalGuardaPromoOld} = this.props;
 
   {funCalGuardaItem(item)}
   {funCalGuardaExhOld(item.id_exh_tip_exhibicion)}
   {funCalGuardaPromoOld(item.id_prm_tip_promo)}
-  {funGuardaPredominanteOld(item.f_predominante)}
-  {funGuardaNroExhibidorOld(item.id_numero_exhibidor)}
 
-  history.push('/CalidadN3UpdateExh')
+  history.push('/CalidadN3Update')
 }
-
-
 
 async funApiDelete(item){
 
   const { semana, cliente, sala, id_sku, funCalGuardaRespuesta} = this.props;
 
  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const url = 'http://api.gdsnet.com:3005/api_calidad_delete_exh';
+const url = 'http://api.gdsnet.com:3005/api_calidad_delete';
 
 let body_data = JSON.stringify({
   "cliente" : cliente,
@@ -92,12 +88,7 @@ let body_data = JSON.stringify({
   "sku" : id_sku,
   "exh" : item.id_exh_tip_exhibicion,
   "prom" : item.id_prm_tip_promo,
-  "nro_exhibidor" :item.id_numero_exhibidor,
-  "predominante" :item.f_predominante,  
   })
-
-
-  
 
     const config =  {
       method: 'POST',
@@ -137,13 +128,11 @@ async funDelete(item){
     var person = prompt("Ingrese la Clave", '');
     if (person == 'Gds1111') {
 
-    await  this.funllenadatos();
-
     await this.funApiDelete(item);
 
     await  this.funCargaSelect();
 
-
+    await  this.funllenadatos();
 
     window.alert('Producto eliminado.')
     } 
@@ -184,9 +173,8 @@ funllenadatos(){
                   <Text style={styles.style_text}>desc_exh: {item.desc_exh}</Text>
                   <Text style={styles.style_text}>id_prm_tip_promo: {item.id_prm_tip_promo}</Text>
                   <Text style={styles.style_text}>desc_promo: {item.desc_promo}</Text>
-                  <Text style={styles.style_text}>f_q_frentes_abs: {item.f_frentes}</Text>
-                  <Text style={styles.style_text}>id_numero_exhibidor: {item.id_numero_exhibidor}</Text>
-                  <Text style={styles.style_text}>f_predominante: {item.f_predominante}</Text>
+                  <Text style={styles.style_text}>f_q_frentes_abs: {item.f_q_frentes_abs}</Text>
+                  <Text style={styles.style_text}>f_precio: {item.f_precio}</Text>
                   <Text style={styles.style_text}>f_q_presencia: {item.f_q_presencia}</Text>
               </View> 
 
@@ -237,9 +225,8 @@ return(
               <td>{fila.desc_exh}</td>
               <td>{fila.id_prm_tip_promo}</td>
               <td>{fila.desc_promo}</td>
-              <td>{fila.f_frentes}</td>
-              <td>{fila.id_numero_exhibidor}</td>
-              <td>{fila.f_predominante}</td>
+              <td>{fila.f_q_frentes_abs}</td>
+              <td>{fila.f_precio}</td>
               <td>{fila.f_q_presencia}</td>
 
               <td> 
@@ -275,7 +262,7 @@ return(
 
 funInsert(){
   const {history} = this.props;
-  history.push('/CalidadN2InsertExh')
+  history.push('/CalidadN2Insert')
 }
      
   render() {
@@ -285,7 +272,7 @@ funInsert(){
 
     return (
       <div>
-           <p>EXHIBICION Seleccion Semana: {semana} Cliente: {cliente} Sala: {sala} SkuId: {id_sku}</p>
+           <p>Seleccion Semana: {semana} Cliente: {cliente} Sala: {sala} SkuId: {id_sku}</p>
            <h2>{nombre_cliente}</h2>
            <GoBack history={this.props.history} varIr={'Calidad'}/>
            <div className = 'CircleAdd'>
@@ -307,8 +294,7 @@ funInsert(){
                                 <th scope="col">ID PROMOCION</th>     
                                 <th scope="col">DESC PROMOCION</th>                        
                                 <th scope="col">F FRENTES</th>     
-                                <th scope="col">ID NUMERO EXHBIDOR</th>     
-                                <th scope="col">F PREDOMINANTE</th>     
+                                <th scope="col">F PRECIO</th>     
                                 <th scope="col">F PRESENCIA</th>     
                                 <th scope="col">UPDATE</th>     
                                 <th scope="col">DELETE</th>     
@@ -342,8 +328,6 @@ function mapStateToProps(state){
     data_b_detalle: state.calidad.data_b_detalle,
     item:state.calidad.item,
     nombre_cliente: state.calidad.nombre_cliente,
-    predominante_old:state.calidad.predominante_old,
-    nro_exhibidor_old:state.calidad.nro_exhibidor_old
   }
 }
 
@@ -358,7 +342,7 @@ return bindActionCreators(
 );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CalidadN1Exh);
+export default connect(mapStateToProps, mapDispatchToProps)(CalidadN1);
 
 
 const styles = StyleSheet.create({

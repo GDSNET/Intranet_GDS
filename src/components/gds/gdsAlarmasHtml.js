@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions/index";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
-import Button from '../components/publica/buttonComponents2';
-import GdsMenu from "../components/gds/GdsMenu";
-import GoBack from '../components/control/ButtonGoBack';
+import Button from '../publica/buttonComponents2';
+import GoBack from '../publica/ButtonGoBack';
 
 
 class gdsAlarmasHtml extends Component {

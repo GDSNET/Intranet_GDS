@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../actions/index";
+import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
-import Menu from "../components/gds/GdsMenu";
-import Picker from '../components/gds/GdsDelSalaPickerComponents';
-import PickerSemana from '../components/gds/GdsPickerSemanaComponents';
+import Menu from "./GdsMenu";
+import Picker from './GdsDelSalaPickerComponents';
+import PickerSemana from './GdsPickerSemanaComponents';
 import {TextInput, StyleSheet} from 'react-native-web';
-import Button from '../components/publica/buttonComponents';
+import Button from '../publica/buttonComponents';
 
-class gdsActualizaSalaLog extends Component {
+
+class GdsEliminaMedicion extends Component {
 
 
   componentDidMount(){
@@ -68,7 +69,7 @@ if(!sala ){
 }else if (!cliente2){
   funGdsCambiaEstado('Cliente Vacio, favor revisar :D')
 }else{
-  history.push('gdsActualizaSalaLogN2')
+  history.push('gdsEliminaMedicion1')
 }
   
 }
@@ -81,7 +82,7 @@ if(!sala ){
 
       <div className='container_2'>
       <Menu/>
-      <h1>Modulo para modificar el estado del log.</h1>
+      <h1>Modulo para eliminar mediciones.</h1>
       <div className='div_left'>
          <PickerSemana/>
          <Picker />
@@ -115,7 +116,6 @@ function mapStateToProps(state){
     sala: state.gds.sala,
     estado: state.gds.estado,
     cliente2: state.gds.cliente2,
-    semana:state.gds.semana,
   }
 }
 
@@ -132,7 +132,7 @@ return bindActionCreators(
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(gdsActualizaSalaLog);
+export default connect(mapStateToProps, mapDispatchToProps)(GdsEliminaMedicion);
 
 
 const styles = StyleSheet.create({
