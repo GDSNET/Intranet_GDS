@@ -41,7 +41,7 @@ class Cliente extends Component {
 <View>
         <GdsLogFila 
         id_sala='68888'
-        desc_sala="jumbo pepito"
+        desc_sala="jumbo juacito"
         desc_pre_log="nada"
         desc_log="retenida nsg"
         estado_valido="0"
