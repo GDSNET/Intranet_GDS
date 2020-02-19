@@ -2,16 +2,29 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../../../actions/index";
 import {bindActionCreators} from 'redux';
+<<<<<<< HEAD
 import GdsLogFila from './GdsLogFila'
+=======
+<<<<<<< HEAD
+import ButtonSalvaSala from './GdsButtonSalvaSala'
+=======
+>>>>>>> 32963c6d14394c21d536199010cdd102baa6ac0f
 import {Text, View, StyleSheet} from 'react-native-web'
 import GdsPicker from './GdsPicker'
+>>>>>>> 0fce2209c5dbba7ea882ae865a3da11fe0010e92
 
  
 class Cliente extends Component {
 
-  funEjemplo (){
-    alert('ejemplo picker')
+<<<<<<< HEAD
+  funButton(){
+    return(
+      console.log("FUNCION BUTTON SALVAR SALA")
+    )
   }
+
+=======
+>>>>>>> 0fce2209c5dbba7ea882ae865a3da11fe0010e92
 
   render() {
     const {id_sala, funCambiaNombre,  } = this.props;
@@ -23,6 +36,13 @@ class Cliente extends Component {
         <Text>
           Desarrollando Log
         </Text>
+<<<<<<< HEAD
+        
+        <ButtonSalvaSala
+          title = 'Button'
+          funExecute={()=>this.funButton()}
+        />
+=======
 
 
 
@@ -37,6 +57,7 @@ class Cliente extends Component {
         />
 </View>
       </View>
+>>>>>>> 0fce2209c5dbba7ea882ae865a3da11fe0010e92
     );
   }
 }
