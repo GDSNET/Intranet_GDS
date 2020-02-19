@@ -4,14 +4,28 @@ import combinaActions from "../../../actions/index";
 import {bindActionCreators} from 'redux';
 import {Text,View} from 'react-native-web'
 import GdsLogFila from './GdsLogFila'
+
+import {Text, View, StyleSheet} from 'react-native-web'
+import GdsPicker from './GdsPicker'
+
  
 class Cliente extends Component {
 
+  funEjemplo (){
+    alert('ejemplo picker')
+  }
 
   render() {
     const {id_sala, funCambiaNombre,  } = this.props;
     return (
-      <View>
+  
+     
+
+      <View style={styles.container}>
+        <Text>
+          Desarrollando Log
+        </Text>
+
         <GdsLogFila 
         id_sala='68888'
         desc_sala="jumbo pepito"
@@ -20,6 +34,13 @@ class Cliente extends Component {
         estado_valido="0"
         estado_ok="0"
         />
+
+    <GdsPicker funExec={this.funEjemplo} />
+    <GdsPicker funExec={this.funEjemplo} />
+    <GdsPicker funExec={this.funEjemplo} />
+    <GdsPicker funExec={this.funEjemplo} />
+
+
 
       </View>
     );
@@ -48,3 +69,13 @@ return bindActionCreators(
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cliente);
+
+const styles = StyleSheet.create({
+
+  container: {
+
+    flexDirection: 'row'
+    
+  },
+  
+});
