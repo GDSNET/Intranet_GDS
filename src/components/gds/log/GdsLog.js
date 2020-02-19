@@ -50,7 +50,7 @@ class Cliente extends Component {
 </View>
 
         <Text>
-          Desarrollando Log
+          LOG LOCO
         </Text>
         <ButtonSalvaSala
           title = 'Button'
