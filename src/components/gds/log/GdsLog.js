@@ -11,7 +11,6 @@ import GdsPicker from './GdsPicker'
  
 class Cliente extends Component {
 
-
   funButton(){
     return(
       console.log("FUNCION BUTTON SALVAR SALA")
@@ -19,12 +18,12 @@ class Cliente extends Component {
   }
 
 
+
   render() {
     const {id_sala, funCambiaNombre,  } = this.props;
     return (
   
-     
-
+    
       <View style={styles.container}>
 
 <GdsPicker />
@@ -43,14 +42,26 @@ class Cliente extends Component {
 <View>
         <GdsLogFila 
         id_sala='68888'
-        desc_sala="jumbo pepito"
+        desc_sala="jumbo juacito"
         desc_pre_log="nada"
         desc_log="retenida nsg"
         estado_valido="0"
         estado_ok="0"
         />
 </View>
+
+        <Text>
+          Desarrollando Log
+        </Text>
+        <ButtonSalvaSala
+          title = 'Button'
+          funExecute={()=>this.funButton()}
+        />
+
       </View>
+
+
+
     );
   }
 }
