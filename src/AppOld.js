@@ -13,7 +13,7 @@ constructor(props){
 
   super(props);
   this.state={
-      mensaje:'Hola Mundo',
+      mensaje:'Hola Mundos',
       variable : '',
       userOK: false,
       usuario: '',
