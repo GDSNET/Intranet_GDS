@@ -26,6 +26,7 @@ class Cliente extends Component {
     
       <View style={styles.container}>
 
+
         <Text>
           Desarrollando Log
         </Text>
@@ -36,7 +37,6 @@ class Cliente extends Component {
         />
 
 
-<GdsPicker></GdsPicker>
 
 <View>
         <GdsLogFila 
@@ -56,6 +56,10 @@ class Cliente extends Component {
           title = 'Button'
           funExecute={()=>this.funButton()}
         />
+<GdsPicker />
+<GdsPicker />
+<GdsPicker />
+
 
       </View>
 
