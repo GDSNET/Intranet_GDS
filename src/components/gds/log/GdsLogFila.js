@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
 },
 text: {
     
-  textColor:"#AAAA"
+  textColor:"#F2FBED"
 
 },
   

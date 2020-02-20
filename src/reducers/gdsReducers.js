@@ -23,6 +23,7 @@ const initialState = {
    data_serv_log:[],
    serv_log:null,
    estado_log:null,
+   array_log:[],
 }
 
 
@@ -188,6 +189,13 @@ const gdsReducer = (state = initialState, action) => {
         return {...state,
             estado: action.estado,
             data_log: action.data_log,
+            
+        };
+        break;
+        case types.GDS_GUARDA_ARRAY_LOG:
+        return {...state,
+            estado: action.estado,
+            array_log: action.array_log,
             
         };
         break;
