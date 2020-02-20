@@ -185,3 +185,10 @@ import * as types from '../constants/gdsConstants'
        estado_log:estado
     }
  };
+ export function funApiLog(array)  {
+  return {
+      type: types.GDS_GUARDA_ARRAY_LOG,
+      estado: 'Guardando estado',
+      array_log:array
+   }
+};
