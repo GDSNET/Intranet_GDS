@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import combinaActions from "../../../actions";
 import {bindActionCreators} from 'redux';
 import {Text,View,StyleSheet} from 'react-native-web'
+import FilaText from './GdsLogFilaText'
 
  
 class Fila extends Component {
@@ -13,24 +14,15 @@ class Fila extends Component {
     return (
     <View style={styles.container}>
 
-      <View style={styles.grilla}>
-            <Text style={styles.text}>{id_sala}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{desc_sala}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{desc_pre_log}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{desc_log}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{estado_valido}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{estado_ok}</Text>
-      </View>
+      
+            <FilaText text={id_sala}></FilaText>
+            <FilaText text={desc_sala}></FilaText>
+            <FilaText text={desc_pre_log}></FilaText>
+            <FilaText text={desc_log}></FilaText>
+            <FilaText text={desc_log}></FilaText>
+            <FilaText text={estado_valido}></FilaText>
+            <FilaText text={estado_ok}></FilaText>
+            <FilaText text={id_sala}></FilaText>
 
     </View>
     );
@@ -62,18 +54,16 @@ export default connect(mapStateToProps, mapDispatchToProps)(Fila);
 const styles = StyleSheet.create({
 
   container: {
-    
       flexDirection:"row",
       flex:1
 
   },
-  grilla: {
-    
-    padding:5
+  grilla: { 
+    padding:5,
+    flex:1
 
 },
 text: {
-    
   textColor:"#F2FBED"
 
 },
