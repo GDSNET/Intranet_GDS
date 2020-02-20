@@ -11,9 +11,14 @@ import GdsPicker from './GdsPicker'
 class Cliente extends Component {
 
   funButton(){
-    return(
-      console.log("FUNCION BUTTON SALVAR SALA")
-    )
+   
+     if(window.confirm("¿Esta seguro que desea validar la sala?")) {
+       window.alert("Sala validada")
+     }
+     else{
+       window.alert("Sala no validada")
+     }
+    
   }
 
 
