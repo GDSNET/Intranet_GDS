@@ -18,9 +18,13 @@ class Cliente extends Component {
 
 
   render() {
-    const {nombre, funCambiaNombre,  } = this.props;
+    const {id_sala, funCambiaNombre,  } = this.props;
     return (
+  
+    
       <View style={styles.container}>
+
+
         <Text>
           Desarrollando Log
         </Text>

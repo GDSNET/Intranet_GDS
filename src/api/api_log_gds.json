@@ -1,0 +1,51 @@
+[
+    {
+        "cliente":"ccuclcons",
+        "id_cfg":"971",
+        "id_sala":"68699",
+        "desc_sala":"jumbo perlita",
+        "estado_pre_log":"1",
+        "desc_pre_log":"retenido xn surtido",
+        "estado_log":"1",
+        "desc_log":"bajo %NSG",
+        "estado_valido":"0",
+        "estado_ok":"0"
+        }
+        ,
+        {
+            "cliente":"ccuclcons",
+            "id_cfg":"971",
+            "id_sala":"68692",
+            "desc_sala":"jumbo cerro lejos",
+            "estado_pre_log":"1",
+            "desc_pre_log":"retenido x surtido",
+            "estado_log":"1",
+            "desc_log":"bajo %NSG",
+            "estado_valido":"0",
+            "estado_ok":"0"
+            },
+            {
+                "cliente":"ccuclcons",
+                "id_cfg":"971",
+                "id_sala":"68693",
+                "desc_sala":"jumbo abc",
+                "estado_pre_log":"1",
+                "desc_pre_log":"retenido x surtido",
+                "estado_log":"1",
+                "desc_log":"bajo %NSG",
+                "estado_valido":"0",
+                "estado_ok":"0"
+                },
+                {
+                    "cliente":"ccuclcons",
+                    "id_cfg":"971",
+                    "id_sala":"68691",
+                    "desc_sala":"jumbo casa",
+                    "estado_pre_log":"1",
+                    "desc_pre_log":"retenido x surtido",
+                    "estado_log":"1",
+                    "desc_log":"bajo %NSG",
+                    "estado_valido":"0",
+                    "estado_ok":"0"
+                    }
+]
