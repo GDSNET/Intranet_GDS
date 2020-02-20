@@ -18,7 +18,7 @@ const initialState = {
    clienteHTML:null,
    clienteEsquema:null,
    data_log:[],
-   data_sem_log:[],
+   data_semana_log:[],
    semana_log:null,
    data_serv_log:[],
    serv_log:null,
@@ -61,7 +61,7 @@ const gdsReducer = (state = initialState, action) => {
         break;
         case types.GDS_GUARDA_DATA_SEM_LOG:
         return {...state,
-            data_sem_log: action.data_sem_log,
+            data_semana_log: action.data_semana_log,
             estado: action.estado,
             
         };

@@ -10,15 +10,17 @@ class GdsPicker extends Component {
 
   render() {
 
-    const data = [{"desc": "algo", "id": "10"},{"desc": "traer", "id": "10"}]
-   const {algo, funExec  } = this.props;
+   const {selecionado, funExec,data, comentario  } = this.props;
     return (
       <View>
         <Picker 
               style={styles.Picker}
               mode="dropdown"
-              selectedValue={algo || ''}
+              selectedValue={selecionado || ''}
               onValueChange={(value)=>{funExec(value)}}>
+              
+              <Picker.Item label={comentario} value={0} key={0}/>
+
               {data.map((item, key) => {
                   return (
                   <Picker.Item label={item.desc} value={item.id} key={key}/>) 

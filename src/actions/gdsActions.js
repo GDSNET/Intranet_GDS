@@ -158,6 +158,7 @@ import * as types from '../constants/gdsConstants'
           }
  };
  export function funGdsGuardaSemLog(semana)  {
+    console.log('guardando' +  semana)
    return {
        type: types.GDS_GUARDA_SEM_LOG,
        estado: 'Guardando semana',

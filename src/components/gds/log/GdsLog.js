@@ -8,23 +8,26 @@ import GdsPicker from './GdsPicker'
 import * as gds_function from './GdsFunction'
 
 
-
-
-
-
  
 class Cliente extends Component {
 
 componentDidMount(){
 
+  const {funGdsGuardaDataSemLog, funGdsGuardaDataServLog} = this.props;
+
    new Promise((resolve, reject) => {
       resolve(gds_function.funApiSeamana())
   }).then(res=>{
-   alert(JSON.stringify(res))
-    
+    //alert(JSON.stringify(res))
+    funGdsGuardaDataSemLog(res)
   })
 
- 
+  new Promise((resolve, reject) => {
+    resolve(gds_function.funApiServicio())
+}).then(res=>{
+  alert(JSON.stringify(res))
+  funGdsGuardaDataServLog(res)
+})
 
 }
 
@@ -46,12 +49,23 @@ componentDidMount(){
 
 
   render() {
-    const {id_sala, funCambiaNombre,  } = this.props;
+    const {funGdsGuardaSemLog, data_semana_log,semana_log, data_serv_log  } = this.props;
+
     return (
   
-    
+      
       <View style={styles.container}>
+
         <Text>Desarrollando Log</Text>
+        <Text>  {semana_log} </Text>
+        <Text>  {data_serv_log} </Text>
+
+        <GdsPicker
+          data = {data_semana_log}
+          funExec= {funGdsGuardaSemLog}
+          selecionado = {semana_log}
+          comentario={'Seleccione Semana'}
+        />
         
         <ButtonSalvaSala
           variable = {0}
@@ -65,8 +79,9 @@ componentDidMount(){
 
 function mapStateToProps(state){
   return{
-    nombre: state.control.nombre
-
+    data_semana_log: state.gds.data_semana_log,
+    semana_log: state.gds.semana_log,
+    data_serv_log: state.gds.data_serv_log,
   }
 }
 

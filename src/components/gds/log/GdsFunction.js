@@ -18,3 +18,22 @@ return  await  fetch(url, config)
           });
   
   }
+
+  export async function funApiServicio(){
+  
+    const url = conexiones.GDS_CONEXION_3009 + '/api_gds_select_cliente_intranet';  
+          const config =  {
+            method: 'POST',
+            headers: {
+            "Content-Type": "application/json",
+            },
+          }
+      
+    return  await  fetch(url, config)
+              .then((response) => {
+               return response.json()})
+              .then((json) => {
+                return json.cliente_int
+              });
+      
+      }
