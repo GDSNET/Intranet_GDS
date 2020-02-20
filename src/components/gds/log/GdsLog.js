@@ -5,10 +5,33 @@ import {bindActionCreators} from 'redux';
 import ButtonSalvaSala from './GdsButtonSalvaSala'
 import {Text, View, StyleSheet} from 'react-native-web'
 import GdsPicker from './GdsPicker'
+import * as api_function from './GdsApis'
+
+
+
+
 
 
  
 class Cliente extends Component {
+
+componentDidMount(){
+
+   new Promise((resolve, reject) => {
+      resolve(api_function.funApiSeamana())
+  }).then(res=>{
+   alert(JSON.stringify(res))
+    
+  })
+
+ 
+
+}
+
+
+
+
+
 
   funButton(){
    
