@@ -26,7 +26,7 @@ class Cliente extends Component {
         </Text>
         
         <ButtonSalvaSala
-          title = 'Button'
+          variable = {0}
           funExecute={()=>this.funButton()}
         />
       </View>

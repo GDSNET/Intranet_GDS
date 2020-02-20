@@ -150,3 +150,38 @@ import * as types from '../constants/gdsConstants'
        data_log:api
     }
  };
+ export function funGdsGuardaDataSemLog(api)  {
+   return {
+       type: types.GDS_GUARDA_DATA_SEM_LOG,
+       estado: 'Guardando data semana',
+       data_semana_log:api
+          }
+ };
+ export function funGdsGuardaSemLog(semana)  {
+   return {
+       type: types.GDS_GUARDA_SEM_LOG,
+       estado: 'Guardando semana',
+       semana_log:semana
+    }
+ };
+ export function funGdsGuardaDataServLog(api)  {
+   return {
+       type: types.GDS_GUARDA_DATA_SERV_LOG,
+       estado: 'Guardando data servicio',
+       data_serv_log:api
+          }
+ };
+ export function funGdsGuardaServLog(serv)  {
+   return {
+       type: types.GDS_GUARDA_SERV_LOG,
+       estado: 'Guardando servicio',
+       serv_log:serv
+    }
+ };
+ export function funGdsGuardaEstadoLog(estado)  {
+   return {
+       type: types.GDS_GUARDA_ESTADO_LOG,
+       estado: 'Guardando estado',
+       estado_log:estado
+    }
+ };

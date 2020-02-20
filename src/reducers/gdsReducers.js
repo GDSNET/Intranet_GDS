@@ -1,4 +1,3 @@
-
 import * as types from '../constants/gdsConstants'
 const initialState = {
   visible: false,
@@ -19,15 +18,57 @@ const initialState = {
    clienteHTML:null,
    clienteEsquema:null,
    data_log:[],
+   data_sem_log:[],
+   semana_log:null,
+   data_serv_log:[],
+   serv_log:null,
+   estado_log:null,
 }
 
 
   
 const gdsReducer = (state = initialState, action) => {
     switch (action.type) {
+
+        case types.GDS_GUARDA_ESTADO_LOG:
+            return {...state,
+                estado_log: action.estado_log,
+                estado: action.estado,
+                
+            };
+            break;
+
+            case types.GDS_GUARDA_DATA_SERV_LOG:
+            return {...state,
+                data_serv_log: action.data_serv_log,
+                estado: action.estado,
+                
+            };
+            break;
+            case types.GDS_GUARDA_SERV_LOG:
+            return {...state,
+                serv_log: action.serv_log,
+                estado: action.estado,
+                
+            };
+            break;
         case types.GDS_STOP_ACTION:
         return {...state,
             visible: action.visible,
+            estado: action.estado,
+            
+        };
+        break;
+        case types.GDS_GUARDA_DATA_SEM_LOG:
+        return {...state,
+            data_sem_log: action.data_sem_log,
+            estado: action.estado,
+            
+        };
+        break;
+        case types.GDS_GUARDA_SEM_LOG:
+        return {...state,
+            semana_log: action.semana_log,
             estado: action.estado,
             
         };

@@ -9,18 +9,19 @@ import { FiCheckSquare } from "react-icons/fi";
 class ButtonSalvaSala extends Component {
 
   funIconoEstado(valor){
-    if(valor = 0){
+    if(valor === 0){
         return(FiCheckSquare)
     }
   }
 
 
   render() {
-    const {title,funExecute,variable} = this.props;
+    const {funExecute,variable} = this.props;
     return (
       <View style={styles.container}  >
+      
         <TouchableOpacity style={styles.touch}  onClick={()=>{funExecute()}}>
-          <Text style={styles.title} >{title}</Text>
+         {this.funIconoEstado(variable)}
         </TouchableOpacity>
 
         {variable}
