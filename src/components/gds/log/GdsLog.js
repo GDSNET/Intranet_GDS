@@ -23,11 +23,7 @@ class Cliente extends Component {
   
     
       <View style={styles.container}>
-
-
-        <Text>
-          Desarrollando Log
-        </Text>
+        <Text>Desarrollando Log</Text>
         
         <ButtonSalvaSala
           variable = {0}
