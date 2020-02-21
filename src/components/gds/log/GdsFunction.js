@@ -39,14 +39,14 @@ return  await  fetch(url, config)
       }
 
 
-      export async function funApiArrayLog(){
+      export async function funApiArrayLog(semana_log, serv_log, estado_ok){
   
         const url = conexiones.GDS_CONEXION_3009 + '/post_api_log';  
         
         let body_data = JSON.stringify({
-          "cliente" : "ccuclcons-reg",
-          "semana" : "970",
-          "estado" : "0",
+          "cliente" : serv_log,
+          "semana" : semana_log,
+          "estado" : estado_ok,
           })
               const config =  {
                 method: 'POST',

@@ -24,7 +24,7 @@ const initialState = {
    serv_log:null,
    estado_log:null,
    array_log:[],
-   message: null,
+   message: '',
    estado_ok: null,
 }
 

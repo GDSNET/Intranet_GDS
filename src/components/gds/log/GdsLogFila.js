@@ -37,7 +37,7 @@ if(data.estado_valido == 1){
     resolve(funApiUpdateValida(body_data))
   }).then(res=>{
     if (res.data=='ok'){
-      funGdsMessage(':D Sala Validada :D')
+      funGdsMessage('Sala Modificada')
       new Promise((resolve, reject) => {
         resolve(gds_function.funApiArrayLog())
     }).then(res=>{
