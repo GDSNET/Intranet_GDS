@@ -25,7 +25,6 @@ import gdsActualizaSalaLog from "../components/gds/gdsActualizaSalaLog";
 import gdsActualizaSalaLogN2 from "../components/gds/gdsActualizaSalaLogN2";
 import GdsLog from '../components/gds/log/GdsLog'
 
-
 import Calidad from "./Calidad";
 import CalidadN1Exh from "../components/calidad/CalidadN1Exh";
 import CalidadN3UpdateExh from "../components/calidad/CalidadN3UpdateExh";

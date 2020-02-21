@@ -101,7 +101,7 @@ funRecorreLog(){
           funExecute={()=>this.funButton()}
         />
 
-        
+
       </View>
       {this.funRecorreLog()}
       </View>
