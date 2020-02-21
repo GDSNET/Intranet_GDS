@@ -24,12 +24,21 @@ const initialState = {
    serv_log:null,
    estado_log:null,
    array_log:[],
+   estado_ok: null,
 }
 
 
   
 const gdsReducer = (state = initialState, action) => {
     switch (action.type) {
+
+        case types.GDS_GUARDA_ESTADO_OK:
+            return {...state,
+                estado_ok: action.estado_ok,
+                estado: action.estado,
+                
+            };
+            break;
 
         case types.GDS_GUARDA_ESTADO_LOG:
             return {...state,
@@ -38,7 +47,6 @@ const gdsReducer = (state = initialState, action) => {
                 
             };
             break;
-
             case types.GDS_GUARDA_DATA_SERV_LOG:
             return {...state,
                 data_serv_log: action.data_serv_log,
