@@ -7,7 +7,6 @@ import {Text, View, StyleSheet} from 'react-native-web'
 import GdsPicker from './GdsPicker'
 import * as gds_function from './GdsFunction'
 import GdsLogFila from './GdsLogFila';
-
 import FlashMessage from './FlashMessage'
 
  
@@ -37,7 +36,7 @@ componentDidMount(){
 }
 
 funImportData(){
-
+ 
    
   const {semana_log,serv_log,estado_ok,funApiLog  } = this.props;
   new Promise((resolve, reject) => {
