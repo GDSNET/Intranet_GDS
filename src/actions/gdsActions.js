@@ -193,3 +193,11 @@ import * as types from '../constants/gdsConstants'
       array_log:array
    }
 };
+
+export function funGdsMessage(message)  {
+   return {
+       type: types.GDS_MESSAGE,
+       message: message
+       
+    }
+ };

@@ -79,7 +79,7 @@ return  await  fetch(url, config)
                       .then((response) => {
                        return response.json()})
                       .then((json) => {
-                        return json.log
+                        return json
                       });
               
               }

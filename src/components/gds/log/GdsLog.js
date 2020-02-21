@@ -31,12 +31,10 @@ funGdsGuardaDataServLog(res)
   new Promise((resolve, reject) => {
     resolve(gds_function.funApiArrayLog())
 }).then(res=>{
-  
   funApiLog(res)
-
-  //alert(JSON.stringify(res))
-  
 })
+
+
 }
 
 funRecorreLog(){
@@ -61,7 +59,7 @@ funRecorreLog(){
 
 
   render() {
-    const {funGdsGuardaSemLog, data_semana_log,semana_log, data_serv_log  } = this.props;
+    const {funGdsGuardaSemLog, data_semana_log,semana_log,message } = this.props;
 
     return (
   
@@ -70,6 +68,7 @@ funRecorreLog(){
 
         <Text>Desarrollando Log</Text>
         <Text>  {semana_log} </Text>
+        <Text>{message} </Text>
 
         <GdsPicker
           data = {data_semana_log}
@@ -94,7 +93,8 @@ function mapStateToProps(state){
     data_semana_log: state.gds.data_semana_log,
     semana_log: state.gds.semana_log,
     data_serv_log: state.gds.data_serv_log,
-    array_log: state.gds.array_log
+    array_log: state.gds.array_log,
+    message: state.gds.message,
   }
 }
 
