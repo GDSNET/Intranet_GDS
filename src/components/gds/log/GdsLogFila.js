@@ -6,15 +6,14 @@ import {View,StyleSheet} from 'react-native-web'
 import FilaText from './GdsLogFilaText'
 import ButtonSalvaSala from './GdsButtonSalvaSala'
 import  {funApiUpdateValida} from './GdsFunction'
+import * as gds_function from './GdsFunction'
  
 class Fila extends Component {
 
 
   funCambiaValida(){
-    const {data} = this.props;
+    const {data, funApiLog, funGdsMessage} = this.props;
     let estadoValida = null
-
-
 
 if(data.estado_valido == 1){
   estadoValida = 0
@@ -31,7 +30,23 @@ if(data.estado_valido == 1){
       })
 
 
-      funApiUpdateValida(body_data)
+    
+
+
+  new Promise((resolve, reject) => {
+    resolve(funApiUpdateValida(body_data))
+  }).then(res=>{
+    if (res.data=='ok'){
+      funGdsMessage('Sala Modificada')
+      new Promise((resolve, reject) => {
+        resolve(gds_function.funApiArrayLog())
+    }).then(res=>{
+      funApiLog(res)
+    })
+  }else{alert('Error Datos No Modificados:' + res.data)}
+  })
+
+  
 
   }  
 
@@ -61,7 +76,6 @@ if(data.estado_valido == 1){
 
 function mapStateToProps(state){
   return{
-    nombre: state.control.nombre
 
   }
 }

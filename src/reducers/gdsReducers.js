@@ -24,6 +24,7 @@ const initialState = {
    serv_log:null,
    estado_log:null,
    array_log:[],
+   message: '',
    estado_ok: null,
 }
 
@@ -207,6 +208,13 @@ const gdsReducer = (state = initialState, action) => {
             
         };
         break;
+        case types.GDS_MESSAGE:
+            return {...state,
+                message: action.message,
+            };
+            break;
+
+        
         
     default:
     return state
