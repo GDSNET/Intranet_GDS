@@ -45,7 +45,7 @@ return  await  fetch(url, config)
         
         let body_data = JSON.stringify({
           "cliente" : "ccuclcons-reg",
-          "semana" : "971",
+          "semana" : "970",
           "estado" : "0",
           })
               const config =  {
@@ -64,3 +64,22 @@ return  await  fetch(url, config)
                   });
           
           }
+        
+          export async function funApiUpdateValida(body_data){
+            const url = conexiones.GDS_CONEXION_3009 + '/post_api_update_log';  
+                    const config =  {
+                    method: 'POST',
+                    body: body_data,
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                  }
+              
+            return  await  fetch(url, config)
+                      .then((response) => {
+                       return response.json()})
+                      .then((json) => {
+                        return json.log
+                      });
+              
+              }

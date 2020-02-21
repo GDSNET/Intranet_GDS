@@ -1,51 +1,52 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import combinaActions from "../../../actions/index";
-import {bindActionCreators} from 'redux';
 import {Text,TouchableOpacity,View,StyleSheet} from 'react-native-web'
-import { FiCheckSquare } from "react-icons/fi";
+import { FiSquare,FiCheckSquare } from "react-icons/fi";
 
  
-class ButtonSalvaSala extends Component {
+export default class ButtonSalvaSala extends Component {
 
+
+  funButton(funExecutame){
+
+    funExecutame()
+   
+   
+ }
+
+  funCambiaValor(){
+const {estadoValido} = this.props
+      if (estadoValido == 1) {
+        return(<FiCheckSquare />)
+
+
+      }else
+      {
+        return( <FiSquare /> )
+      }
+
+  }
 
   render() {
-    const {funExecute,variable} = this.props;
+    const {varExec, } = this.props;
     return (
       <View style={styles.container}  >
 
-        <TouchableOpacity style={styles.touch}  onClick={()=>{funExecute()}}>
-         <FiCheckSquare/>
+        <TouchableOpacity style={styles.touch}  onClick={()=>{varExec()}}>
+
+        {this.funCambiaValor()}
+
         </TouchableOpacity>
 
-        {variable}
+        
         </View>
     );
   }
 }
  
 
-function mapStateToProps(state){
-  return{
-    nombre: state.control.nombre
-
-  }
-}
-
-function mapDispatchToProps (dispatch) {
- const combiner = Object.assign({},
-  combinaActions,
-{dispatch}
-);
-return bindActionCreators(
-  combiner,
-  dispatch,
-);
-}
 
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonSalvaSala);
 
 const styles = StyleSheet.create({
   container: {

@@ -25,7 +25,6 @@ componentDidMount(){
 new Promise((resolve, reject) => {
   resolve(gds_function.funApiServicio())
 }).then(res=>{
-alert(JSON.stringify(res))
 funGdsGuardaDataServLog(res)
 })
 
@@ -49,12 +48,7 @@ funRecorreLog(){
                 <View>
                
                 <GdsLogFila 
-                id_sala = {value.id_cfg}
-                desc_sala = {value.desc_sala}
-                desc_pre_log = {value.desc_pre_log}
-                desc_log = {value.desc_log}
-                estado_valido = {value.estado_valido}
-                estado_ok  = {value.estado_ok}
+                data = {value}
                 />
                 </View>
 
@@ -64,20 +58,6 @@ funRecorreLog(){
 
 }
 
-
-
-
-
-  funButton(){
-   
-     if(window.confirm("¿Esta seguro que desea validar la sala?")) {
-       window.alert("Sala validada")
-     }
-     else{
-       window.alert("Sala no validada")
-     }
-    
-  }
 
 
   render() {
@@ -98,10 +78,7 @@ funRecorreLog(){
           comentario={'Seleccione Semana'}
         />
         
-        <ButtonSalvaSala
-          variable = {0}
-          funExecute={()=>this.funButton()}
-        />
+        <ButtonSalvaSala />
 
         
       </View>
