@@ -2,35 +2,56 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../../../actions";
 import {bindActionCreators} from 'redux';
-import {Text,View,StyleSheet} from 'react-native-web'
-
+import {View,StyleSheet} from 'react-native-web'
+import FilaText from './GdsLogFilaText'
+import ButtonSalvaSala from './GdsButtonSalvaSala'
+import  {funApiUpdateValida} from './GdsFunction'
  
 class Fila extends Component {
 
 
+  funCambiaValida(){
+    const {data} = this.props;
+    let estadoValida = null
+
+
+
+if(data.estado_valido == 1){
+  estadoValida = 0
+}else
+{
+  estadoValida = 1
+}
+   
+    let body_data = JSON.stringify({
+      "cliente" : data.cliente,
+      "sala" : data.id_sala,
+      "semana" : data.id_cfg,
+      "estado" : estadoValida,
+      })
+
+
+      funApiUpdateValida(body_data)
+
+  }  
+
+
   render() {
-    const {id_sala, desc_sala,desc_pre_log,desc_log,estado_valido,estado_ok  } = this.props;
+    const {data} = this.props;
     return (
     <View style={styles.container}>
 
-      <View style={styles.grilla}>
-            <Text style={styles.text}>{id_sala}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{desc_sala}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{desc_pre_log}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{desc_log}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{estado_valido}</Text>
-      </View>
-      <View style={styles.grilla}>
-            <Text>{estado_ok}</Text>
-      </View>
+            <FilaText text={data.cliente}></FilaText>
+            <FilaText text={data.id_sala}></FilaText>
+            <FilaText text={data.desc_sala}></FilaText>
+            <FilaText text={data.desc_pre_log}></FilaText>
+            <FilaText text={data.desc_log}></FilaText>
+            <FilaText text={data.estado_valido}></FilaText>
+            <FilaText text={data.estado_ok}></FilaText>
+            <ButtonSalvaSala varExec={()=>this.funCambiaValida()} estadoValido = {data.estado_valido}></ButtonSalvaSala>
+            
+
+            
 
     </View>
     );
@@ -62,18 +83,16 @@ export default connect(mapStateToProps, mapDispatchToProps)(Fila);
 const styles = StyleSheet.create({
 
   container: {
-    
       flexDirection:"row",
       flex:1
 
   },
-  grilla: {
-    
-    padding:5
+  grilla: { 
+    padding:5,
+    flex:1
 
 },
 text: {
-    
   textColor:"#F2FBED"
 
 },
