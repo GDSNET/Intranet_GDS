@@ -193,3 +193,18 @@ import * as types from '../constants/gdsConstants'
       array_log:array
    }
 };
+
+export function funGdsMessage(message)  {
+   return {
+       type: types.GDS_MESSAGE,
+       message: message
+      }
+   }
+       
+export function funGdsGuardaEstadoOk(estado)  {
+   return {
+       type: types.GDS_GUARDA_ESTADO_OK,
+       estado: 'Guardando estado',
+       estado_ok:estado
+    }
+ }

@@ -7,12 +7,7 @@ import { FiSquare,FiCheckSquare } from "react-icons/fi";
 export default class ButtonSalvaSala extends Component {
 
 
-  funButton(funExecutame){
 
-    funExecutame()
-   
-   
- }
 
   funCambiaValor(){
 const {estadoValido} = this.props

@@ -6,14 +6,24 @@ import ButtonSalvaSala from './GdsButtonSalvaSala'
 import {Text, View, StyleSheet} from 'react-native-web'
 import GdsPicker from './GdsPicker'
 import * as gds_function from './GdsFunction'
-import GdsLogFila from './GdsLogFila'
+import GdsLogFila from './GdsLogFila';
+
+import FlashMessage from './FlashMessage'
 
  
 class Cliente extends Component {
 
 componentDidMount(){
 
-  const {funGdsGuardaDataSemLog, funGdsGuardaDataServLog,funApiLog} = this.props;
+  const {funGdsGuardaDataSemLog, funGdsGuardaDataServLog} = this.props;
+ 
+  new Promise((resolve, reject) => {
+    resolve(gds_function.funApiServicio())
+  }).then(res=>{
+  //alert(JSON.stringify(res))
+  funGdsGuardaDataServLog(res)
+  })
+
 
   new Promise((resolve, reject) => {
     resolve(gds_function.funApiSeamana())
@@ -22,54 +32,80 @@ componentDidMount(){
   funGdsGuardaDataSemLog(res)
 })
 
-new Promise((resolve, reject) => {
-  resolve(gds_function.funApiServicio())
-}).then(res=>{
-funGdsGuardaDataServLog(res)
-})
 
+
+}
+
+funImportData(){
+
+   
+  const {semana_log,serv_log,estado_ok,funApiLog  } = this.props;
   new Promise((resolve, reject) => {
-    resolve(gds_function.funApiArrayLog())
+    resolve(gds_function.funApiArrayLog(semana_log, serv_log, estado_ok))
 }).then(res=>{
-  
   funApiLog(res)
-
-  //alert(JSON.stringify(res))
-  
 })
 }
+
+
+
+
 
 funRecorreLog(){
   const {array_log } = this.props;
- return array_log.map((value,i)=>{
 
-        return(
-          
-                <View>
-               
-                <GdsLogFila 
-                data = {value}
-                />
-                </View>
 
-        )
+try {
 
- })
+  return array_log.map((value,i)=>{
+
+    return(
+      
+            <View>
+           
+            <GdsLogFila 
+            data = {value}
+            />
+            </View>
+
+    )
+
+})
+  
+} catch (error) {
+
+  return(<Text>Cargando....{JSON.stringify(error)}</Text>)
+  
+}
+
+
 
 }
+
 
 
 
   render() {
-    const {funGdsGuardaSemLog, data_semana_log,semana_log, data_serv_log  } = this.props;
+    const {funGdsGuardaSemLog,estado_ok, data_semana_log,semana_log, data_serv_log,serv_log,funGdsGuardaServLog,funGdsGuardaEstadoOk, message  } = this.props;
 
     return (
   
     <View>
       <View style={styles.container}>
 
+
+        <FlashMessage />
+        
+    
+
         <Text>Desarrollando Log</Text>
+
+
+
         <Text>  {semana_log} </Text>
+        <Text>  {semana_log} </Text>      
+        <Text>  {serv_log} </Text>  
+        <Text>  {estado_ok} </Text> 
 
         <GdsPicker
           data = {data_semana_log}
@@ -78,9 +114,26 @@ funRecorreLog(){
           comentario={'Seleccione Semana'}
         />
         
-        <ButtonSalvaSala />
+        <GdsPicker
+          data = {data_serv_log}
+          funExec= {funGdsGuardaServLog}
+          selecionado = {serv_log}
+          comentario={'Seleccione Cliente'}
+        />
 
-        
+          <GdsPicker
+          data = {[{"id":"1", "desc":"OK"},{"id":"0", "desc":"ERROR"}]}
+          funExec= {funGdsGuardaEstadoOk}
+          selecionado = {estado_ok}
+          comentario={'Seleccione Estado'}
+        />
+
+        <ButtonSalvaSala
+          variable = {0}
+          varExec={()=>{this.funImportData()}}
+        />
+
+
       </View>
       {this.funRecorreLog()}
       </View>
@@ -94,7 +147,10 @@ function mapStateToProps(state){
     data_semana_log: state.gds.data_semana_log,
     semana_log: state.gds.semana_log,
     data_serv_log: state.gds.data_serv_log,
-    array_log: state.gds.array_log
+    array_log: state.gds.array_log,
+    message: state.gds.message,
+    serv_log: state.gds.serv_log,
+    estado_ok: state.gds.estado_ok,
   }
 }
 
@@ -117,8 +173,14 @@ const styles = StyleSheet.create({
 
   container: {
 
-    flexDirection: 'row'
+    flex: 1,
     
   },
-  
+
+  flashMessage: {
+
+    flex: 1,
+    backgroundColor: '#FFF'
+    
+  },
 });
