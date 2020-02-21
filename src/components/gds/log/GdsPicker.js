@@ -19,7 +19,7 @@ class GdsPicker extends Component {
               selectedValue={selecionado || ''}
               onValueChange={(value)=>{funExec(value)}}>
               
-              <Picker.Item label={comentario} value={0} key={0}/>
+              <Picker.Item label={comentario} value={100} key={0}/>
 
               {data.map((item, key) => {
                   return (
