@@ -113,8 +113,9 @@ margin: 2
     right:300,
     height: 50,
     padding: 20,
-    bottom: 0,
-    borderTopRightRadius: 50,
+    top: 0,
+    borderBottomRightRadius: 50,
+    zIndex: 10000,
     
   },
 });
