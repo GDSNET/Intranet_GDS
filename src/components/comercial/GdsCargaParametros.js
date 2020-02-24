@@ -31,24 +31,25 @@ class Comercial extends Component {
   }
 
   render() {
-const {cliente,funCargaCli,sel_cliente,funCargaIndicador,indicador,sel_indicador}=this.props
+const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicador}=this.props
 
     return (
   
     <View>
               <Text>hola soy la carga de parametros</Text>
                     <Text>{sel_cliente}</Text>
+                    <Text>{'Cliente:'  + sel_cliente + ' - Indicador: ' + sel_indicador}</Text>
 
                 <GdsPicker
                   data = {cliente}
-                  funExec= {funCargaCli}
+                  funExec= {funGuardaCli}
                   selecionado = {sel_cliente}
                   comentario={'Seleccione Cliente'}
                  />
                  
                 <GdsPicker
                   data = {indicador}
-                  funExec= {funCargaIndicador}
+                  funExec= {funGuardaIndicador}
                   selecionado = {sel_indicador}
                   comentario={'Seleccione Indicador'}
                  />

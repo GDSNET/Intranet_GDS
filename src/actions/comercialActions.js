@@ -22,9 +22,9 @@ import * as types from '../constants/comercialConstants'
         indicador: indicador
      }
   };
-  export function funGuardaIndicador(indicador)  {
+  export function funGuardaIndicador(sel_indicador)  {
     return {
         type: types.GUARDA_INDICADOR_PARAMETRO,
-        sel_indicador: indicador
+        sel_indicador: sel_indicador
      }
   };

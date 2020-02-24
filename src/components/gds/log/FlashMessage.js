@@ -25,18 +25,12 @@ return (
   return (
   
   <View style={styles.flashMessage}>
-
-  
     <FiAlertCircle color={'#FFF'} size={20} ></FiAlertCircle>
-
-    <View style={styles.v_text}>
-    <Text style={styles.texto}>
-      {message}
-      </Text>
-
-      
-    </View>
-
+          <View style={styles.v_text}>
+          <Text style={styles.texto}>
+            {message}
+            </Text>
+          </View>
   </View>
    )
 
