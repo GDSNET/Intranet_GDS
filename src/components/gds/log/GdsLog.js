@@ -86,7 +86,7 @@ try {
 
 
   render() {
-    const {funGdsGuardaSemLog,estado_ok, data_semana_log,semana_log, data_serv_log,serv_log,funGdsGuardaServLog,funGdsGuardaEstadoOk, message  } = this.props;
+    const {funGdsGuardaSemLog,estado_ok, data_semana_log,semana_log, data_serv_log,serv_log,funGdsGuardaServLog,funGdsGuardaEstadoOk  } = this.props;
 
     return (
   
