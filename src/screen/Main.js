@@ -25,7 +25,6 @@ import gdsActualizaSalaLog from "../components/gds/gdsActualizaSalaLog";
 import gdsActualizaSalaLogN2 from "../components/gds/gdsActualizaSalaLogN2";
 import GdsLog from '../components/gds/log/GdsLog'
 
-
 import Calidad from "./Calidad";
 import CalidadN1Exh from "../components/calidad/CalidadN1Exh";
 import CalidadN3UpdateExh from "../components/calidad/CalidadN3UpdateExh";
@@ -33,6 +32,9 @@ import CalidadN2InsertExh from "../components/calidad/CalidadN2InsertExh";
 import CalidadN1 from "../components/calidad/CalidadN1";
 import CalidadN3Update from "../components/calidad/CalidadN3Update";
 import CalidadN2Insert from "../components/calidad/CalidadN2Insert";
+
+import Comercial from './Comercial'
+import CargaParametros from '../components/comercial/GdsCargaParametros'
 
 
 //import "../css/index.css";
@@ -78,6 +80,14 @@ class Main extends Component {
                   </div>
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/Comercial">
+                  <div className='style_div_li'>
+                    <GiBearFace className="style_image" ></GiBearFace>
+                    <div className='style_div_li_text'>Comercial</div>
+                  </div>
+                  </NavLink>
+                </li>
               </nav>
           </ul>
 
@@ -111,6 +121,9 @@ class Main extends Component {
             <Route path="/CalidadN2InsertExh" component={CalidadN2InsertExh}/>
             <Route path="/CalidadN3Update" component={CalidadN3Update}/>
             <Route path="/CalidadN2Insert" component={CalidadN2Insert}/>
+
+            <Route path="/Comercial" component={Comercial}/>
+            <Route path="/CargaParametros" component={CargaParametros}/>
 
             
 
