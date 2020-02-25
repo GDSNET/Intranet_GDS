@@ -15,7 +15,7 @@ class Comercial extends Component {
     new Promise((resolve, reject) => {
       resolve(gds_function.funApiCargaCli())
   }).then(res=>{
-    alert(JSON.stringify(res))
+ //   alert(JSON.stringify(res))
     funCargaCli(res)
 
   })

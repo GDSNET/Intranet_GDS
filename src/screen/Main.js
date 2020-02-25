@@ -26,6 +26,7 @@ import gdsActualizaSalaLogN2 from "../components/gds/gdsActualizaSalaLogN2";
 import GdsLog from '../components/gds/log/GdsLog'
 
 import Calidad from "./Calidad";
+import CalidadLogin from "./CalidadLogin";
 import CalidadN1Exh from "../components/calidad/CalidadN1Exh";
 import CalidadN3UpdateExh from "../components/calidad/CalidadN3UpdateExh";
 import CalidadN2InsertExh from "../components/calidad/CalidadN2InsertExh"; 
@@ -65,7 +66,7 @@ class Main extends Component {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/calidad">
+                  <NavLink to="/Calidadlogin">
                   <div className='style_div_li'>
                     <GiDread className="style_image" ></GiDread>
                     <div className='style_div_li_text'>Calidad</div>
@@ -99,7 +100,6 @@ class Main extends Component {
             <Route path="/homes" component={Home}/>
 
             <Route path="/control" component={Control}/>
-            <Route path="/calidad" component={Calidad}/>
             <Route path="/ControlPageNivel1" component={ControlPage1}/>
             <Route path="/ControlPageNivel2" component={ControlPage2}/>
             <Route path="/ControlPageNivel3" component={ControlPage3}/>
@@ -115,12 +115,14 @@ class Main extends Component {
             <Route path="/gdsActualizaSalaLogN2" component={gdsActualizaSalaLogN2}/>
             <Route path="/GdsLog" component={GdsLog}/>
 
+            <Route path="/Calidad" component={Calidad}/>
             <Route path="/CalidadN1" component={CalidadN1}/>
             <Route path="/CalidadN1Exh" component={CalidadN1Exh}/>  
             <Route path="/CalidadN3UpdateExh" component={CalidadN3UpdateExh}/>
             <Route path="/CalidadN2InsertExh" component={CalidadN2InsertExh}/>
             <Route path="/CalidadN3Update" component={CalidadN3Update}/>
             <Route path="/CalidadN2Insert" component={CalidadN2Insert}/>
+            <Route path="/Calidadlogin" component={CalidadLogin}/>
 
             <Route path="/Comercial" component={Comercial}/>
             <Route path="/CargaParametros" component={CargaParametros}/>
