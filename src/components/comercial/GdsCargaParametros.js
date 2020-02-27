@@ -16,8 +16,8 @@ class Comercial extends Component {
     new Promise((resolve, reject) => {
       resolve(gds_function.funApiCargaCli())
   }).then(res=>{
- //   alert(JSON.stringify(res))
-    funCargaCli(res)
+ alert(JSON.stringify(res))
+    //funCargaCli(res)
   })
 
   new Promise((resolve, reject) => {
@@ -51,7 +51,7 @@ const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicad
                   selecionado = {sel_indicador}
                   comentario={'Seleccione Indicador'}
                  />
-                 
+
       <ReadExcel/>
 
 
