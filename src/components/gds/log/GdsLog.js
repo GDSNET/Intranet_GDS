@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../../../actions/index";
 import {bindActionCreators} from 'redux';
-import ButtonSalvaSala from './GdsButtonSalvaSala'
-import {Text, View, StyleSheet} from 'react-native-web'
+
+import GdsButton from './GdsButton'
+import {Text, View, StyleSheet, ScrollView} from 'react-native-web'
 import GdsPicker from './GdsPicker'
 import * as gds_function from './GdsFunction'
 import GdsLogFila from './GdsLogFila';
+import GdsLogFilaTitulos from './GdsLogFilaTitulos';
 import FlashMessage from './FlashMessage'
 
  
@@ -36,14 +38,27 @@ componentDidMount(){
 }
 
 funImportData(){
- 
-   
-  const {semana_log,serv_log,estado_ok,funApiLog  } = this.props;
+  const {semana_log,serv_log,estado_ok,funApiLog,funGdsMessage  } = this.props;
+  if(semana_log==null || serv_log==null || estado_ok==null){
+    funGdsMessage('Falta completar un Selector')
+    
+  }else {
+
+
   new Promise((resolve, reject) => {
     resolve(gds_function.funApiArrayLog(semana_log, serv_log, estado_ok))
 }).then(res=>{
+    //alert(JSON.stringify(res))
   funApiLog(res)
+  if(res[0]==null){
+    funGdsMessage('... sin datos')
+  }else{
+    funGdsMessage('recibimos ' + res.length + ' filas')
+  }
+    
 })
+
+  }
 }
 
 
@@ -85,7 +100,7 @@ try {
 
 
   render() {
-    const {funGdsGuardaSemLog,estado_ok, data_semana_log,semana_log, data_serv_log,serv_log,funGdsGuardaServLog,funGdsGuardaEstadoOk, message  } = this.props;
+    const {funGdsGuardaSemLog,estado_ok, data_semana_log,semana_log, data_serv_log,serv_log,funGdsGuardaServLog,funGdsGuardaEstadoOk  } = this.props;
 
     return (
   
@@ -97,44 +112,51 @@ try {
         
     
 
-        <Text>Desarrollando Log</Text>
-
-
-
-        <Text>  {semana_log} </Text>
-        <Text>  {semana_log} </Text>      
-        <Text>  {serv_log} </Text>  
-        <Text>  {estado_ok} </Text> 
-
-        <GdsPicker
-          data = {data_semana_log}
-          funExec= {funGdsGuardaSemLog}
-          selecionado = {semana_log}
-          comentario={'Seleccione Semana'}
-        />
         
-        <GdsPicker
-          data = {data_serv_log}
-          funExec= {funGdsGuardaServLog}
-          selecionado = {serv_log}
-          comentario={'Seleccione Cliente'}
-        />
 
-          <GdsPicker
-          data = {[{"id":"1", "desc":"OK"},{"id":"0", "desc":"ERROR"}]}
-          funExec= {funGdsGuardaEstadoOk}
-          selecionado = {estado_ok}
-          comentario={'Seleccione Estado'}
-        />
 
-        <ButtonSalvaSala
-          variable = {0}
-          varExec={()=>{this.funImportData()}}
-        />
+
+        
+        <Text style={styles.colorMensaje}> Seleccionando Semana: {semana_log} - Servicio: {serv_log} - Estado: {estado_ok} </Text>      
+        
+        <View style={styles.vistaPickers}>
+
+              <GdsPicker
+                data = {data_semana_log}
+                funExec= {funGdsGuardaSemLog}
+                selecionado = {semana_log}
+                comentario={'Seleccione Semana'}
+              />
+              
+              <GdsPicker
+                data = {data_serv_log}
+                funExec= {funGdsGuardaServLog}
+                selecionado = {serv_log}
+                comentario={'Seleccione Cliente'}
+              />
+
+                <GdsPicker
+                data = {[{"id":"1", "desc":"OK"},{"id":"0", "desc":"ERROR"}]}
+                funExec= {funGdsGuardaEstadoOk}
+                selecionado = {estado_ok}
+                comentario={'Seleccione Estado'}
+              />
+
+              <GdsButton
+                variable = {0}
+                varExec={()=>{this.funImportData()}}
+              />
+
+        </View>
 
 
       </View>
-      {this.funRecorreLog()}
+      <View style={styles.vistaData}>
+      <GdsLogFilaTitulos />
+      <ScrollView style={styles.view_scroll}>
+            {this.funRecorreLog()}
+      </ScrollView>
+      </View>
       </View>
     );
   }
@@ -176,10 +198,25 @@ const styles = StyleSheet.create({
     
   },
 
-  flashMessage: {
+  view_scroll: {
+flex: 1
+  },
 
+  colorMensaje: {
+
+    
+    color: '#FFF',
+    fontSize: 12
+    
+  },
+
+  vistaPickers: {
     flex: 1,
-    backgroundColor: '#FFF'
+    flexDirection: 'row',
+    
+  },
+  vistaData: {
+    margin: 10
     
   },
 });

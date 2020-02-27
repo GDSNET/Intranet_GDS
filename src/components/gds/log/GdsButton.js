@@ -1,26 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {Text,TouchableOpacity,View,StyleSheet} from 'react-native-web'
-import { FiSquare,FiCheckSquare } from "react-icons/fi";
+import {FiDownloadCloud } from "react-icons/fi";
 
  
-export default class ButtonSalvaSala extends Component {
+export default class GDSButton extends Component {
 
 
-
-
-  funCambiaValor(){
-const {estadoValido} = this.props
-      if (estadoValido == 1) {
-        return(<FiCheckSquare color={'#FFF'} size={30} />)
-
-
-      }else
-      {
-        return( <FiSquare color={'#DDD'} size={25} /> )
-      }
-
-  }
 
   render() {
     const {varExec, } = this.props;
@@ -29,7 +15,7 @@ const {estadoValido} = this.props
 
         <TouchableOpacity style={styles.touch}  onClick={()=>{varExec()}}>
 
-        {this.funCambiaValor()}
+        <FiDownloadCloud color={'#FFF'} size={30} />
 
         </TouchableOpacity>
 

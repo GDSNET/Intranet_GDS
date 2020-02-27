@@ -25,18 +25,12 @@ return (
   return (
   
   <View style={styles.flashMessage}>
-
-  
     <FiAlertCircle color={'#FFF'} size={20} ></FiAlertCircle>
-
-    <View style={styles.v_text}>
-    <Text style={styles.texto}>
-      {message}
-      </Text>
-
-      
-    </View>
-
+          <View style={styles.v_text}>
+          <Text style={styles.texto}>
+            {message}
+            </Text>
+          </View>
   </View>
    )
 
@@ -113,8 +107,9 @@ margin: 2
     right:300,
     height: 50,
     padding: 20,
-    bottom: 0,
-    borderTopRightRadius: 50,
+    top: 0,
+    borderBottomRightRadius: 50,
+    zIndex: 10000,
     
   },
 });

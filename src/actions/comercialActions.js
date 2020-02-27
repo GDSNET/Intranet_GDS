@@ -34,3 +34,21 @@ export function funGuardaDataArrayExcel(array)  {
        data_json_body: json
     }
  };
+ export function funGuardaCli(sel_cliente)  {
+   return {
+       type: types.GUARDA_CLIENTE_PARAMETRO,
+       sel_cliente: sel_cliente
+    }
+ };
+ export function funCargaIndicador(indicador)  {
+   return {
+       type: types.CARGA_INDICADOR_PARAMETRO,
+       indicador: indicador
+    }
+ };
+ export function funGuardaIndicador(sel_indicador)  {
+   return {
+       type: types.GUARDA_INDICADOR_PARAMETRO,
+       sel_indicador: sel_indicador
+    }
+ };

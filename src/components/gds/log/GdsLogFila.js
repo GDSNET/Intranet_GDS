@@ -12,7 +12,7 @@ class Fila extends Component {
 
 
   funCambiaValida(){
-    const {data, funApiLog, funGdsMessage} = this.props;
+    const {data, funGdsMessage} = this.props;
     let estadoValida = null
 
 if(data.estado_valido == 1){
@@ -38,11 +38,16 @@ if(data.estado_valido == 1){
   }).then(res=>{
     if (res.data=='ok'){
       funGdsMessage('Sala Modificada')
+
+      // refrescamos la data
+      const {semana_log,serv_log,estado_ok,funApiLog  } = this.props;
       new Promise((resolve, reject) => {
-        resolve(gds_function.funApiArrayLog())
+        resolve(gds_function.funApiArrayLog(semana_log, serv_log, estado_ok))
     }).then(res=>{
+        
       funApiLog(res)
     })
+
   }else{alert('Error Datos No Modificados:' + res.data)}
   })
 
@@ -51,19 +56,35 @@ if(data.estado_valido == 1){
   }  
 
 
+  funCambiaValidaConfirm(){
+    const {funGdsMessage} = this.props;
+    var r = window.confirm("Validas?");
+    if (r == true) {
+      this.funCambiaValida()
+    } else {
+      funGdsMessage('Cancelado....')
+    }
+  }
+
+
   render() {
     const {data} = this.props;
     return (
     <View style={styles.container}>
 
-            <FilaText text={data.cliente}></FilaText>
-            <FilaText text={data.id_sala}></FilaText>
-            <FilaText text={data.desc_sala}></FilaText>
-            <FilaText text={data.desc_pre_log}></FilaText>
-            <FilaText text={data.desc_log}></FilaText>
-            <FilaText text={data.estado_valido}></FilaText>
-            <FilaText text={data.estado_ok}></FilaText>
-            <ButtonSalvaSala varExec={()=>this.funCambiaValida()} estadoValido = {data.estado_valido}></ButtonSalvaSala>
+            
+            
+            <FilaText text={data.id_sala + ' - ' + data.desc_sala}></FilaText>
+
+
+                <View style={styles.view_column}>
+                            <FilaText text={data.desc_pre_log?'PreLog : ' + data.desc_pre_log:''}></FilaText>
+                            <FilaText text={data.desc_log?'Log : ' + data.desc_log:''}></FilaText>
+                            
+                </View>
+
+           
+            <ButtonSalvaSala varExec={()=>this.funCambiaValidaConfirm()} estadoValido = {data.estado_valido}></ButtonSalvaSala>
             
 
             
@@ -76,6 +97,11 @@ if(data.estado_valido == 1){
 
 function mapStateToProps(state){
   return{
+
+    semana_log: state.gds.semana_log,
+    serv_log: state.gds.serv_log,
+    estado_ok: state.gds.estado_ok
+
 
   }
 }
@@ -98,7 +124,10 @@ const styles = StyleSheet.create({
 
   container: {
       flexDirection:"row",
-      flex:1
+      flex:1,
+      borderBottomWidth: 0.5,
+      borderBottomColor: '#FFF',
+      alignItems: 'center'
 
   },
   grilla: { 
@@ -110,5 +139,11 @@ text: {
   textColor:"#F2FBED"
 
 },
+view_row: {
+  flexDirection:"row",
+},
+view_column: {
+  flexDirection:"column",
+}
   
 });
