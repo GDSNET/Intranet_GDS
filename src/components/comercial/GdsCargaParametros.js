@@ -4,7 +4,7 @@ import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {Text, View, StyleSheet} from 'react-native-web'
 import * as gds_function from './GdsFunction'
-
+import ReadExcel from './ReadExcel/ExcelReader'
  
 class Comercial extends Component {
 
@@ -15,7 +15,7 @@ class Comercial extends Component {
     new Promise((resolve, reject) => {
       resolve(gds_function.funApiCargaCli())
   }).then(res=>{
-    alert(JSON.stringify(res))
+    //alert(JSON.stringify(res))
     funApiCargaCli(res)
   })
 
@@ -27,7 +27,9 @@ class Comercial extends Component {
     return (
   
     <View>
-              <Text>hola soy la carga de parametros</Text>
+      <Text>hola soy la carga de parametros</Text>
+      <ReadExcel/>
+
 
       </View>
     );
