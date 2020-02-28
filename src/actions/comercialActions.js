@@ -1,4 +1,3 @@
-
 import * as types from '../constants/comercialConstants'
 
   export function funApiCargaCli(cliente)  {
@@ -50,5 +49,36 @@ export function funGuardaDataArrayExcel(array)  {
    return {
        type: types.GUARDA_INDICADOR_PARAMETRO,
        sel_indicador: sel_indicador
+    }
+ };
+ export function funCargaCli(cliente)  {
+   return {
+       type: types.CARGA_CLIENTE_PARAMETRO,
+       cliente: cliente
+    }
+ };
+ export function funGuardaEsquema(esquema)  {
+   return {
+       type: types.GUARDA_ESQUEMA_CLIENTE,
+       esquema: esquema
+    }
+ };
+ export function funGuardaFetch(respuesta)  {
+   return {
+       type: types.GUARDA_RESPUESTA_FETCH,
+       res_fetch: respuesta
+    }
+ };
+
+ export function funGuardaBaseDatos(data)  {
+   return {
+       type: types.GUARDA_BASE_DATOS_CLIENTE,
+       base_datos: data
+    }
+ };
+ export function funGuardaServidor(data)  {
+   return {
+       type: types.GUARDA_SERVIDOR_CLIENTE,
+       servidor: data
     }
  };

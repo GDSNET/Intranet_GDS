@@ -22,12 +22,13 @@ import  * as conexiones from '../publica/api_conexiones'
       
       }
 
-      export async function funApiCargaIndicador(){
+      export async function funApiCargaIndicador(cliente){
+
   
         const url = conexiones.GDS_CONEXION_3009 + '/post_select_indicador_carga_p';  
        
         let body_data = JSON.stringify({
-          "cliente" : "andina",
+          "cliente" : cliente,
           })
               const config =  {
                 method: 'POST',
@@ -44,4 +45,3 @@ import  * as conexiones from '../publica/api_conexiones'
                   });
           
           }
-    

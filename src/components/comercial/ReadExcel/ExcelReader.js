@@ -27,7 +27,7 @@ class ExcelReader extends Component {
 
   async funInsertData(){
   
-    const {data_json_body} = this.props;
+    const {data_json_body,funGuardaFetch} = this.props;
 
   const url = 'http://api.gdsnet.com:3009/insert_parametros';
     
@@ -49,7 +49,7 @@ class ExcelReader extends Component {
            return response.json()})
           .then((json) => {
             console.log("guardando datos" + JSON.stringify(json))
-           // funCalGuardaDataExh(json.exh)
+            funGuardaFetch(json)
           });
           
         } catch (e) {
@@ -59,7 +59,7 @@ class ExcelReader extends Component {
   
   }
 
-  guardaDataStorage(){
+ /* guardaDataStorage(){
     let stado = JSON.stringify(this.state.data)
     alert(JSON.stringify(stado))
     localStorage.setItem('DataSave',stado);
@@ -78,7 +78,7 @@ class ExcelReader extends Component {
       }).then(res=>{
         this.funInsertData()
         })
-  }
+  }*/
 
   handleFile() {
     /* Boilerplate to set up FileReader */
@@ -109,7 +109,9 @@ class ExcelReader extends Component {
         this.funForArray()
       }).then(res=>{
         this.funArmarJsonBody()
-        })
+        }).then(res=>{
+          this.funInsertData()
+          })
       });
  
     };
@@ -161,20 +163,12 @@ try {
 
 
 funArmarJsonBody(){
-  const {data_array,funGuardaJsonBody} = this.props;
-  //console.log('funArmarJsonBody')
-  //console.log(data_array)
+  const {data_array, funGuardaJsonBody, esquema, sel_indicador,base_datos,servidor} = this.props;
 
   const jsonBody = [];
-  const req = {"servicio":"jjclcons","tabla":"p_com_exh_prueba", data: JSON.parse(data_array)}
-  const servicio = [{"servicio":"jjclcons"},  {"tabla":"p_com_exh_prueba"}]
-  const tabla =
-  console.log(req)
+  const req = {"sv":servidor,"bd":base_datos,"servicio":esquema,"tabla":sel_indicador, data: JSON.parse(data_array)}
   
   jsonBody.push(req)
-  //jsonBody.push(data_array)
-  console.log(jsonBody)
-
 
   funGuardaJsonBody(JSON.stringify(jsonBody))
 }
@@ -182,7 +176,7 @@ funArmarJsonBody(){
 
   render() {
 
-    const {data_array,data_json_body} = this.props;
+    const {data_json_body} = this.props;
 
 
     return (
@@ -193,16 +187,6 @@ funArmarJsonBody(){
         <input type='submit' 
           value="Cargar Archivo"
           onClick={this.handleFile} />
-
-        <input type='submit' 
-          value="guarda"
-          onClick={()=>this.guardaDataStorage()} />
-
-          <input type='submit' 
-          value="recupera"
-          onClick={()=>this.getDataStorage()} />
-          
-        <text> {data_json_body}</text> 
 
       </View>
       
@@ -217,6 +201,10 @@ function mapStateToProps(state){
     data_array: state.comercial.data_array,
     query_array: state.comercial.query_array,
     data_json_body: state.comercial.data_json_body,
+    esquema: state.comercial.esquema,
+    sel_indicador: state.comercial.sel_indicador,
+    base_datos: state.comercial.base_datos,
+    servidor: state.comercial.servidor,
   }
 }
 
