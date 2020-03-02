@@ -5,7 +5,7 @@ import {
   HashRouter
 } from "react-router-dom";
 
-import {GiGluttony, GiDread, GiDinosaurRex,GiBearFace,GiElephantHead} from 'react-icons/gi'
+import {GiGluttony, GiDread, GiDinosaurRex,GiBearFace,GiDiplodocus} from 'react-icons/gi'
 
 
 import Home from "./Home";
@@ -58,6 +58,14 @@ class Main extends Component {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink to="/gds">
+                  <div className='style_div_li'>
+                    <GiBearFace className="style_image" ></GiBearFace>
+                    <div className='style_div_li_text'>Gds</div>
+                  </div>
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink to="/control">
                   <div className='style_div_li'>
                     <GiDinosaurRex className="style_image" ></GiDinosaurRex>
@@ -74,17 +82,9 @@ class Main extends Component {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/gds">
-                  <div className='style_div_li'>
-                    <GiBearFace className="style_image" ></GiBearFace>
-                    <div className='style_div_li_text'>Gds</div>
-                  </div>
-                  </NavLink>
-                </li>
-                <li>
                   <NavLink to="/Comercial">
                   <div className='style_div_li'>
-                    <GiElephantHead className="style_image" ></GiElephantHead>
+                    <GiDiplodocus className="style_image" ></GiDiplodocus>
                     <div className='style_div_li_text'>Comercial</div>
                   </div>
                   </NavLink>

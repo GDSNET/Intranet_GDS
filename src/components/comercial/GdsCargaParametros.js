@@ -65,16 +65,17 @@ const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicad
       <Text  style={styles.TextRespuesta} >{JSON.stringify(res_fetch)}</Text> 
               <View style={styles.StyleSelectorCli}>
 
-      
                  <GdsPicker
                   data = {cliente}
                   funExec= {funGuardaCli}
                   selecionado = {sel_cliente}
                   comentario={'Seleccione Cliente'}
                  />
+                 <View>
                  <Button
                   varExec={()=>{this.funCargaPickerIndicador()}}
                  />
+                 </View>
                  <GdsPicker
                   data = {indicador}
                   funExec= {funGuardaIndicador}
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     alingItems:'left',
     width:100,
-    paddingLeft: 500,
+    paddingLeft: 400,
 
   }
 });
