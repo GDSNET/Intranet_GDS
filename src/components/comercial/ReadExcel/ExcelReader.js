@@ -32,6 +32,7 @@ class ExcelReader extends Component {
   const url = 'http://api.gdsnet.com:3009/insert_parametros';
     
   let body_data = data_json_body
+  console.log(data_json_body)
 
       const config =  {
         method: 'POST',
