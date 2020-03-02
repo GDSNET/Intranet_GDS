@@ -42,21 +42,21 @@ export default (GdsPicker);
 const styles = StyleSheet.create({
 
   Picker: {
-    
-    padding: 20,
+    padding: 10,
     margin: 20,
     alignItems: 'center',
     backgroundColor: '#FF7E51',
-    borderRadius: 100,
-    marginHorizontal: 100,
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 10,
     color: '#FFF',
-    placeholderTextColor: '#FFCAB8',
     fontSize: 20,
+    marginLeft:100,
+    borderTopLeftRadius:5,
+    borderTopRightRadius:10,
+
   },
   
 });

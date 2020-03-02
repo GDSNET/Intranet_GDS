@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from "react-redux";
-import ControlActions from "./actions/index";
+import ControlActions from "./actions";
 import {bindActionCreators} from 'redux';
 import Main from './screen/Main'
 import {TextInput,Image, TouchableOpacity, Text, StyleSheet,View} from 'react-native-web';
@@ -13,7 +13,7 @@ constructor(props){
 
   super(props);
   this.state={
-      mensaje:'Hola Mundos',
+      mensaje:'Hola Mundo',
       variable : '',
       userOK: false,
       usuario: '',
@@ -108,8 +108,7 @@ else {
 
       <div className="App">
       
-        
-            {this.funiflogin()}
+      <Main />
   
           
      

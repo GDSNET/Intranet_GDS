@@ -41,12 +41,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FF7E51',
     borderRadius: 100,
-    marginHorizontal: 100,
+    marginLeft:130,
     shadowColor: '#333',
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 10,
+    
   },
   title: {
     fontSize: 20,

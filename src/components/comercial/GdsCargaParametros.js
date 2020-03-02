@@ -56,44 +56,34 @@ class Comercial extends Component {
 
   }
 
-  funMapMessage(){
-    const {res_fetch}=this.props
-    const message = ''
-try {
-    return res_fetch.map((m,i) => {
-      message = m.data
-  })
-} catch (error) {
-  
-}
-
-return message;
-
-  }
-
   render() {
 const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicador,esquema,res_fetch}=this.props
 
     return (
   
-    <View>
-      <Text  style={styles.TextRespuesta} >{this.funMapMessage()}</Text> 
-      
+    <View style={styles.container}>
+      <Text  style={styles.TextRespuesta} >{JSON.stringify(res_fetch)}</Text> 
+              <View style={styles.StyleSelectorCli}>
+
                  <GdsPicker
                   data = {cliente}
                   funExec= {funGuardaCli}
                   selecionado = {sel_cliente}
                   comentario={'Seleccione Cliente'}
                  />
+                 <View>
                  <Button
                   varExec={()=>{this.funCargaPickerIndicador()}}
                  />
+                 </View>
                  <GdsPicker
                   data = {indicador}
                   funExec= {funGuardaIndicador}
                   selecionado = {sel_indicador}
                   comentario={'Seleccione Indicador'}
                  />
+              </View>
+
       <ReadExcel/>
    
       </View>
@@ -132,15 +122,21 @@ export default connect(mapStateToProps, mapDispatchToProps)(Comercial);
 const styles = StyleSheet.create({
 
   container: {
-
-    flexDirection: 'row'
+    flex:1,
     
   },
   TextRespuesta: {
 
-    fontSize: 40,
+    fontSize: 20,
     color: '#ffffff'
     
   },
-  
+  StyleSelectorCli:{
+
+    flexDirection:'row',
+    alingItems:'left',
+    width:100,
+    paddingLeft: 400,
+
+  }
 });

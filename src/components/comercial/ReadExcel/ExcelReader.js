@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import XLSX from 'xlsx';
 import { make_cols } from './MakeColumns';
 import { SheetJSFT } from './types';
-import {View, StyleSheet} from 'react-native-web'
+import {View, StyleSheet,Button} from 'react-native-web'
 import { connect } from "react-redux";
 import combinaActions from "../../../actions/index";
 import {bindActionCreators} from 'redux';
@@ -182,12 +182,18 @@ funArmarJsonBody(){
 
     return (
       <View style={styles.container}>
+
+ 
         <br />
         <input type="file" id="file" accept={SheetJSFT} onChange={this.handleChange} />
         <br />
-        <input type='submit' 
-          value="Cargar Archivo"
-          onClick={this.handleFile} />
+
+              <input type='submit' 
+                value="Cargar Archivo"
+                onClick={this.handleFile}
+                className={styles.touch}
+                 />
+
 
       </View>
       
@@ -237,11 +243,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF7E51',
     borderRadius: 100,
     marginHorizontal: 100,
-    shadowColor: '#333',
+    shadowColor: '#000',
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 10,
+    color: '#FFF',
+    placeholderTextColor: '#FFCAB8',
+    fontSize: 20,
+
   },
   title: {
     fontSize: 20,
