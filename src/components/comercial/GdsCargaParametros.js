@@ -56,13 +56,28 @@ class Comercial extends Component {
 
   }
 
+  funMapMessage(){
+    const {res_fetch}=this.props
+    const message = ''
+try {
+    return res_fetch.map((m,i) => {
+      message = m.data
+  })
+} catch (error) {
+  
+}
+
+return message;
+
+  }
+
   render() {
 const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicador,esquema,res_fetch}=this.props
 
     return (
   
     <View>
-      <Text  style={styles.TextRespuesta} >{JSON.stringify(res_fetch)}</Text> 
+      <Text  style={styles.TextRespuesta} >{this.funMapMessage()}</Text> 
       
                  <GdsPicker
                   data = {cliente}
