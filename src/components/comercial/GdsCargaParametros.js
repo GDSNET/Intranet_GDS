@@ -61,8 +61,10 @@ const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicad
 
     return (
   
-    <View>
+    <View style={styles.container}>
       <Text  style={styles.TextRespuesta} >{JSON.stringify(res_fetch)}</Text> 
+              <View style={styles.StyleSelectorCli}>
+
       
                  <GdsPicker
                   data = {cliente}
@@ -79,6 +81,8 @@ const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicad
                   selecionado = {sel_indicador}
                   comentario={'Seleccione Indicador'}
                  />
+              </View>
+
       <ReadExcel/>
    
       </View>
@@ -117,15 +121,21 @@ export default connect(mapStateToProps, mapDispatchToProps)(Comercial);
 const styles = StyleSheet.create({
 
   container: {
-
-    flexDirection: 'row'
+    flex:1,
     
   },
   TextRespuesta: {
 
-    fontSize: 40,
+    fontSize: 20,
     color: '#ffffff'
     
   },
-  
+  StyleSelectorCli:{
+
+    flexDirection:'row',
+    alingItems:'left',
+    width:100,
+    paddingLeft: 500,
+
+  }
 });
