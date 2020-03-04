@@ -7,6 +7,9 @@ import * as gds_function from './GdsFunction'
 import ReadExcel from './ReadExcel/ExcelReader'
 import GdsPicker from './GdsPicker'
 import Button from './ComercialComponents/ComercialButton'
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 
 class Comercial extends Component {
 
@@ -22,6 +25,26 @@ class Comercial extends Component {
 
   }
 
+  createNotification(type){
+    console.log(type)
+      switch (type) {
+        case 'info':
+          NotificationManager.info('Info message');
+          break;
+        case 'success':
+          NotificationManager.success('por favor seleccione.','Indicadores actualizados');
+          break;
+        case 'warning':
+          NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+          break;
+        case 'error':
+          NotificationManager.error('Error message', 'Click me!', 5000, () => {
+            alert('callback');
+          });
+          break;
+      }
+  }
+
   funCargaPickerIndicador(){
     const {funCargaIndicador,sel_cliente} = this.props;
 
@@ -32,14 +55,13 @@ class Comercial extends Component {
   }).then(res=>{
     this.funEsquemaCliente()
   })
-
-
+  this.createNotification('success')
   }
 
   funEsquemaCliente(){
     const {sel_cliente ,cliente ,funGuardaEsquema ,funGuardaServidor ,funGuardaBaseDatos} = this.props;
 
-    console.log(cliente)
+    //console.log(cliente)
     
   cliente.map((v, indice) => {
      if(sel_cliente == v.desc){
@@ -56,26 +78,28 @@ class Comercial extends Component {
 
   }
 
-  render() {
-const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicador,esquema,res_fetch}=this.props
+  render(){
+const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicador,res_fetch}=this.props
 
     return (
   
     <View style={styles.container}>
+
       <Text  style={styles.TextRespuesta} >{JSON.stringify(res_fetch)}</Text> 
               <View style={styles.StyleSelectorCli}>
-
                  <GdsPicker
                   data = {cliente}
                   funExec= {funGuardaCli}
                   selecionado = {sel_cliente}
                   comentario={'Seleccione Cliente'}
                  />
+
                  <View>
                  <Button
                   varExec={()=>{this.funCargaPickerIndicador()}}
                  />
                  </View>
+
                  <GdsPicker
                   data = {indicador}
                   funExec= {funGuardaIndicador}
@@ -84,8 +108,9 @@ const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicad
                  />
               </View>
 
+      <NotificationContainer/>   
       <ReadExcel/>
-   
+    
       </View>
     );
   }
@@ -122,21 +147,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(Comercial);
 const styles = StyleSheet.create({
 
   container: {
-    flex:1,
     
   },
   TextRespuesta: {
-
     fontSize: 20,
     color: '#ffffff'
-    
   },
-  StyleSelectorCli:{
 
+  StyleSelectorCli:{
     flexDirection:'row',
     alingItems:'left',
-    width:100,
-    paddingLeft: 400,
-
   }
 });

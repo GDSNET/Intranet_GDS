@@ -22,7 +22,19 @@ constructor(props){
   }
 }
 
+componentDidMount(){
+  this.state.usuario = localStorage.getItem('usuario')
+  this.state.pass = localStorage.getItem('pass')
+
+  this.conprobarUser()
+  console.log(this.state.usuario)
+  console.log(this.state.pass)
+}
+
 conprobarUser(){
+localStorage.setItem('usuario', this.state.usuario)
+localStorage.setItem('pass', this.state.pass)
+
   if (this.state.usuario == 'calidad' && this.state.pass == 'calidad2019' ){
     console.log('paso por true  comprobar');
     this.setState({

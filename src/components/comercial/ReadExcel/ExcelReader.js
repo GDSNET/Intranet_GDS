@@ -32,7 +32,7 @@ class ExcelReader extends Component {
   const url = 'http://api.gdsnet.com:3009/insert_parametros';
     
   let body_data = data_json_body
-  console.log(data_json_body)
+
 
       const config =  {
         method: 'POST',
@@ -49,7 +49,7 @@ class ExcelReader extends Component {
           .then((response) => {
            return response.json()})
           .then((json) => {
-            console.log("guardando datos" + JSON.stringify(json))
+           // console.log("guardando datos" + JSON.stringify(json))
             funGuardaFetch(json)
           });
           
@@ -57,7 +57,6 @@ class ExcelReader extends Component {
           console.log(e.message)
     
         }  
-  
   }
 
  /* guardaDataStorage(){
@@ -175,14 +174,12 @@ funArmarJsonBody(){
 }
 
 
+
   render() {
-
     const {data_json_body} = this.props;
-
 
     return (
       <View style={styles.container}>
-
  
         <br />
         <input type="file" id="file" accept={SheetJSFT} onChange={this.handleChange} />
@@ -194,9 +191,7 @@ funArmarJsonBody(){
                 className={styles.touch}
                  />
 
-
       </View>
-      
       
     )
   }

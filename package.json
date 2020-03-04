@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "lottie-react-web": "^2.1.4",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-burger-menu": "^2.6.11",
     "react-confirm-alert": "^2.4.1",
+    "react-datetime": "^2.16.3",
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
     "react-native-web": "^0.11.4",
