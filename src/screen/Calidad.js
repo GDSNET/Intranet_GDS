@@ -8,6 +8,8 @@ import PickerItem from '../components/calidad/CalPickerComponents';
 import CliPicker from '../components/calidad/CalPickerClientesComponents';
 import {Picker} from 'react-native-web';
 
+
+
 class Calidad extends Component {
 
 
@@ -106,7 +108,7 @@ if(!sala) {funCalCambiaEstado('favor revise sala')}
 else if(!validacion) { funCalCambiaEstado('favor revise sku')}
 else if(!semana) {funCalCambiaEstado('favor revise semana')}
 else if(!cliente) {funCalCambiaEstado('favor revise cliente')}
-else if(tipo_modificacion==1) {history.push('/CalidadN1')}
+else if(tipo_modificacion===1) {history.push('/CalidadN1')}
 else (
   history.push('/CalidadN1Exh')
 
@@ -165,7 +167,7 @@ funRetornarSkuLabel(){
 
   const {validacion} = this.props;
 
-   if(validacion==false){
+   if(validacion===false){
     return  (<h2>SKU No encontrado!!!</h2>)
   }
   
@@ -180,22 +182,34 @@ funRetornarSkuLabel(){
       
       <div  className='container'>        
 
-        <div className='div_left'>
-
+        <div className='div_normal'>
+        <div className='div_normal'>
         <PickerItem />
-        <CliPicker />
+        </div>
+        <div className='div_normal'>
         <h2>Seleccione Tipo de Modificacion {tipo_modificacion}</h2>
+        </div>
+        <div className='div_normal'>
+        <CliPicker />
+        </div>
+        <div className='div_normal'>
+                  
         <Picker
                 ref="ModificacionSeleccion"
                 className="style_picker"
                 selectedValue={tipo_modificacion}
                 onValueChange={(value)=>{funTipoModificacion(value)}}>
-                >
+                
             <Picker.Item label='Seleccione Modificacion' value ={0} />    
             <Picker.Item label='b_detalle' value ={1} />
             <Picker.Item label='b_detalle_exhibicion' value ={2} />
 
             </Picker>
+        </div>
+
+     
+
+
        
        
       </div>

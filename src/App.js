@@ -1,59 +1,72 @@
 import React, { Component } from 'react';
-import './App.css';
 import { connect } from "react-redux";
-import ControlActions from "./actions";
 import {bindActionCreators} from 'redux';
 import Main from './screen/Main'
+import ToAction from './toaction/ToRoot'
+
+import ControlActions from "./actions";
+
+
+import ScreenCalidad from './screen/ScreenCalidad'
+import ScreenOperacion from './screen/ScreenOperacion';
+import ScreenComercial from './screen/ScreenComercial';
+import ScreenEcommerce from './screen/ScreenEcommerce';
+
+
 import {TextInput,Image, TouchableOpacity, Text, StyleSheet,View} from 'react-native-web';
-import gdsImagen from './images/gds.svg';
+import gdsImagen from './images/logogds2020.svg';
+
 
 class App extends Component {
 
 constructor(props){
-
-  super(props);
+super(props);
   this.state={
       mensaje:'Hola Mundos',
       variable : '',
       userOK: false,
       usuario: '',
-      pass: ''
+      pass: '',
+      usuarioAcceso: 'operacion',
       
+
   }
 }
 
-componentDidMount(){
-  this.state.usuario = localStorage.getItem('usuario')
-  this.state.pass = localStorage.getItem('pass')
+async componentDidMount(){
+ // var datosUsuario =  localStorage.getItem('acceso')
+  const {dataUser}= this.props
+  console.log("acceso: ",  JSON.stringify(dataUser))
 
-  this.conprobarUser()
-  console.log(this.state.usuario)
-  console.log(this.state.pass)
+
+
+  try {
+
+    if(dataUser.desc_perfil){
+      console.log("guardando acceso: ",  JSON.stringify(dataUser.desc_perfil))
+      
+   
+ }
+    
+  } catch (error) {
+    
+  }
+  
+  
+  
 }
 
-conprobarUser(){
-localStorage.setItem('usuario', this.state.usuario)
-localStorage.setItem('pass', this.state.pass)
 
-  if (this.state.usuario == 'calidad' && this.state.pass == 'calidad2019' ){
-    console.log('paso por true  comprobar');
-    this.setState({
-      userOK: true
-    })
-  }
-  else if (this.state.usuario == 'operacion' && this.state.pass == 'operacion2019' ){
-    console.log('paso por true  comprobar');
-    this.setState({
-      userOK: true
-    })
-  }
+comprobarUser(){
+  
+  this.funPostLogin(this.state.usuario, this.state.pass)
 
-  else {
-    console.log('paso por false comprobar')
-    this.setState({
-      userOK: false
-    })
-  }
+}
+
+guardaUsuario(datos){
+  localStorage.setItem('acceso', datos)
+  this.state.usuario = datos.username
+
 }
 
 funUser(valor){
@@ -71,46 +84,138 @@ funPass(valor){
 
 }
 
-funiflogin(){
-if(this.state.userOK){
-  return(
-    <Main />
-  )
+funBorrar(){
+  localStorage.clear()
+
 }
-else {
+
+async funPostLogin(usuario, pass){
+  const {funLoginOn}= this.props
+
+  const url = 'http://api.gdsnet.com:3009/post_web_login';
+
+let body_data = JSON.stringify({
+  "username" : usuario,
+  "password" : pass
+  })
+
+    const config =  {
+      method: 'POST',
+      body: body_data,
+      headers: {
+      "Content-Type": "application/json",
+      },
+    }  
+try {
+  
+
+await  fetch(url, config)
+.then(res => res.json())
+.then(res => {
+
+  console.log("Usuario : " + res.username)
+  
+
+    if(res.error) {
+      
+        throw(res.error);
+   
+    }else if(res.usuario !== "NOUSER") {
+    
+    funLoginOn(res)
+  }else {
+    
+    console.log("token : NOUSER")
+  }
+  
+          
+        });
+        
+      } catch (e) {
+        console.log(e.message)
+  
+      }  
+
+
+}
+
+
+funLogin(){
+  const {dataUser}= this.props
+
   return(
     <div>
 
-<View style={styles.contenedor}>
-        <Image
-          style={{width: 200, height: 150, }}
-          source={gdsImagen}
-        />
-           
-           <TextInput style={styles.textinput} 
-        
-        placeholder='Ingrese Usuario' 
-        onChangeText={(text)=> this.funUser(text)}
-        value={this.state.usuario}
-        />
+    <View style={styles.contenedor}>
 
-      <TextInput style={styles.textinput} 
-        secureTextEntry={true}
-        placeholder='Ingrese Password' 
-        onChangeText={(text)=> this.funPass(text)}
-        value={this.state.pass}
-        />
+    
+            <Image
+              style={{width: '100%', height: 250, }}
+              source={gdsImagen}
+            />
+               
+            <TextInput style={styles.textinput} 
+            
+            placeholder='Ingrese Usuario' 
+            onChangeText={(text)=> this.funUser(text)}
+            value={this.state.usuario}
+            />
+    
+          <TextInput style={styles.textinput} 
+            secureTextEntry={true}
+            placeholder='Ingrese Password' 
+            onChangeText={(text)=> this.funPass(text)}
+            value={this.state.pass}
+            />
+    
+            <TouchableOpacity  style={styles.textinput}  onPress={()=>{this.comprobarUser()}}>
+              <Text style={styles.style_titulo}> Ingresar </Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity  style={styles.textinput}  onPress={()=>{this.conprobarUser()}}>
-          <Text style={styles.style_titulo}> Ingresar</Text>
-        </TouchableOpacity>
-  </View>
-      </div>
+      </View>
+          </div>
   )
 }
 
+funSwitchlogin(){
 
+    console.log(this.props.desPerfil)
+      switch (this.props.desPerfil) {
+        case 'CALIDAD':
+          return ( <ToAction Pantalla={ScreenCalidad}>   </ToAction> )
+          
+        case 'OPERACION':
+          return (  <ToAction Pantalla={ScreenOperacion} /> )
+          
+          
+        case 'COMERCIAL':
+          return (  <ToAction Pantalla={ScreenComercial} /> )
+
+        case 'SISTEMAS':
+            return (  <ToAction Pantalla={ScreenComercial} /> )
+        case 'E-COMMERCE':
+              return (  <ToAction Pantalla={ScreenEcommerce} /> )
+            
+          
+        case 'error':
+          default:      return <h1>Ups!, Perfil no creado </h1>
+      }
+  
 }
+
+funInicio(){
+  if(this.props.desPerfil){
+    return(
+      this.funSwitchlogin()
+    )
+  } else 
+      return this.funLogin()
+      
+      
+
+  }
+
+
 
 
   render() {
@@ -119,13 +224,7 @@ else {
 
 
       <div className="App">
-      
-        
-            {this.funiflogin()}
-  
-          
-     
-        
+            {this.funInicio()}
       </div>
     );
   }
@@ -137,7 +236,9 @@ else {
 
 function mapStateToProps(state){
   return{
-    ...state
+    ...state,
+    dataUser: state.to.dataUser,
+    desPerfil: state.to.desPerfil,
 
   }
 }
@@ -188,3 +289,4 @@ const styles = StyleSheet.create({
   }
 
 });
+

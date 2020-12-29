@@ -1,0 +1,19 @@
+[
+    {
+        "TotalTotal": {"sellout": "93","osa": "68", "fillratte": 90},
+        "TotalGaseosas": {"sellout": "96","osa": "93", "fillratte": 35},
+        "RobertoAguas": {"sellout": "93","osa": "24", "fillratte": 90},
+        "RobertoTotal": {"sellout": "92","osa": "72", "fillratte": 35},
+        "RobertoGaseosas": {"sellout": "96","osa": "58", "fillratte": 35},
+        "Kam": [
+            {"nombre": "Roberto","nombrecompleto": "Roberto Carlos", "cargo": "KAM"},
+            {"nombre": "Paula","nombrecompleto": "Paula Bella", "cargo": "Gerente"}
+        ],
+        "Categorias": [
+            {"nombre": "Gaseosas"},
+            {"nombre": "Gaseosas"}
+        ]
+
+    }
+]
+

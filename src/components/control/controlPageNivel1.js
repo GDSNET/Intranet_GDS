@@ -145,6 +145,7 @@ try {
             <div>
             
             <GoBack history={this.props.history} varIr={'Control'}/>
+            
                <h1>Detalle Punto Servicio</h1>
                <p>Semana Id Seleccion: {numero} - Profile: {profile}</p>
                <div className ='tabla'>

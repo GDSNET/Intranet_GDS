@@ -1,0 +1,44 @@
+
+[
+  {
+    "id_atributo": "10",
+    "desc_atributo": "Lider",
+    "valor1": "50",
+    "valor2": "60",
+    "valor3": "58",
+    "valor4": "4.5"
+  },
+  {
+    "id_atributo": "10",
+    "desc_atributo": "Jumbo",
+    "valor1": "50",
+    "valor2": "60",
+    "valor3": "58",
+    "valor4": "4.0"
+  },
+  {
+    "id_atributo": "10",
+    "desc_atributo": "Santa Isabel",
+    "valor1": "50",
+    "valor2": "60",
+    "valor3": "58",
+    "valor4": "3"
+  },
+  {
+    "id_atributo": "10",
+    "desc_atributo": "Tottus",
+    "valor1": "50",
+    "valor2": "60",
+    "valor3": "58",
+    "valor4": "5"
+  },
+  {
+    "id_atributo": "10",
+    "desc_atributo": "Unimarc",
+    "valor1": "50",
+    "valor2": "60",
+    "valor3": "58",
+    "valor4": "4.8"
+  }
+  
+  ]

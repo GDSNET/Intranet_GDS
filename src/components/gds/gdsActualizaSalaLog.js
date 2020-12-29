@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
-import Menu from "./GdsMenu";
 import Picker from './GdsDelSalaPickerComponents';
 import PickerSemana from './GdsPickerSemanaComponents';
 import {TextInput, StyleSheet} from 'react-native-web';
@@ -80,9 +79,9 @@ if(!sala ){
 
 
       <div className='container_2'>
-      <Menu/>
-      <h1>Modulo para modificar el estado del log.</h1>
-      <div className='div_left'>
+      
+      <h1>Modulo para actualizar el estado del log.</h1>
+      <div className='div_normal'>
          <PickerSemana/>
          <Picker />
       </div>

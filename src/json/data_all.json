@@ -1,0 +1,13 @@
+
+[
+{"atributo1":"Pamela Henriquez","cargo":"GERENTE","sellout":"74","sellout_ant":"78"  ,"osa":"86","osa_ant":"83","promocion":"67","promocion_ant":"66","tarea":"56", "imagen": "Pamela", "instock": "90", "fillrate": "60"  }	,
+{"atributo1":"Lorena Balmaceda","cargo":"KAM ZONA NORTE","sellout":"81" ,"osa":"90","promocion":"50","tarea":"92", "imagen": "Lorena", "instock": "65", "fillrate": "78"  }	,
+{"atributo1":"Daniela Rioseco","cargo":"KAM ZONA SUR","sellout":"74","osa":"95","promocion":"68","tarea":"65", "imagen": "Daniela", "instock": "83", "fillrate": "61"  }	,
+{"atributo1":"Pablo Sepulveda","cargo":"KAM ZONA CENTRAL","sellout":"77","osa":"68","promocion":"76","tarea":"78", "imagen": "Pablo", "instock": "55", "fillrate": "89"  }	,
+{"atributo1":"Rodrigo Arancibia","cargo":"KAM ZONA EXTREMA","sellout":"76","osa":"90","promocion":"77","tarea":"28", "imagen": "Rodrigo", "instock": "56", "fillrate": "67" }	
+
+]
+
+
+
+

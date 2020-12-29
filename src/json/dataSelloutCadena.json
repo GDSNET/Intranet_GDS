@@ -1,0 +1,50 @@
+
+[
+  {
+    "id_atributo": "13",
+    "desc_atributo": "TOTTUS",
+    "valor": "-5%",
+    "valor1": "79%",
+    "valor2": "75%",
+    "valor3": "74%",
+    "valor4": "1.5"
+  },
+  {
+    "id_atributo": "12",
+    "desc_atributo": "SANTA ISABEL",
+    "valor": "1%",
+    "valor1": "85%",
+    "valor2": "83%",
+    "valor3": "84%",
+    "valor4": "2"
+  },
+  {
+    "id_atributo": "14",
+    "desc_atributo": "UNIMARC",
+    "valor": "1%",
+    "valor1": "90%",
+    "valor2": "88%",
+    "valor3": "89%",
+    "valor4": "3"
+    
+  },
+  {
+    "id_atributo": "10",
+    "desc_atributo": "LIDER",
+    "valor": "-3%",
+    "valor1": "91%",
+    "valor2": "90%",
+    "valor3": "91%",
+    "valor4": "4"
+  },
+  {
+    "id_atributo": "11",
+    "desc_atributo": "JUMBO",
+    "valor": "-2%",
+    "valor1": "95%",
+    "valor2": "93%",
+    "valor3": "96%",
+    "valor4": "5"
+  }
+  
+  ]

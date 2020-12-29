@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import Picker from './GdsPickerComponents';
 import {TextInput, StyleSheet} from 'react-native-web';
 import Button from '../publica/buttonComponents';
-import Menu from "./GdsMenu";
+
 
 class Gds extends Component {
 
@@ -56,7 +56,7 @@ if(!sala ){
 
       <div>
 
-      <Menu/>
+      
 
 
            <Picker />

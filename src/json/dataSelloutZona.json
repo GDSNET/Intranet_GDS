@@ -1,0 +1,31 @@
+
+[
+    {
+    "id_atributo": "10",
+    "desc_atributo": "NORTE",
+    "valor": "2%",
+    "valor1": "96%",
+    "valor2": "94%",
+    "valor3": "97%",
+    "valor4": "5"
+  },
+  {
+    "id_atributo": "11",
+    "desc_atributo": "CENTRO",
+    "valor": "-5%",
+    "valor1": "81%",
+    "valor2": "78%",
+    "valor3": "80%",
+    "valor4": "3"
+  },
+  {
+    "id_atributo": "12",
+    "desc_atributo": "SUR",
+    "valor": "1%",
+    "valor1": "91%",
+    "valor2": "90%",
+    "valor3": "89%",
+    "valor4": "4"
+  }
+  
+  ]
