@@ -65,7 +65,7 @@ class Dashboard extends Component {
 
     const {visible } = this.props;
     return (
-      <div className="div_screen">
+      <div style={styles1.container}>
         
    
                 
@@ -197,8 +197,8 @@ const styles1 = StyleSheet.create({
    
   container: {
     flex: 1,
-    flexDirection: 'row'
-
+    flexDirection: 'row',
+    
   }
 });
 
