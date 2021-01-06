@@ -1,0 +1,12 @@
+[
+    {
+        "presencia" : "0",
+        "f_stock": "1",
+        "f_imagen": "0",
+        "f_descripcion": "1", 
+        "f_precio_unitario": "990",
+        "f_precio_descuento": "890",
+        "f_mecanica": "dcto unitario",
+       "f_alerta_quiebre": "0"
+    }
+]

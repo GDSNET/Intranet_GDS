@@ -24,7 +24,7 @@ class eComN1 extends Component {
     funGuardaIdSala(item.id_sala)
 
     console.log(history)
-    /*history.push('/eComNivel2')*/
+    history.push('/eComNivel2')
  
   
 

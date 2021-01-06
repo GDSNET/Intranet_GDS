@@ -9,14 +9,14 @@ class Calidad extends Component {
 
 
   render() {
-    const {} = this.props;
+    const {history} = this.props;
 
        
     return (
 
       <div>        
 
-        <Form/>
+        <Form history = {history}/>
      
         </div>
     );
