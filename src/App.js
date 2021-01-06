@@ -90,7 +90,7 @@ funBorrar(){
 }
 
 async funPostLogin(usuario, pass){
-  const {funLoginOn}= this.props
+  const {funLoginOn, funGuardaProfile}= this.props
 
   const url = 'http://api.gdsnet.com:3009/post_web_login';
 
@@ -121,8 +121,10 @@ await  fetch(url, config)
         throw(res.error);
    
     }else if(res.usuario !== "NOUSER") {
-    
+    console.log(res.id_usuario)
+    funGuardaProfile(res.id_usuario)
     funLoginOn(res)
+
   }else {
     
     console.log("token : NOUSER")
@@ -238,8 +240,7 @@ function mapStateToProps(state){
   return{
     ...state,
     dataUser: state.to.dataUser,
-    desPerfil: state.to.desPerfil,
-
+    desPerfil: state.to.desPerfil
   }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
-import {TextInput, StyleSheet} from 'react-native-web';
+import {TextInput, StyleSheet, View} from 'react-native-web';
 import Button from '../components/publica/buttonComponents';
 import PickerItem from '../components/calidad/CalPickerComponents'; 
 import CliPicker from '../components/calidad/CalPickerClientesComponents';
@@ -108,11 +108,9 @@ if(!sala) {funCalCambiaEstado('favor revise sala')}
 else if(!validacion) { funCalCambiaEstado('favor revise sku')}
 else if(!semana) {funCalCambiaEstado('favor revise semana')}
 else if(!cliente) {funCalCambiaEstado('favor revise cliente')}
-else if(tipo_modificacion===1) {history.push('/CalidadN1')}
-else (
-  history.push('/CalidadN1Exh')
-
-)
+else if(tipo_modificacion==='1') {history.push('/CalidadN1')}
+else if(tipo_modificacion==='2') {history.push('/CalidadN1Exh')}
+else(funCalCambiaEstado('favor revise informacion' + tipo_modificacion))
 
       }
 
@@ -180,20 +178,15 @@ funRetornarSkuLabel(){
        
     return (
       
-      <div  className='container'>        
+      <View style = {styles.divPrincipal}>        
 
-        <div className='div_normal'>
-        <div className='div_normal'>
+        <div >
+        <div >
         <PickerItem />
         </div>
-        <div className='div_normal'>
+        <div >
         <h2>Seleccione Tipo de Modificacion {tipo_modificacion}</h2>
-        </div>
-        <div className='div_normal'>
-        <CliPicker />
-        </div>
-        <div className='div_normal'>
-                  
+
         <Picker
                 ref="ModificacionSeleccion"
                 className="style_picker"
@@ -206,14 +199,12 @@ funRetornarSkuLabel(){
 
             </Picker>
         </div>
-
-     
-
-
-       
+        <div >
+        <CliPicker />
+        </div>
        
       </div>
-                <div className='div_right'>
+                <div>
 
                 <h2>Ingrese Sku: {id_sku} </h2>
                
@@ -245,7 +236,7 @@ funRetornarSkuLabel(){
             <h5 className='style_status_text'>{estado}</h5>
         </div>
 
-      </div>
+      </View>
     );
   }
 }
@@ -263,7 +254,7 @@ function mapStateToProps(state){
     cliente: state.calidad.cliente,
     validacion: state.calidad.validacion,
     desc_sku: state.calidad.desc_sku,
-    tipo_modificacion:state.calidad.tipo_modificacion
+    tipo_modificacion: state.calidad.tipo_modificacion
     
   }
 }
@@ -284,6 +275,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(Calidad);
 
 const styles = StyleSheet.create({
 
+  divPrincipal:{
+    alignItems: 'center',
+  },
+  div:{
+    padding: 20,
+    margin: 5,
+  },
   textinput: {    
     padding: 20,
     margin: 5,

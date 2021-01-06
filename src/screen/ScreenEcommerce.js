@@ -2,21 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
-
 import {IoIosRocket} from "react-icons/io";
-
 import logo from '../images/logogds2020_01blanco.svg';
 
-
 import Ecommerce from "./Ecommerce";
-
+import eComNivel1 from "../components/eCommerce/eComNivel1"
+import eComNivel2 from "../components/eCommerce/eComNivel2"
 
 import {
   Route,
   NavLink,
 } from "react-router-dom";
  
-class ScreenCalidad extends Component {
+class ScreenEcommerce extends Component {
   constructor(props) {
     super(props);
 
@@ -112,7 +110,9 @@ class ScreenCalidad extends Component {
                 <div  className={"dash_body_right"}>
               
                     <Route path="/Ecommerce" component={Ecommerce}/>
-                   
+                    <Route path="/eComNivel1" component={eComNivel1}/>
+                    <Route path="/eComNivel2" component={eComNivel2}/>
+
                   </div>
               </div>
           </div>
@@ -147,6 +147,6 @@ return bindActionCreators(
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScreenCalidad);
+export default connect(mapStateToProps, mapDispatchToProps)(ScreenEcommerce);
 
 

@@ -37,6 +37,9 @@ import CalidadN2Insert from "../components/calidad/CalidadN2Insert";
 import Comercial from './Comercial'
 import CargaParametros from '../components/comercial/GdsCargaParametros'
 
+import Ecommerce from './Ecommerce'
+import EcommerceN1 from '../components/eCommerce/eComNivel1'
+import EcommerceN2 from '../components/eCommerce/eComNivel2'
 
 //import "../css/index.css";
 
@@ -127,8 +130,9 @@ class Main extends Component {
             <Route path="/Comercial" component={Comercial}/>
             <Route path="/CargaParametros" component={CargaParametros}/>
 
-            
-
+            <Route path="/Ecommerce" component={Ecommerce}/>
+            <Route path="/EcommerceN1" component={EcommerceN1}/>
+            <Route path="/EcommerceN2" component={EcommerceN2}/>
             
           </div>
         </div>

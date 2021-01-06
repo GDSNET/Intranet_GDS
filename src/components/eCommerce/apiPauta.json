@@ -1,0 +1,24 @@
+[
+    {
+    "periodo": "PERIODO 1",
+    "id_tie_semana": "1017",
+    "id_usuario": "5",
+    "id_plataforma": "0",
+    "desc_plataforma": "Web Lider",
+    "estado":"NUEVA",
+    "id_sala": "14919",
+    "desc_sala": "Lider Marcoleta",
+    "id_sku": "267754"
+    },
+    {
+    "periodo": "PERIODO 1",
+    "id_tie_semana": "1017",
+    "id_usuario": "5",
+    "id_plataforma": "1",
+    "desc_plataforma": "Web Jumbo",
+    "estado":"COMPLETA",
+    "id_sala": "68280",
+    "desc_sala": "Jumbo Jumbito",
+    "id_sku": "267754"
+    }
+]

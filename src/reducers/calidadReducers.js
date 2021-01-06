@@ -212,6 +212,7 @@ const calidadReducer = (state = initialState, action) => {
         };
         break;
         case types.CALIDAD_TIPO_MODIFICACION:
+            console.log('cambiando tipo modificacion:' + action.tipo_modificacion)
         return {...state,
             estado: action.estado,
             tipo_modificacion: action.tipo_modificacion,

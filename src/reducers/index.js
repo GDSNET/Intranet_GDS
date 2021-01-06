@@ -7,6 +7,7 @@ import calidadReducers from './calidadReducers'
 import gdsReducers from './gdsReducers'
 import comercialReducer from './comercialReducers'
 import toReducers from './toReducers'
+import eCommerce from './eComReducers'
 
 
 const rootReducer = combineReducers({
@@ -15,5 +16,6 @@ const rootReducer = combineReducers({
     gds: gdsReducers,
     comercial:comercialReducer,
     to:toReducers,
+    eCom: eCommerce,
 })
 export default rootReducer

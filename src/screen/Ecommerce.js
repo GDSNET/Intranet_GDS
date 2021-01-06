@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
 import { StyleSheet} from 'react-native-web';
+import Form from '../components/eCommerce/eComNivel1'
 
 class Calidad extends Component {
 
@@ -12,16 +13,12 @@ class Calidad extends Component {
 
        
     return (
-      
-      <div  className='container'>        
 
-        <div className='div_left'>
+      <div>        
 
-        <h2>Hola mundo E-commerce </h2>
+        <Form/>
      
         </div>
-
-      </div>
     );
   }
 }

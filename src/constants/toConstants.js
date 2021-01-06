@@ -1,3 +1,4 @@
+
 export const TO_START_ACTION = 'TO_START_ACTION';
 export const TO_STOP_ACTION = 'TO_STOP_ACTION';
 export const TO_AGREGAR_NUMERO = 'TO_AGREGAR_NUMERO';

@@ -78,15 +78,15 @@ if(!sala ){
 
 
 
-      <div className='container_2'>
+      <div >
       
       <h1>Modulo para actualizar el estado del log.</h1>
-      <div className='div_normal'>
+      <div >
          <PickerSemana/>
          <Picker />
       </div>
       
-      <div className='div_right'>
+      <div>
          <h1>Ingrese Sala: {sala} </h1>
          <TextInput style={styles.textinput} 
          keyboardType='numeric'
