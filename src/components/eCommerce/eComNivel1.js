@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
 import { MdDeleteSweep } from "react-icons/md";
 import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
-import plataformas from './apiPlataformas.json'
 import pautaPdv from './apiPauta.json'
 
  
@@ -19,11 +18,12 @@ class eComN1 extends Component {
   }
 
   funTouchableNivel1(item){
-    const {funGuardaIdSala, history} = this.props;
+    const {funGuardaSala, history} = this.props;
     
-    funGuardaIdSala(item.id_sala)
+    funGuardaSala(item)
 
     console.log(history)
+
     history.push('/eComNivel2')
  
   

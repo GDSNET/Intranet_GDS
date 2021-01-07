@@ -3,7 +3,7 @@ import * as types from '../constants/eComConstants'
 const initialState = {
     id_profile: false,
    estado: 'E-COMMERCE',
-   id_sala:null
+   data_sala:[],
 }
 
 
@@ -17,9 +17,9 @@ const eComReducers = (state = initialState, action) => {
             
         };
         break;
-        case types.ECOM_GUARDA_ID_SALA:
+        case types.ECOM_GUARDA_SALA:
             return {...state,
-                id_sala: action.id_sala,
+                data_sala: action.data_sala,
                 estado: action.estado,
                 
             };

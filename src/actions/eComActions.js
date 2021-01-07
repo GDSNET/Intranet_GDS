@@ -11,10 +11,10 @@ import * as types from '../constants/eComConstants'
      }
   };
 
-  export function funGuardaIdSala(id_sala)  {
+  export function funGuardaSala(data_sala)  {
    return {
-       type: types.ECOM_GUARDA_ID_SALA,
-       id_sala: id_sala,
+       type: types.ECOM_GUARDA_SALA,
+       data_sala: data_sala,
        estado: 'Guardando Sala'
     }
  };
