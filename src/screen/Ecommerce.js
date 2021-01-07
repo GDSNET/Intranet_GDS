@@ -4,6 +4,7 @@ import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
 import { StyleSheet} from 'react-native-web';
 import Form from '../components/eCommerce/eComNivel1'
+import Planilla from '../components/eCommerce/eComNivelPlanilla'
 
 class Calidad extends Component {
 
@@ -17,6 +18,7 @@ class Calidad extends Component {
       <div>        
 
         <Form history = {history}/>
+        <Planilla />
      
         </div>
     );

@@ -37,7 +37,7 @@ funPicker(){
             mode="dropdown"
             selectedValue={valor || ''}
             onValueChange={(value)=>{funCalGuardaCliente(value)}}>
-          <Picker.Item label='Seleccione Cliente' value='' key={null}/>/>
+          <Picker.Item label='Seleccione Cliente' value='' key={null}/>
             {data_cliente.map((item, key) => {
                 return (
                 <Picker.Item label={item.cli_desc} value={item.esquema} key={key}/>) 

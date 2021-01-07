@@ -1,0 +1,12 @@
+[
+    {
+        "id_mecanica": "1","desc_mecanica": "descuento unitario"
+    },
+    {
+        "id_mecanica": "2","desc_mecanica": "3x unitario"
+    },
+    {
+        "id_mecanica": "3","desc_mecanica": "4x unitario"
+    }
+]
+

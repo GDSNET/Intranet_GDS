@@ -142,7 +142,7 @@ class ToRoot extends Component {
                     <DesplegableMail />
                     <DesplegableCampana />
                     <DesplegableSupervisor />
-                    <ToCarga />
+                 
                     <Footer />
                 
                 </HashRouter>
