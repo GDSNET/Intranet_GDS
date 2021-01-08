@@ -7,7 +7,13 @@ const initialState = {
    data_plataforma:[],
    dataSala: [],
    dataPlataforma:[], 
-   dataPlanilla: []
+   dataPlanilla: [],
+   stock: null,
+   alerta:null,
+   mecanica:null,
+   precio_descuento:null,
+   precio_unitario:null,
+   imagen:null
 }
 
 
@@ -57,35 +63,98 @@ const eComReducers = (state = initialState, action) => {
                 }
                 case types.ECOM_GET_PLANILLA_OK: { 
                     return {
-                        ...state,
-                        dataPlanilla: action.dataPlanilla,
-                        estado: action.estado
+  ...state,
+  dataPlanilla: action.dataPlanilla,
+  estado: action.estado
                     }
                     }
                     case types.ECOM_GUARDA_PLATAFORMA: { 
-                        return {
-                            ...state,
-                            data_plataforma: action.data_plataforma,
-                            estado: action.estado
-                        }
-                        }
+  return {
+      ...state,
+      data_plataforma: action.data_plataforma,
+      estado: action.estado
+  }
+  }
   
                     case types.ECOM_GUARDA_PRESENCIA: {
-                         state.dataPlanilla.map(todo => {
-                          if (todo.id_sku_sap === action.id_sku_sap) {
-                            todo.presencia=action.presencia
-                          }
+   state.dataPlanilla.map(todo => {
+    if (todo.id_sku_sap === action.id_sku_sap) {
+      todo.presencia=action.presencia
+    }
                   
-                          return {
-                            ...state,
-                          }
-                        })
-                      }
-
-
-
+    return {
+      ...state,
+    }
+  })
+}
+case types.ECOM_GUARDA_STOCK: {
+  state.dataPlanilla.map(todo => {
+   if (todo.id_sku_sap === action.id_sku_sap) {
+     todo.stock=action.stock
+   }
+                 
+   return {
+     ...state,
+   }
+ })
+}
+case types.ECOM_GUARDA_VALOR_IMAGEN: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.imagen=action.imagen
+     }
+                   
+     return {
+       ...state,
+     }
+   })
+  }
+  case types.ECOM_GUARDA_PRECIO_UNITARIO: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.precio_unitario=action.precio_unitario
+     }
+                   
+     return {
+       ...state,
+     }
+   })
+  }
+  case types.ECOM_GUARDA_PRECIO_DESCUENTO: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.precio_descuento=action.precio_descuento
+     }
+                   
+     return {
+       ...state,
+     }
+   })
+  }
+  case types.ECOM_GUARDA_MECANICA: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.mecanica=action.mecanica
+     }
+                   
+     return {
+       ...state,
+     }
+   })
+  }
+  case types.ECOM_GUARDA_ALERTA_QUIEBRE: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.alerta=action.alerta
+     }
+                   
+     return {
+       ...state,
+     }
+   })
+  }
   
-        
+
     default:
     return state
     }
