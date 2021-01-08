@@ -70,6 +70,21 @@ const eComReducers = (state = initialState, action) => {
                         }
                         }
   
+                    case types.ECOM_GUARDA_PRESENCIA: {
+                         state.dataPlanilla.map(todo => {
+                          if (todo.id_sku_sap === action.id_sku_sap) {
+                            todo.presencia=action.presencia
+                          }
+                  
+                          return {
+                            ...state,
+                          }
+                        })
+                      }
+
+
+
+  
         
     default:
     return state

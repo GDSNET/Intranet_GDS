@@ -1113,27 +1113,25 @@ font-size: 15px;
 
 
 th{
-  font-family: Lato-Bold;
-  font-size: 15px;
+  font-size: 14px;
   color:  #beb6b6;
-  line-height: 1.4;
   text-transform: uppercase;
   background-color: #393939;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 5px;
+  border-radius: 3px 3px 3px 3px;
 }
 
 td{
-font-family: Lato-Regular;
-font-size: 15px;
-color: white;
+  border-radius: 3px 3px 3px 3px;
+font-size: 12px;
+color:  #ffffff;
 line-height: 1.4;
-background-color: #222222;
-padding-left: 10px;
-padding-right: 10px;
+background-color: #5c5c5c;
+padding: 3px;
 }
 
 table{
+  border-radius: 0px 10px 10px 10px;
   -webkit-box-shadow: 9px 10px 5px 0px rgba(13,0,13,1);
   -moz-box-shadow: 9px 10px 5px 0px rgba(13,0,13,1);
   box-shadow: 9px 10px 5px 0px rgba(13,0,13,1);

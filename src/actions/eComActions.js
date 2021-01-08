@@ -75,6 +75,19 @@ function SalasRequest() {
      estado: 'seleccion plataforma'
    }
  }
+
+ export function   funGuardaPresencia(id_sku_sap, valor) {
+  console.log('guarda presencia');
+  return {
+    type: types.ECOM_GUARDA_PRESENCIA,
+    id_sku_sap: id_sku_sap,
+    presencia: valor,
+    estado: 'seleccion plataforma'
+  }
+}
+
+ 
+
  
  
  
