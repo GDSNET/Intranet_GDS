@@ -8,6 +8,7 @@ import logo from '../images/logogds2020_01blanco.svg';
 import Ecommerce from "./Ecommerce";
 import eComNivel1 from "../components/eCommerce/eComNivel1"
 import eComNivel2 from "../components/eCommerce/eComNivel2"
+import eComNivel3 from "../components/eCommerce/eComNivel3"
 
 import {
   Route,
@@ -112,6 +113,8 @@ class ScreenEcommerce extends Component {
                     <Route path="/Ecommerce" component={Ecommerce}/>
                     <Route path="/eComNivel1" component={eComNivel1}/>
                     <Route path="/eComNivel2" component={eComNivel2}/>
+                    <Route path="/eComNivel3" component={eComNivel3}/>
+                    
 
                   </div>
               </div>

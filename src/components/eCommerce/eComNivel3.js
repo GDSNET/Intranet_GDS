@@ -6,6 +6,16 @@ import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
 import { MdDeleteSweep } from "react-icons/md";
 import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
 
+import Presencia from './variables/Presencia'
+import Stock from './variables/Stock'
+import Descripcion from './variables/Descripcion'
+import PrecioUnitario from './variables/PrecioUnitario'
+import PrecioDescuento from './variables/PrecioDescuento'
+import Descuento from './variables/Descuento'
+import Alerta from './variables/Alerta'
+import Mecanica from './variables/Mecanica'
+import Imagen from './variables/Imagen'
+
 
  
 class eComN2 extends Component {
@@ -19,14 +29,15 @@ class eComN2 extends Component {
 
 
 async funCargaPlataforma(){
-  const {data_sala, id_profile, PlataformaOK} = this.props;
+  const {data_sala, id_profile, PlanillaOK, data_plataforma} = this.props;
 
  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const url = 'http://api.gdsnet.com:3009/post_intranet_plataforma';
+const url = 'http://api.gdsnet.com:3009/post_intranet_pauta';
 
 let body_data = JSON.stringify({
   "id_usuario" : id_profile,
-  "id_sala" : data_sala.id_sala
+  "id_sala" : data_sala.id_sala,
+  "id_plataforma" : data_plataforma.id_plataforma
   })
 
     const config =  {
@@ -45,7 +56,7 @@ await  fetch(url, config)
          return response.json()})
         .then((json) => {
           console.log("guardando Plataforma" + JSON.stringify(json))
-          PlataformaOK(json)
+          PlanillaOK(json)
         });
         
       } catch (e) {
@@ -55,32 +66,45 @@ await  fetch(url, config)
 
 }
 
-funTouchableNivel1(item){
-  const { history, funGuardaPlataforma} = this.props;
-  
-  funGuardaPlataforma(item)
-
-  console.log(history)
-  history.push('/eComNivel3')
-
-}
-
-
   mostrarResultado = () => {
-    const {data_sala, dataPlataforma} = this.props;
+    const {data_sala, dataPlanilla} = this.props;
   try {
   
-  let algo = dataPlataforma.map((fila,i) => {
+  let algo = dataPlanilla.map((fila,i) => {
   
   return(  
   <tr className="regPauta" key={i}>    
   
   
                 <th scope="row" key={i}>{i}</th>
-                <td>{fila.id_plataforma}</td>
-                <td>{fila.desc_plataforma}</td>
-                <td>{data_sala.desc_sala}</td>
+                <td>{fila.id_sku_sap}</td>
+                <td>{fila.desc_marca}</td>
+                <td>{fila.desc_sku}</td>
+                <td>{fila.imagen_sku}</td>
+                
+                <td>
+              <Imagen  valor={fila.f_imagen} funExecute={this.funChange} />
+              </td>
+                <td>     
+                  <Presencia valor={fila.presencias} funExecute={this.funChange} />
+                  <Stock valor={fila.f_stock} funExecute={this.funChange} />
+                  <Descripcion valor={fila.f_descripcion} funExecute={this.funChange} />
+       
+              </td>
+              <td> 
+              <PrecioUnitario valor={fila.f_precio_unitario} funExecute={this.funChange} />
+      <PrecioDescuento valor={fila.f_precio_descuento} funExecute={this.funChange} />
+      <Descuento valor={fila.presencia} funExecute={this.funChange} />
+              </td>
+              <td> 
+                 <Mecanica  valor={fila.f_mecanica} funExecute={this.funChange} />
+                <Alerta valor={fila.f_alerta_quiebre} funExecute={this.funChange} />
+              </td>
+                      
+ 
   
+
+                
                 <td> 
                   <TouchableOpacity  onClick={()=> {this.funTouchableNivel1(fila)}}>
                   <IoMdCreate style={styles.touchable}/>
@@ -112,14 +136,20 @@ funTouchableNivel1(item){
     console.log(data_sala)
     return (
       <div className ='tabla'>
+        <Text>PLANILLA INGRESO {JSON.stringify(this.props.data_plataforma)}</Text>
+        <Text>PLANILLA INGRESO {JSON.stringify(this.props.dataPlanilla)}</Text>
       <table id="TablaClick" className="TablaPauta table table-hover">
                <thead className="theadPauta">
                    <tr className="bg-primary">
                        <th  scope="col">#</th>
-                       <th scope="col">ID PLATAFORMA</th>
-                       <th scope="col">DESC PLATAFORMA</th>
-                       <th scope="col">DESCRIPCIÓN SALA</th>
-                       <th scope="col">SELECCIÓN</th>   
+                       <th scope="col">ID</th>
+                       <th scope="col">MARCA</th>
+                       <th scope="col">PRODUCTO</th>
+                       <th scope="col">IMAGEN</th>   
+                       <th scope="col">CARGA IMAGEN</th>   
+                       <th scope="col">SI o NO</th> 
+                       <th scope="col">PRECIO UNITARIO</th>   
+
                    </tr>
                </thead>
                <tbody>
@@ -137,7 +167,8 @@ function mapStateToProps(state){
   return{
     data_sala: state.eCom.data_sala,
     id_profile: state.eCom.id_profile,
-    dataPlataforma: state.eCom.dataPlataforma,
+    dataPlanilla: state.eCom.dataPlanilla,
+    data_plataforma:  state.eCom.data_plataforma,
     
 
   }

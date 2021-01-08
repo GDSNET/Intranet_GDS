@@ -7,9 +7,8 @@ import data from '../../../json/mecanicas.json'
 export default class Mecanica extends Component {
 
   funCargaValor(valor){
-    if(valor){
-     return(
-      
+
+      return(
           <Picker 
            style={styles.picker}
             mode="dropdown"
@@ -22,15 +21,9 @@ export default class Mecanica extends Component {
             })}
               
         </Picker>
-        
-     )
-    }else{
-      return(
-        <View style={styles.contenedorOFF}>
-        <Text style={styles.text_desc}> sin Mecanica </Text>
-        </View>
-      )
-    }
+        )
+     
+
   }
 
   render() {
@@ -55,7 +48,6 @@ const styles = StyleSheet.create({
     alignItem: 'center',
     margin: 5,
     },
-  
     text_desc: {
       color: constants.COLOR_BLANCO,
       fontSize: constants.SIZE_LETRA_LARGE

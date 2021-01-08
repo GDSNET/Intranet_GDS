@@ -39,7 +39,7 @@ class eComN2 extends Component {
   funFila(value, i){
 
     return(     
-    
+  
     <View key={i} style={styles.view_fila}>
           
       

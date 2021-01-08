@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
 import { MdDeleteSweep } from "react-icons/md";
 import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
-import pautaPdv from './apiPauta.json'
+import dataSala from './apiPauta.json'
 
  
 class eComN1 extends Component {
@@ -14,6 +14,8 @@ class eComN1 extends Component {
     const {} = this.props;
   
     this.mostrarResultado()
+    const {id_profile, dataSala, funGetSala} = this.props;
+    this.funCargaSalas(id_profile)
     
   }
 
@@ -31,11 +33,60 @@ class eComN1 extends Component {
   }
 
 
+async funCargaSalas(){
+  const {id_profile,SalasOK} = this.props;
+
+ // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+const url = 'http://api.gdsnet.com:3009/post_intranet_salas';
+
+let body_data = JSON.stringify({
+  "id_usuario" : id_profile
+  })
+
+    const config =  {
+      method: 'POST',
+      body: body_data,
+      headers: {
+      "Content-Type": "application/json",
+      },
+    }  
+
+      
+try {
+  
+await  fetch(url, config)
+        .then((response) => {
+         return response.json()})
+        .then((json) => {
+          console.log("guardando SALAS" + JSON.stringify(json))
+          SalasOK(json)
+        });
+        
+      } catch (e) {
+        console.log(e.message)
+  
+      }  
+
+}
+
+
+  funCargaJson(){
+    
+    const {id_profile, dataSala, funGetSala} = this.props;
+    
+    return(<View>
+      <Text>id_profile: {id_profile}</Text>
+      <Text>data: {JSON.stringify(dataSala)}</Text>
+    </View>)
+    
+
+  }
+
   mostrarResultado = () => {
-    const {} = this.props;
+    const {dataSala} = this.props;
   try {
   
-  let algo = pautaPdv.map((fila,i) => {
+  let algo = dataSala.map((fila,i) => {
   
     
   return(  
@@ -89,6 +140,7 @@ class eComN1 extends Component {
                </thead>
                <tbody>
                        {this.mostrarResultado()}
+                       
                </tbody>
            </table>
            </div>
@@ -99,7 +151,9 @@ class eComN1 extends Component {
 
 function mapStateToProps(state){
   return{
-    nombre: state.control.nombre
+    
+    id_profile: state.eCom.id_profile,
+    dataSala: state.eCom.dataSala,
 
   }
 }
