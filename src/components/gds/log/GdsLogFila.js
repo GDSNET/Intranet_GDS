@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
 
 },
 text: {
-  textColor:"#F2FBED"
 
 },
 view_row: {

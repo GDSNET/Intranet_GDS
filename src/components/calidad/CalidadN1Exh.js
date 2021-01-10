@@ -370,7 +370,6 @@ const styles = StyleSheet.create({
   styles_view_principal: {
     flexDirection: 'row',
     flex: 1,
-    alignItem: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#fff',
     margin: 30
@@ -386,26 +385,22 @@ const styles = StyleSheet.create({
   styles_view_titulo: {
 
     padding: 20,
-    size: 30,
     flexDirection: 'row',
   },
   styles_view_subtitulo: {
 
     padding: 20,
-    size: 20,
     flexDirection: 'row',
   },
   styles_view_update: {
 
     padding: 20,
     flex: 1,
-    alignItem: 'center'
   },
   styles_view_delete: {
 
     padding: 20,
-    flex: 1,
-    alignItem: 'center'
+    flex: 1
   },
   style_text:{
     color: '#fff',
