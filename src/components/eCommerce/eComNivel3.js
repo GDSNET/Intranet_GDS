@@ -226,52 +226,43 @@ await  fetch(url, config)
   const planilla = dataPlanilla.map((fila,i) => {
   
   return(  
-      <View style={styles.fila} key={i}>  
-           <View style={styles.filaImagen} key={"filaImagen" + i}> 
+      <View style={styles.contenedor_fila} key={i}>  
+          <View style={styles.contenedor_titulos} key={"fila1" + i}>    
+              
+           
+                <View style={styles.title_marca} key={"filaImagen" + i}> 
+                <Text style={styles.txt_titulos} >{i}</Text>
+                        <Text style={styles.txt_titulos}>{fila.desc_marca}</Text>
+                </View> 
+                <View style={styles.title_sku} key={"filaImagen" + i}>       
+                   <Text style={styles.txt_titulos}>{fila.desc_sku} codigo: {fila.id_sku_sap}</Text>
+                </View>    
+         </View>
+      
+    <View style={styles.fila} key={i}>  
+              <View style={styles.filaImagen} key={"filaImagen" + i}> 
                         <Text style={styles.txt_titulos} >Imagen referencial</Text>   
                         <Image style={styles.imagen} source={{uri: fila.imagen_sku}}/>
                 </View> 
-      
-         <View style={styles.fila1} key={"fila1" + i}>    
-               <Text style={styles.txt_titulos} >{i}</Text>
-           
-                <View style={styles.filaImagen} key={"filaImagen" + i}> 
-                        <Text style={styles.txt_titulos}>marca: {fila.desc_marca}</Text>
-                        
-                </View> 
-                <View style={styles.filaImagen} key={"filaImagen" + i}>       
-                   <Text style={styles.txt_titulos}>producto: {fila.desc_sku} codigo: {fila.id_sku_sap}</Text>
-                </View> 
-                
-         </View>
+ 
           <View style={styles.fila2} key={"fila2" + i}>                  
           
-                      <View>     
+          <View style={styles.columna}>    
                         <Presencia valor={fila.presencia} funExecute={()=>funGuardaPresencia(fila.id_sku_sap, !fila.presencia)} />
                         <Stock valor={fila.stock} funExecute={()=>funGuardaStock(fila.id_sku_sap, !fila.stock)} />
+                        <Alerta valor={fila.alerta} funExecute={()=>funGuardaAlertaQuiebre(fila.id_sku_sap, !fila.alerta)} />
                 
                         
                     </View>
-                    <View>     
-               
-                        <Descripcion valor={fila.descripcion} funExecute={()=>funGuardaDescripcion(fila.id_sku_sap, !fila.descripcion)} />
-                        <Alerta valor={fila.alerta} funExecute={()=>funGuardaAlertaQuiebre(fila.id_sku_sap, !fila.alerta)} />
-                        
-                    </View>
-                    <View> 
+         
+                    <View style={styles.columna}>
                         
                         <PrecioUnitario valor={fila.precio_unitario}  id_sku_sap={fila.id_sku_sap} funExecute={funGuardaPrecioUnitario} />
                         <PrecioDescuento valor={fila.precio_descuento}  id_sku_sap={fila.id_sku_sap} funExecute={funGuardaPrecioDescuento} />
-                        
-                        
-                    </View>
-                    <View> 
-                        
                         <Mecanica data={this.props.exhibiciones} valor={fila.mecanica}  id_sku_sap={fila.id_sku_sap} funExecute={funGuardaMecanica} />
-
-                        
                     </View>
-                    <View style={styles.view_imagen}>
+
+                    <View style={styles.columna}>
                          <Imagen  valor={fila.imagen} funExecute={null} />
                          <ImageUploader
                          label=""
@@ -286,6 +277,7 @@ await  fetch(url, config)
                             
               </View>
                
+    </View>
     </View>
   )
     
@@ -314,11 +306,10 @@ await  fetch(url, config)
         <View style={styles.planilla}>
         <View style={styles.planilla}>
             <View style={styles.resumen}>
-                <Text style={styles.txt_resumen}>ID USUARIO:  {JSON.stringify(this.props.id_profile)}</Text>
-                <Text style={styles.txt_resumen}>ID SALA:  {JSON.stringify(data_sala.id_sala)}</Text>
-                <Text style={styles.txt_resumen}>ID plataforma  {JSON.stringify(data_plataforma.id_plataforma)}</Text>
-                <Text style={styles.txt_resumen}>Cantidad de Productos {Object.keys(dataPlanilla).length}</Text>
-                <Text style={styles.txt_resumen}>Estado : {estado}</Text>
+            <Text style={styles.txt_sub_resumen}>ID USUARIO:  {JSON.stringify(this.props.id_profile)} - Estado : {estado} - Cantidad de Productos {Object.keys(dataPlanilla).length}</Text>
+                <Text style={styles.txt_resumen}>SALA:  {JSON.stringify(data_sala.id_sala)} / {data_sala.desc_sala}</Text>
+                <Text style={styles.txt_resumen}>Plataforma:  {JSON.stringify(data_plataforma.desc_plataforma)}</Text>
+                
           </View>
         <View style={styles.ViewBoton} >
     <TouchableOpacity style={styles.Boton}  onClick={()=>this.funEnviando()}>
@@ -351,7 +342,7 @@ await  fetch(url, config)
       return (
         <View style={styles.ViewBoton} >
         
-              <Text style={styles.txt_boton}>Planilla Solicitada</Text>
+              <Text style={styles.txt_sub_resumen}>Planilla Solicitada</Text>
               
         
         </View>
@@ -428,13 +419,25 @@ const styles = StyleSheet.create({
     margin: 50,
     },
     view_imagen: {
-      flex: 0.3,
+      flex: 1,
     },
     imagen: {
       width: 150,
       height: 150
     },
-
+    contenedor_fila: {
+    flex: 1,
+      backgroundColor: constants.COLOR_BLANCO,
+        margin: 5,
+      borderRadius: 10,
+    },
+    contenedor_titulos: {
+      flexDirection: "row",
+      backgroundColor: constants.COLOR_GRIS_I,
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+      padding: 3,
+    },
  touchable: {
   alignItem: 'center',
   },
@@ -446,21 +449,32 @@ const styles = StyleSheet.create({
    
   },
   resumen: {
-    flexDirection: "row"
+    flexDirection: "column"
   },
   txt_resumen: {
-    fontSize: constants.SIZE_LETRA_X_LARGE,
+    fontSize: constants.SIZE_LETRA_XXXXX_LARGE,
     color: constants.COLOR_BLANCO,
-    margin: 10
+    margin: 1
+  },
+  txt_sub_resumen: {
+    fontSize: constants.SIZE_LETRA_SMALL,
+    color: constants.COLOR_BLANCO,
+    margin: 1
   },
 
-  fila: {backgroundColor: constants.COLOR_PRIMARIO_OSCURO,
-  margin: 5,
-padding: 5,
-borderRadius: 10,
+  fila: {
 flexDirection: "row"
 },
+title_marca: {
+  flexDirection: "row",
 
+  flex: 1,
+},
+title_sku: {
+  alignContent: 'right',
+  alignSelf: 'right',
+  flex: 2,
+},
   fila1: {
     alignItem: 'center',
  flex: 0.3
@@ -475,16 +489,23 @@ flexDirection: "row"
       flexDirection: "row",
       flex: 1
       },
+      columna: {
+        alignItem: 'center',
+        
+        flex: 1
+        },
       planilla: {
         alignItem: 'center',
         },
     txt_titulos: {
       padding: 5,
-      color: constants.COLOR_BLANCO
+      color: constants.COLOR_BLANCO,
+      fontSize: constants.SIZE_LETRA_XX_LARGE,
     },
+ 
     txt_boton: {
       padding: 5,
-      fontSize: constants.SIZE_LETRA_XXX_LARGE,
+      fontSize: constants.SIZE_LETRA_XX_LARGE,
       color: constants.COLOR_BLANCO
     },
     Boton: {

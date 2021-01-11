@@ -70,9 +70,9 @@ const eComReducers = (state = initialState, action) => {
                 
             case types.ECOM_GET_PLANILLA_OK: {
                     action.dataPlanilla.map((valor, i) => {
-                        valor.presencia = false
+                        valor.presencia = true
                         valor.descripcion = false
-                        valor.stock = false
+                        valor.stock = true
                         valor.imagen = false
                         valor.precio_unitario = ""
                         valor.precio_descuento = ""
