@@ -17,9 +17,7 @@ class CalidadN3Update extends Component {
     }
 
     this.funCargaExh();
-
     this.funCargaPromo();
-
     funCalGuardaExh(item.id_exh_tip_exhibicion)
     funCalGuardaPromo(item.id_prm_tip_promo)
     funCalGuardaFrentes(item.f_q_frentes_abs)

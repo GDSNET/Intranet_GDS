@@ -2,12 +2,13 @@
 import * as types from '../constants/eComConstants'
 const initialState = {
    id_profile: false,
-   estado: 'Inicio Estado = E-COMMERCE',
+   estado: 'E-COMMERCE',
    data_sala:[],
    data_plataforma:[],
    dataSala: [],
    dataPlataforma:[], 
    dataPlanilla: [],
+
 }
 
 
@@ -58,23 +59,16 @@ const eComReducers = (state = initialState, action) => {
                     estado: action.estado
                 }
                 break;
-            case types.ECOM_GET_PLANILLA_ERROR: 
-                return {
-                    ...state,
-                    dataPlanilla: action.dataPlanilla,
-                    estado: action.estado
-                }
-            break;
                 
-            case types.ECOM_GET_PLANILLA_OK: {
+            case types.ECOM_GET_PLANILLA_OK: 
                     action.dataPlanilla.map((valor, i) => {
                         valor.presencia = false
                         valor.descripcion = false
                         valor.stock = false
                         valor.imagen = false
-                        valor.precio_unitario = ""
-                        valor.precio_descuento = ""
-                        valor.mecanica = ""
+                        valor.precio_unitario = false
+                        valor.precio_descuento = false
+                        valor.mecanica = false
                         valor.alerta = false
                     })
                     return {
@@ -82,7 +76,6 @@ const eComReducers = (state = initialState, action) => {
                     dataPlanilla: action.dataPlanilla,
                     estado: action.estado
                     }
-                }
              break;
 case types.ECOM_GUARDA_PLATAFORMA: 
 return {
@@ -102,99 +95,101 @@ case types.ECOM_GUARDA_PRESENCIA:
   return {
     ...state,
     estado: action.estado,  
-     
+    data_plataforma: state.dataPlanilla,  
     }
-break;
 
-case types.ECOM_GUARDA_DESCRIPCION_SKU: 
-state.dataPlanilla.map(todo => {
- if (todo.id_sku_sap === action.id_sku_sap) {
-   todo.descripcion=action.descripcion
+    case types.ECOM_GUARDA_DESCRIPCION_SKU: 
+   state.dataPlanilla.map(todo => {
+    if (todo.id_sku_sap === action.id_sku_sap) {
+      todo.descripcion=action.descripcion
+    }
+  })
+
+  return {
+    ...state,
+    estado: action.estado,  
+    data_plataforma: state.dataPlanilla,
+    }
+    break;
+case types.ECOM_GUARDA_DESCRIPCION_SKU: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.descripcion=action.descripcion
+     }            
+     return {
+       ...state,
+     }
+   })
  }
-})
-return {
- ...state,
- estado: action.estado,  
- 
- }
+ break;
+case types.ECOM_GUARDA_STOCK: {
+  state.dataPlanilla.map(todo => {
+   if (todo.id_sku_sap === action.id_sku_sap) {
+     todo.stock=action.stock
+   }          
+   return {
+     ...state,
+   }
+ })
+}
 break;
-case types.ECOM_GUARDA_STOCK: 
-   state.dataPlanilla.map(todo => {
-    if (todo.id_sku_sap === action.id_sku_sap) {
-      todo.stock=action.stock
-    }
-  })
-  return {
-    ...state,
-    estado: action.estado,  
-    
-    }
-break;
-
-case types.ECOM_GUARDA_VALOR_IMAGEN: 
-   state.dataPlanilla.map(todo => {
-    if (todo.id_sku_sap === action.id_sku_sap) {
-      todo.imagen=action.imagen
-    }
-  })
-  return {
-    ...state,
-    estado: action.estado,  
-    
-    }
-break;
-
-case types.ECOM_GUARDA_PRECIO_UNITARIO: 
-   state.dataPlanilla.map(todo => {
-    if (todo.id_sku_sap === action.id_sku_sap) {
-      todo.precio_unitario=action.precio_unitario
-    }
-  })
-  return {
-    ...state,
-    estado: action.estado,  
-     
-    }
-break;
-
-case types.ECOM_GUARDA_PRECIO_DESCUENTO: 
-   state.dataPlanilla.map(todo => {
-    if (todo.id_sku_sap === action.id_sku_sap) {
-      todo.precio_descuento=action.precio_descuento
-    }
-  })
-  return {
-    ...state,
-    estado: action.estado,  
-     
-    }
-break;
-
-case types.ECOM_GUARDA_MECANICA: 
-   state.dataPlanilla.map(todo => {
-    if (todo.id_sku_sap === action.id_sku_sap) {
-      todo.mecanica=action.mecanica
-    }
-  })
-  return {
-    ...state,
-    estado: action.estado,  
-    
-    }
-break;
-
-case types.ECOM_GUARDA_ALERTA_QUIEBRE: 
-   state.dataPlanilla.map(todo => {
-    if (todo.id_sku_sap === action.id_sku_sap) {
-      todo.alerta=action.alerta
-    }
-  })
-  return {
-    ...state,
-    estado: action.estado,  
-    }
-break;
-
+case types.ECOM_GUARDA_VALOR_IMAGEN: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.imagen=action.imagen
+     }
+                   
+     return {
+       ...state,
+     }
+   })
+  }
+  break;
+  case types.ECOM_GUARDA_PRECIO_UNITARIO: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.precio_unitario=action.precio_unitario
+     }       
+     return {
+       ...state,
+     }
+   })
+  }
+  break;
+  case types.ECOM_GUARDA_PRECIO_DESCUENTO: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.precio_descuento=action.precio_descuento
+     }            
+     return {
+       ...state,
+     }
+   })
+  }
+  break;
+  case types.ECOM_GUARDA_MECANICA: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.mecanica=action.mecanica
+     }
+                   
+     return {
+       ...state,
+     }
+   })
+  }
+  break;
+  case types.ECOM_GUARDA_ALERTA_QUIEBRE: {
+    state.dataPlanilla.map(todo => {
+     if (todo.id_sku_sap === action.id_sku_sap) {
+       todo.alerta=action.alerta
+     }
+                   
+     return {
+       ...state,
+     }
+   })
+  }
   
 
     default:

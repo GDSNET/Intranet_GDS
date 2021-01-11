@@ -67,12 +67,22 @@ function SalasRequest() {
    }
  }
 
+ 
+ export function   PlanillaERROR() {
+  console.log('Planilla ERROR');
+  return {
+    type: types.ECOM_GET_PLANILLA_ERROR,
+    dataPlataforma: null,
+    estado: 'Planilla ERROR'
+  }
+}
+
  export function   funGuardaPlataforma(valor) {
    console.log('seleccion plataforma');
    return {
      type: types.ECOM_GUARDA_PLATAFORMA,
      data_plataforma: valor,
-     estado: 'seleccion plataforma'
+     estado: 'guarda plataforma:' + valor
    }
  }
 
@@ -82,7 +92,7 @@ function SalasRequest() {
     type: types.ECOM_GUARDA_PRESENCIA,
     id_sku_sap: id_sku_sap,
     presencia: valor,
-    estado: 'seleccion plataforma'
+    estado: 'guarda presencia:' + valor
   }
 }
 
@@ -92,7 +102,16 @@ export function   funGuardaStock(id_sku_sap, valor) {
     type: types.ECOM_GUARDA_STOCK,
     id_sku_sap: id_sku_sap,
     stock: valor,
-    estado: 'guarda stock'
+    estado: 'guarda stock:' + valor
+  }
+} 
+export function   funGuardaDescripcion(id_sku_sap, valor) {
+  console.log('guarda Descripcion');
+  return {
+    type: types.ECOM_GUARDA_DESCRIPCION_SKU,
+    id_sku_sap: id_sku_sap,
+    descripcion: valor,
+    estado: 'guarda descripcion:' + valor
   }
 } 
 
@@ -102,7 +121,7 @@ export function   funGuardaImagen(id_sku_sap, valor) {
     type: types.ECOM_GUARDA_VALOR_IMAGEN,
     id_sku_sap: id_sku_sap,
     imagen: valor,
-    estado: 'guarda imagen'
+    estado: 'guarda imagen:' + valor
   }
 } 
  
@@ -112,7 +131,7 @@ export function   funGuardaPrecioUnitario(id_sku_sap, valor) {
     type: types.ECOM_GUARDA_PRECIO_UNITARIO,
     id_sku_sap: id_sku_sap,
     precio_unitario: valor,
-    estado: 'guarda precio unitario'
+    estado: 'guarda precio unitario' + valor
   }
 } 
 
@@ -122,7 +141,7 @@ export function   funGuardaPrecioDescuento(id_sku_sap, valor) {
     type: types.ECOM_GUARDA_PRECIO_DESCUENTO,
     id_sku_sap: id_sku_sap,
     precio_descuento: valor,
-    estado: 'guarda precio descuento'
+    estado: 'guarda precio descuento' + valor
   }
 } 
 
@@ -132,7 +151,7 @@ export function   funGuardaMecanica(id_sku_sap, valor) {
     type: types.ECOM_GUARDA_MECANICA,
     id_sku_sap: id_sku_sap,
     mecanica: valor,
-    estado: 'guarda mecanica'
+    estado: 'guarda mecanica' + valor
   }
 } 
 
@@ -142,6 +161,7 @@ export function   funGuardaAlertaQuiebre(id_sku_sap, valor) {
     type: types.ECOM_GUARDA_ALERTA_QUIEBRE,
     id_sku_sap: id_sku_sap,
     alerta: valor,
-    estado: 'guarda alerta quiebre'
+    estado: 'guarda alerta quiebre' + valor
   }
 } 
+

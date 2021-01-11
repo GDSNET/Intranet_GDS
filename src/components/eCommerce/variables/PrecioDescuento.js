@@ -1,35 +1,22 @@
 import React, { Component } from "react";
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native-web';
+import {StyleSheet, View, TextInput} from 'react-native-web';
 import * as constants from '../../publica/constants'
 
  
 export default class PrecioDescuento extends Component {
 
-  funCargaValor(valor){
-    if(valor){
-     return(
-      <View style={styles.contenedorON}>
-        <Text style={styles.text_desc}> con PrecioDescuento </Text>
-        </View>
-     )
-    }else{
-      return(
-        <View style={styles.contenedorOFF}>
-        <Text style={styles.text_desc}> sin PrecioDescuento </Text>
-        </View>
-      )
-    }
-  }
 
   render() {
-    const {valor, funExecute} = this.props;
+    const {valor, id_sku_sap, funExecute} = this.props;
     
     return (
         
         <View style={styles.contenedor}>
-          <TouchableOpacity onPress={funExecute}>
-          {this.funCargaValor(valor)}
-          </TouchableOpacity>
+          <TextInput style={valor===""?styles.contenedorOFF:styles.contenedorON} 
+            placeholder='Precio Descuento' 
+            onChangeText={(text)=> funExecute(id_sku_sap, text)}
+            value={valor}
+            />
         </View>
       
     );
@@ -52,12 +39,15 @@ const styles = StyleSheet.create({
     alignItem: 'center',
     borderRadius: 2,
     padding: 5,
-    backgroundColor: constants.COLOR_PRIMARIO
+    backgroundColor: constants.COLOR_PRIMARIO,
+    placeholderTextColor:  constants.COLOR_GRIS_B,
 },
 contenedorOFF: {
   alignItem: 'center',
   borderRadius: 2,
   padding: 5,
-  backgroundColor: constants.COLOR_SECUNDARIO_CLARO
+  backgroundColor: constants.COLOR_SECUNDARIO_CLARO,
+  placeholderTextColor:  constants.COLOR_GRIS_B,
 },
+
 })

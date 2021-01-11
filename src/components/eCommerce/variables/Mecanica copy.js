@@ -6,26 +6,35 @@ import data from '../../../json/mecanicas.json'
  
 export default class Mecanica extends Component {
 
+  funCargaValor(valor){
 
-
-  render() {
-    const {valor, id_sku_sap, funExecute} = this.props;
-    
-    return (
-        
-        <View style={styles.contenedor}>
+      return(
           <Picker 
            style={styles.picker}
             mode="dropdown"
-            selectedValue={valor || ""}
-            onValueChange={(text)=> funExecute(id_sku_sap, text)}>
-          <Picker.Item label='Seleccione Mecanica' value="" key={null}/>
+            selectedValue={valor || ''}
+            onValueChange={null}>
+          <Picker.Item label='Seleccione Mecanica' value='' key={null}/>
             {data.map((item, key) => {
                 return (
                 <Picker.Item label={item.desc_mecanica} value={item.id_mecanica} key={key}/>) 
             })}
               
         </Picker>
+        )
+     
+
+  }
+
+  render() {
+    const {valor, funExecute} = this.props;
+    
+    return (
+        
+        <View style={styles.contenedor}>
+          <TouchableOpacity onPress={funExecute}>
+          {this.funCargaValor(valor)}
+          </TouchableOpacity>
         </View>
       
     );

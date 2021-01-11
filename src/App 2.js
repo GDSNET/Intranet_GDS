@@ -84,7 +84,7 @@ funLogin(){
               source={gdsImagen}
             />
                
-               <TextInput style={styles.textinput} 
+            <TextInput style={styles.textinput} 
             
             placeholder='Ingrese Usuario' 
             onChangeText={(text)=> this.funUser(text)}

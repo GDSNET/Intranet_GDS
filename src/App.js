@@ -16,6 +16,7 @@ import ScreenEcommerce from './screen/ScreenEcommerce';
 import {TextInput,Image, TouchableOpacity, Text, StyleSheet,View} from 'react-native-web';
 import gdsImagen from './images/logogds2020.svg';
 
+import ReactNotifications from 'react-notifications-component';
 
 class App extends Component {
 
@@ -181,7 +182,7 @@ funLogin(){
 
 funSwitchlogin(){
 
-    console.log(this.props.desPerfil)
+    //console.log(this.props.desPerfil)
       switch (this.props.desPerfil) {
         case 'CALIDAD':
           return ( <ToAction Pantalla={ScreenCalidad}>   </ToAction> )
@@ -226,6 +227,7 @@ funInicio(){
 
 
       <div className="App">
+            <ReactNotifications />
             {this.funInicio()}
       </div>
     );
