@@ -12,7 +12,6 @@ import Stock from './variables/Stock'
 import Descripcion from './variables/Descripcion'
 import PrecioUnitario from './variables/PrecioUnitario'
 import PrecioDescuento from './variables/PrecioDescuento'
-import Descuento from './variables/Descuento'
 import Alerta from './variables/Alerta'
 import Mecanica from './variables/Mecanica'
 import Imagen from './variables/Imagen'
@@ -89,7 +88,7 @@ obj.push({
   "f_descripcion": value.descripcion?1:0,
   "f_precio_unitario": value.precio_unitario?value.precio_unitario:null,
   "f_precio_descuento": value.precio_descuento?value.precio_descuento:null,
-  "f_mecanica": value.mecanica?1:0,
+  "f_mecanica": value.mecanica,
   "f_alerta_quiebre": value.alerta?1:0
 })
 
@@ -133,6 +132,9 @@ await  fetch(url, config)
             }
           })
 
+          this.props.history.push('/eComNivel1')
+          this.props.funSolicitarPlanilla(false)
+          this.props.PlanillaERROR()
 
          }
          else {
@@ -224,17 +226,23 @@ await  fetch(url, config)
   const planilla = dataPlanilla.map((fila,i) => {
   
   return(  
-      <View style={styles.planilla} key={i}>    
+      <View style={styles.fila} key={i}>  
+           <View style={styles.filaImagen} key={"filaImagen" + i}> 
+                        <Text style={styles.txt_titulos} >Imagen referencial</Text>   
+                        <Image style={styles.imagen} source={{uri: fila.imagen_sku}}/>
+                </View> 
+      
          <View style={styles.fila1} key={"fila1" + i}>    
-                <Text style={styles.txt_titulos} >{i}</Text>
-                <Text style={styles.txt_titulos}>{fila.id_sku_sap}</Text>
-                <Text style={styles.txt_titulos}>{fila.desc_marca}</Text>
-                <Text style={styles.txt_titulos}>{fila.desc_sku}</Text>
+               <Text style={styles.txt_titulos} >{i}</Text>
+           
+                <View style={styles.filaImagen} key={"filaImagen" + i}> 
+                        <Text style={styles.txt_titulos}>marca: {fila.desc_marca}</Text>
+                        
+                </View> 
+                <View style={styles.filaImagen} key={"filaImagen" + i}>       
+                   <Text style={styles.txt_titulos}>producto: {fila.desc_sku} codigo: {fila.id_sku_sap}</Text>
+                </View> 
                 
-                <Image
-          style={styles.imagen}
-          source={{uri: fila.imagen_sku}}
-        />
          </View>
           <View style={styles.fila2} key={"fila2" + i}>                  
           
@@ -259,7 +267,7 @@ await  fetch(url, config)
                     </View>
                     <View> 
                         
-                        <Mecanica valor={fila.mecanica}  id_sku_sap={fila.id_sku_sap} funExecute={funGuardaMecanica} />
+                        <Mecanica data={this.props.exhibiciones} valor={fila.mecanica}  id_sku_sap={fila.id_sku_sap} funExecute={funGuardaMecanica} />
 
                         
                     </View>
@@ -344,6 +352,7 @@ await  fetch(url, config)
         <View style={styles.ViewBoton} >
         
               <Text style={styles.txt_boton}>Planilla Solicitada</Text>
+              
         
         </View>
        
@@ -390,6 +399,7 @@ function mapStateToProps(state){
     data_plataforma:  state.eCom.data_plataforma,
     estado:  state.eCom.estado,
     planilla:  state.eCom.planilla,
+    exhibiciones: state.eCom.exhibiciones,
     
 
   }
@@ -421,8 +431,8 @@ const styles = StyleSheet.create({
       flex: 0.3,
     },
     imagen: {
-      width: 100,
-      height: 100
+      width: 150,
+      height: 150
     },
 
  touchable: {
@@ -443,13 +453,27 @@ const styles = StyleSheet.create({
     color: constants.COLOR_BLANCO,
     margin: 10
   },
+
+  fila: {backgroundColor: constants.COLOR_CELESTE,
+  margin: 5,
+padding: 5,
+borderRadius: 10,
+flexDirection: "row"
+},
+
   fila1: {
     alignItem: 'center',
-    flexDirection: "row"
+ flex: 0.3
     },
+    filaImagen: {
+      alignItem: 'center',
+
+      
+      },
     fila2: {
       alignItem: 'center',
-      flexDirection: "row"
+      flexDirection: "row",
+      flex: 1
       },
       planilla: {
         alignItem: 'center',

@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
-import { MdDeleteSweep } from "react-icons/md";
-import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
-import dataSala from './apiPauta.json'
+import {  IoMdCreate, } from "react-icons/io";
 
  
 class eComN1 extends Component {

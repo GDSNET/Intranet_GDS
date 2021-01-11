@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {StyleSheet, Text, View, TouchableOpacity, Picker} from 'react-native-web';
 import * as constants from '../../publica/constants'
-import data from '../../../json/mecanicas.json'
+
 
  
 export default class Mecanica extends Component {
@@ -20,7 +20,7 @@ export default class Mecanica extends Component {
             selectedValue={valor || ""}
             onValueChange={(text)=> funExecute(id_sku_sap, text)}>
           <Picker.Item label='Seleccione Mecanica' value="" key={null}/>
-            {data.map((item, key) => {
+            {this.props.data.map((item, key) => {
                 return (
                 <Picker.Item label={item.desc_mecanica} value={item.id_mecanica} key={key}/>) 
             })}

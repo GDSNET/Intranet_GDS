@@ -2,11 +2,47 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
-import { StyleSheet} from 'react-native-web';
+import { StyleSheet, Text} from 'react-native-web';
 import Form from '../components/eCommerce/eComNivel1'
 
 
 class Calidad extends Component {
+
+
+ async componentDidMount(){
+    
+    
+    console.log("Solicitando planilla")
+   const url = 'http://api.gdsnet.com:3009/post_intranet_mecanica';
+  
+      const config =  {
+        method: 'POST',
+
+        headers: {
+        "Content-Type": "application/json",
+        },
+      }  
+  
+        
+  try {
+    
+  await  fetch(url, config)
+          .then((response) => {
+           return response.json()})
+          .then((json) => {
+            console.log("guardando Planilla" + JSON.stringify(json))
+            this.props.funApiExhibiciones(json)
+            
+          });
+          
+        } catch (e) {
+          console.log(e.message)
+    
+        }  
+  
+  }
+  
+  
 
 
   
@@ -17,8 +53,8 @@ class Calidad extends Component {
        
     return (
 
-      <div>        
-
+      <div>     
+        
         <Form history = {history}/>
         
      
@@ -31,7 +67,9 @@ class Calidad extends Component {
 function mapStateToProps(state){
   return{
     
-    estado: state.calidad.estado,
+    estado: state.eCom.estado,
+    
+    
     
   }
 }

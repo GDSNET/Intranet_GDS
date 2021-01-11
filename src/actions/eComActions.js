@@ -174,3 +174,14 @@ export function   funSolicitarPlanilla(valor) {
   }
 } 
 
+export function   funApiExhibiciones(valor) {
+  console.log('Solicita Exhibiciones');
+  return {
+    type: types.ECOM_EXHIBICIONES,
+    exhibiciones: valor,
+    estado: 'Solicita Exhibiciones'
+  }
+} 
+
+
+

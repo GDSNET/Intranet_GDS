@@ -8,7 +8,8 @@ const initialState = {
    dataSala: [],
    dataPlataforma:[], 
    dataPlanilla: [],
-   planilla: false
+   planilla: false,
+   exhibiciones: []
 }
 
 
@@ -75,7 +76,7 @@ const eComReducers = (state = initialState, action) => {
                         valor.imagen = false
                         valor.precio_unitario = ""
                         valor.precio_descuento = ""
-                        valor.mecanica = ""
+                        valor.mecanica = 0
                         valor.alerta = false
                     })
                     return {
@@ -203,7 +204,13 @@ case types.ECOM_SOLICITAR_PLANILLA:
     estado: action.estado,  
     }
 break;
-
+case types.ECOM_EXHIBICIONES: 
+  return {
+    ...state,
+    exhibiciones: action.exhibiciones,
+    estado: action.estado,  
+    }
+break;
   
 
     default:
