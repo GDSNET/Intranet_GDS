@@ -165,3 +165,12 @@ export function   funGuardaAlertaQuiebre(id_sku_sap, valor) {
   }
 } 
 
+export function   funSolicitarPlanilla(valor) {
+  console.log('Solicita Planilla');
+  return {
+    type: types.ECOM_SOLICITAR_PLANILLA,
+    planilla: valor,
+    estado: 'Solicita Planilla?' + valor
+  }
+} 
+

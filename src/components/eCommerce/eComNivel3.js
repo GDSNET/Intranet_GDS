@@ -36,7 +36,8 @@ class eComN2 extends Component {
   onDrop(pictureFiles, pictureDataURLs) {
     console.log("Upload:" +  JSON.stringify(pictureDataURLs) )
     this.setState({
-      pictures: this.state.pictures.concat(pictureDataURLs)
+      pictures: this.state.pictures.concat(pictureDataURLs),
+      solicitar: false
     });
   }
 
@@ -45,13 +46,15 @@ componentDidMount(){
     try {
 
       console.log("pasando por componentDidMount")
-      const {data_sala, id_profile, dataPlanilla, data_plataforma, PlanillaERROR} = this.props;
+      const {data_sala, id_profile, dataPlanilla, data_plataforma, PlanillaERROR, funSolicitarPlanilla} = this.props;
       if( id_profile ===  dataPlanilla[0].id_usuario 
        && data_sala.id_sala ===  dataPlanilla[0].id_sala
        && data_plataforma.id_plataforma ===    dataPlanilla[0].id_plataforma){
          console.log("pasando por SI")
+         funSolicitarPlanilla(true)
        } else {
          
+        funSolicitarPlanilla(false)
          console.log("pasando por NO")
          PlanillaERROR()
        return(
@@ -163,8 +166,9 @@ await  fetch(url, config)
 
   async funCargaPlataforma(){
     
-    const {data_sala, id_profile, PlanillaOK, data_plataforma} = this.props;
+    const {data_sala, id_profile, PlanillaOK, data_plataforma, funSolicitarPlanilla} = this.props;
     console.log("Solicitando planilla")
+    
    
    const url = 'http://api.gdsnet.com:3009/post_intranet_pauta';
   
@@ -192,6 +196,7 @@ await  fetch(url, config)
           .then((json) => {
             console.log("guardando Planilla" + JSON.stringify(json))
             PlanillaOK(json)
+            funSolicitarPlanilla(true)
           });
           
         } catch (e) {
@@ -323,28 +328,48 @@ await  fetch(url, config)
       
     } catch (error) {
 
-      return(
+
+      
+    }
+  }
+ 
+
+  funSolicitarPlanilla(){
+    if(this.props.planilla){
+      return (
+        <View style={styles.ViewBoton} >
+        
+              <Text style={styles.txt_boton}>Planilla Solicitada</Text>
+        
+        </View>
+       
+      )
+    }
+    else {
+      return (
         <View style={styles.ViewBoton} >
         <TouchableOpacity style={styles.Boton}  onClick={()=>this.funCargaPlataforma()}>
               <Text style={styles.txt_boton}>Solicitar Planilla</Text>
         </TouchableOpacity>
         </View>
       )
-      
     }
+
+
+
   }
- 
 
   render() {
 
 
     return (
       <View style={styles.contenedor}>
-        
+      
+     
+        {this.funSolicitarPlanilla()}
         {this.funTitulos()}
          <View style={styles.notification}>
-        
-          </View>
+        </View>
         
         </View>
         
@@ -360,6 +385,7 @@ function mapStateToProps(state){
     dataPlanilla: state.eCom.dataPlanilla,
     data_plataforma:  state.eCom.data_plataforma,
     estado:  state.eCom.estado,
+    planilla:  state.eCom.planilla,
     
 
   }

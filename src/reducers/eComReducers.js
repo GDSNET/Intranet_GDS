@@ -8,6 +8,7 @@ const initialState = {
    dataSala: [],
    dataPlataforma:[], 
    dataPlanilla: [],
+   planilla: false
 }
 
 
@@ -191,6 +192,14 @@ case types.ECOM_GUARDA_ALERTA_QUIEBRE:
   })
   return {
     ...state,
+    estado: action.estado,  
+    }
+break;
+
+case types.ECOM_SOLICITAR_PLANILLA: 
+  return {
+    ...state,
+    planilla: action.planilla,
     estado: action.estado,  
     }
 break;
