@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
-import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
+import {StyleSheet, View, Text,TouchableOpacity, Image} from 'react-native-web';
 import * as constants from "../publica/constants"
 import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
 
@@ -230,7 +230,11 @@ await  fetch(url, config)
                 <Text style={styles.txt_titulos}>{fila.id_sku_sap}</Text>
                 <Text style={styles.txt_titulos}>{fila.desc_marca}</Text>
                 <Text style={styles.txt_titulos}>{fila.desc_sku}</Text>
-                <Text style={styles.txt_titulos}>{fila.imagen_sku}</Text>
+                
+                <Image
+          style={styles.imagen}
+          source={{uri: fila.imagen_sku}}
+        />
          </View>
           <View style={styles.fila2} key={"fila2" + i}>                  
           
@@ -415,6 +419,10 @@ const styles = StyleSheet.create({
     },
     view_imagen: {
       flex: 0.3,
+    },
+    imagen: {
+      width: 100,
+      height: 100
     },
 
  touchable: {
