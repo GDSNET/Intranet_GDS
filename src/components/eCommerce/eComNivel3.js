@@ -454,7 +454,7 @@ const styles = StyleSheet.create({
     margin: 10
   },
 
-  fila: {backgroundColor: constants.COLOR_CELESTE,
+  fila: {backgroundColor: constants.COLOR_PRIMARIO_OSCURO,
   margin: 5,
 padding: 5,
 borderRadius: 10,
