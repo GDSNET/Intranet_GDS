@@ -121,7 +121,7 @@ export function   funGuardaImagen(id_sku_sap, valor) {
     type: types.ECOM_GUARDA_VALOR_IMAGEN,
     id_sku_sap: id_sku_sap,
     imagen: valor,
-    estado: 'guarda imagen:' + valor
+    estado: 'guarda imagen:'
   }
 } 
  
