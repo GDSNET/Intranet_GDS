@@ -230,11 +230,11 @@ await  fetch(url, config)
           <View style={styles.contenedor_titulos} key={"fila1" + i}>    
               
            
-                <View style={styles.title_marca} key={"filaImagen" + i}> 
+                <View style={styles.title_marca} key={"filaMarca" + i}> 
                 <Text style={styles.txt_titulos} >{i}</Text>
                         <Text style={styles.txt_titulos}>{fila.desc_marca}</Text>
                 </View> 
-                <View style={styles.title_sku} key={"filaImagen" + i}>       
+                <View style={styles.title_sku} key={"filaSku" + i}>       
                    <Text style={styles.txt_titulos}>{fila.desc_sku} codigo: {fila.id_sku_sap}</Text>
                 </View>    
          </View>
@@ -271,7 +271,7 @@ await  fetch(url, config)
                           buttonText="Seleccione Imagen"
                           onChange={(pictureFiles, pictureDataURLs)=>funGuardaImagen(fila.id_sku_sap, pictureDataURLs)}
                           imgExtension={[".jpg", ".gif", ".png", ".gif", ".jpeg"]}
-                          maxFileSize={5242880}
+                          maxFileSize={1000000}
                         />
                     </View>
                             
@@ -306,7 +306,7 @@ await  fetch(url, config)
         <View style={styles.planilla}>
         <View style={styles.planilla}>
             <View style={styles.resumen}>
-            <Text style={styles.txt_sub_resumen}>ID USUARIO:  {JSON.stringify(this.props.id_profile)} - Estado : {estado} - Cantidad de Productos {Object.keys(dataPlanilla).length}</Text>
+            <Text style={styles.txt_sub_resumen}>ID USUARIO:  {JSON.stringify(this.props.id_profile)} - Cantidad de Productos {Object.keys(dataPlanilla).length}</Text>
                 <Text style={styles.txt_resumen}>SALA:  {JSON.stringify(data_sala.id_sala)} / {data_sala.desc_sala}</Text>
                 <Text style={styles.txt_resumen}>Plataforma:  {JSON.stringify(data_plataforma.desc_plataforma)}</Text>
                 
