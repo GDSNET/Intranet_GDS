@@ -25,11 +25,14 @@ import ImageUploader from "react-images-upload";
 
 
 
+
+
 class eComN2 extends Component {
   constructor(props) {
     super(props);
-    this.state = { pictures: [] };
+    this.state = { pictures: [], envios: [] };
     this.onDrop = this.onDrop.bind(this);
+
   }
 
   onDrop(pictureFiles, pictureDataURLs) {
@@ -52,7 +55,6 @@ componentDidMount(){
          console.log("pasando por SI")
          funSolicitarPlanilla(true)
        } else {
-         
         funSolicitarPlanilla(false)
          console.log("pasando por NO")
          PlanillaERROR()
@@ -69,14 +71,64 @@ componentDidMount(){
 
 }
 
+async funFetch(obj){
+console.log('intentando enviar',  JSON.stringify(obj))
+
+const url = 'http://api.gdsnet.com:3009/post_intranet_planilla';
+
+const config =  {
+  method: 'POST',
+  body: JSON.stringify(obj),
+  headers: {
+  "Content-Type": "application/json",
+  },
+}  
+
+  
+try {
+await  fetch(url, config)
+    .then((response) => {
+     return response.json()})
+    .then((json) => {
+      console.log("enviando Planilla" + JSON.stringify(json))
+      if(json.data==="ok"){
+        console.log("OK INGRESADO")
+     this.state.envios.push({"estado": "ok"})
+
+      this.setState({
+        envios:  "OK"
+
+      })
+ 
+
+      }
+      else {
+        console.log("ERROR INGRESADO")
+        this.setState({
+          envios:  "ERROR"
+  
+        })
+
+
+
+     } 
+    });
+    
+  } catch (e) {
+    console.log(e.message)
+  }  
+}
+
+
+
 
 async funEnviando(){
     
 const {dataPlanilla} = this.props;
 
 let obj = []
-dataPlanilla.map((value, i)=> {
-obj.push({
+let data = await dataPlanilla.map(async(value)=> {
+obj = ({
   "desc_periodo": value.periodo,
   "id_tie_semana": value.id_tie_semana,
   "id_plataforma": value.id_plataforma,
@@ -92,75 +144,90 @@ obj.push({
   "f_alerta_quiebre": value.alerta?1:0
 })
 
+
+
+
+ let respuesta =  await this.envioNuevo(obj)
+console.log(respuesta)
+
+
+
 })
 
 
- // [{"periodo":"PERIODO 1","id_tie_semana":1017,"id_usuario":5,"id_plataforma":3,"desc_plataforma":"RAPPI","estado":"NUEVA","id_sala":10,"desc_sala":"JUMBO BILBAO","imagen_sku":"IMAGEN SKU","desc_marca":"SUPER POLLO","desc_sku":"AS-TRUTRO LARGO POLL","id_sku_sap":1010095,"presencia":false,"descripcion":false,"stock":false,"imagen":false,"precio_unitario":"","precio_descuento":"","mecanica":"","alerta":false}
-
-console.log("entregando envio", JSON.stringify(obj))
 
 
-const url = 'http://api.gdsnet.com:3009/post_intranet_planilla';
+ console.log(this.state.envios)
 
-   const config =  {
-     method: 'POST',
-     body: JSON.stringify(obj),
-     headers: {
-     "Content-Type": "application/json",
-     },
-   }  
-
-     
-try {
+ store.addNotification({
+  title: 'Enviado OK',
+  message: 'Datos guardados con exito',
+  type: 'success',                         // 'default', 'success', 'info', 'warning'
+  container: 'center',                // where to position the notifications
+  animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+  animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+  dismiss: {
+    duration: 3000
+  }
+})
  
-await  fetch(url, config)
-       .then((response) => {
-        return response.json()})
-       .then((json) => {
-         console.log("enviando Planilla" + JSON.stringify(json))
-         if(json.data==="ok"){
 
-          store.addNotification({
-            title: 'Enviado OK',
-            message: 'Datos guardados con exito',
-            type: 'success',                         // 'default', 'success', 'info', 'warning'
-            container: 'center',                // where to position the notifications
-            animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
-            animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
-            dismiss: {
-              duration: 3000
-            }
-          })
+store.addNotification({
+  title: 'Enviado Error',
+  message: 'Revise la informacion',
+  type: 'warning',                         // 'default', 'success', 'info', 'warning'
+  container: 'center',                // where to position the notifications
+  animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+  animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+  dismiss: {
+    duration: 3000
+  }
+})
 
-          this.props.history.push('/eComNivel1')
-          this.props.funSolicitarPlanilla(false)
-          this.props.PlanillaERROR()
-
-         }
-         else {
-
-          store.addNotification({
-            title: 'Enviado Error',
-            message: 'Revise la informacion',
-            type: 'warning',                         // 'default', 'success', 'info', 'warning'
-            container: 'center',                // where to position the notifications
-            animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
-            animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
-            dismiss: {
-              duration: 3000
-            }
-          })
-
-
-        } 
-       });
-       
-     } catch (e) {
-       console.log(e.message)
-     }  
- 
 
 }
+
+
+async envioNuevo(obj){
+  console.log("enviando", JSON.stringify(obj))
+  const url = 'http://api.gdsnet.com:3009/post_intranet_planilla';
+  const config =  {
+      method: 'POST',
+      body: JSON.stringify(obj),
+      headers: {
+      "Content-Type": "application/json",
+      },
+    }
+
+
+let response = await  fetch(url, config)
+let data = await response.json()
+return data;
+
+}
+
+async envioNuevoBack(obj){
+  console.log("enviando", JSON.stringify(obj))
+  const url = 'http://api.gdsnet.com:3009/post_intranet_planilla';
+  const config =  {
+      method: 'POST',
+      body: JSON.stringify(obj),
+      headers: {
+      "Content-Type": "application/json",
+      },
+    }
+try {
+
+let response = await  fetch(url, config)
+        .then((response) => {
+         return response.json()})
+      } catch (e) {
+        console.log(e.message)
+  
+      }  
+
+}
+
 
 
 
@@ -173,7 +240,7 @@ await  fetch(url, config)
     
    
    const url = 'http://api.gdsnet.com:3009/post_intranet_pauta';
-  
+   
 
    let body_data = JSON.stringify({
     "id_usuario" : id_profile,
@@ -208,13 +275,23 @@ await  fetch(url, config)
   
   }
 
+  async funGuardaImagenConvierte(id_sku_sap, pictureDataURLs){
+    const {data_sala, 
+      funGuardaImagen
+    } = this.props;
+
+    
+    await funGuardaImagen (id_sku_sap, pictureDataURLs)
+
+  }
+
 
   mostrarResultado = () => {
     const {data_sala, 
       dataPlanilla, 
       funGuardaPresencia,
       funGuardaStock,
-      funGuardaImagen, 
+      
       funGuardaPrecioUnitario, 
       funGuardaPrecioDescuento,
       funGuardaMecanica,
@@ -269,7 +346,7 @@ await  fetch(url, config)
                          withPreview={true}
                           withIcon={false}
                           buttonText="Seleccione Imagen"
-                          onChange={(pictureFiles, pictureDataURLs)=>funGuardaImagen(fila.id_sku_sap, pictureDataURLs)}
+                          onChange={(pictureFiles, pictureDataURLs)=>this.funGuardaImagenConvierte(fila.id_sku_sap, pictureDataURLs)}
                           imgExtension={[".jpg", ".gif", ".png", ".gif", ".jpeg"]}
                           maxFileSize={1000000}
                         />
@@ -312,10 +389,10 @@ await  fetch(url, config)
                 
           </View>
         <View style={styles.ViewBoton} >
-    <TouchableOpacity style={styles.Boton}  onClick={()=>this.funEnviando()}>
-          <Text style={styles.txt_boton}>Enviar Planilla</Text>
-    </TouchableOpacity>
-    </View>
+          <TouchableOpacity style={styles.Boton}  onClick={()=>this.funEnviando()}>
+                <Text style={styles.txt_boton}>Enviar Planilla</Text>
+          </TouchableOpacity>
+        </View>
 
    
 
