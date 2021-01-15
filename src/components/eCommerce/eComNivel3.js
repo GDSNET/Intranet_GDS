@@ -171,7 +171,7 @@ console.log(respuesta)
   }
 })
  
-
+/*
 store.addNotification({
   title: 'Enviado Error',
   message: 'Revise la informacion',
@@ -183,6 +183,7 @@ store.addNotification({
     duration: 3000
   }
 })
+*/
 
 
 }
