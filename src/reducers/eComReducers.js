@@ -64,6 +64,7 @@ const eComReducers = (state = initialState, action) => {
                 return {
                     ...state,
                     dataPlanilla: action.dataPlanilla,
+                    planilla: false,
                     estado: action.estado
                 }
             break;
@@ -78,6 +79,8 @@ const eComReducers = (state = initialState, action) => {
                         valor.precio_descuento = ""
                         valor.mecanica = 0
                         valor.alerta = false
+                        valor.envio_estado = 0
+                        valor.envio_comentario = "lista para enviar"
                     })
                     return {
                     ...state,
@@ -99,6 +102,19 @@ case types.ECOM_GUARDA_PRESENCIA:
    state.dataPlanilla.map(todo => {
     if (todo.id_sku_sap === action.id_sku_sap) {
       todo.presencia=action.presencia
+    }
+  })
+  return {
+    ...state,
+    estado: action.estado,  
+     
+    }
+break;
+case types.ECOM_ENVIA: 
+   state.dataPlanilla.map(todo => {
+    if (todo.id_sku_sap === action.id_sku_sap) {
+      todo.envio_estado=action.envio_estado
+      todo.envio_comentario=action.envio_comentario
     }
   })
   return {

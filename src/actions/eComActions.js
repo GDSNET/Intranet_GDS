@@ -68,12 +68,13 @@ function SalasRequest() {
  }
 
  
- export function   PlanillaERROR() {
-  console.log('Planilla ERROR');
+ export function   PlanillaLimpiar() {
+  console.log('Planilla Limpia');
   return {
     type: types.ECOM_GET_PLANILLA_ERROR,
     dataPlataforma: null,
-    estado: 'Planilla ERROR'
+    planilla: false,
+    estado: 'Planilla Limpia'
   }
 }
 
@@ -182,6 +183,18 @@ export function   funApiExhibiciones(valor) {
     estado: 'Solicita Exhibiciones'
   }
 } 
+
+export function  funEnvio(id_sku_sap, envio_estado, envio_comentario) {
+  console.log('enviando');
+  return {
+    type: types.ECOM_ENVIA,
+    id_sku_sap: id_sku_sap,
+    envio_estado: envio_estado,
+    envio_comentario: envio_comentario,
+    estado: 'Enviando: ' + id_sku_sap
+  }
+} 
+
 
 
 

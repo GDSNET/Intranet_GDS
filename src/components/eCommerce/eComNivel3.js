@@ -15,6 +15,7 @@ import PrecioDescuento from './variables/PrecioDescuento'
 import Alerta from './variables/Alerta'
 import Mecanica from './variables/Mecanica'
 import Imagen from './variables/Imagen'
+import EstadoEnvio from './variables/EstadoEnvio'
 
 
 import { store } from 'react-notifications-component';
@@ -121,13 +122,13 @@ await  fetch(url, config)
 
 
 
-
 async funEnviando(){
     
-const {dataPlanilla} = this.props;
+const {dataPlanilla, funEnvio} = this.props;
 
 let obj = []
 let data = await dataPlanilla.map(async(value)=> {
+  
 obj = ({
   "desc_periodo": value.periodo,
   "id_tie_semana": value.id_tie_semana,
@@ -144,11 +145,18 @@ obj = ({
   "f_alerta_quiebre": value.alerta?1:0
 })
 
+let respuesta =  await this.envioNuevo(obj)
+await console.log(JSON.stringify(respuesta))
 
+if (respuesta.data === "ok"){
+ console.log("RESPUESTA OK")
+ await funEnvio(value.id_sku_sap, 1, 'enviado OK')
+}
+else{
+ console.log("Error", JSON.stringify(respuesta))
+ await funEnvio(value.id_sku_sap, 2, 'enviado Error')
+}
 
-
- let respuesta =  await this.envioNuevo(obj)
-console.log(respuesta)
 
 
 
@@ -156,41 +164,13 @@ console.log(respuesta)
 
 
 
-
- console.log(this.state.envios)
-
- store.addNotification({
-  title: 'Enviado OK',
-  message: 'Datos guardados con exito',
-  type: 'success',                         // 'default', 'success', 'info', 'warning'
-  container: 'center',                // where to position the notifications
-  animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
-  animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
-  dismiss: {
-    duration: 3000
-  }
-})
- 
-/*
-store.addNotification({
-  title: 'Enviado Error',
-  message: 'Revise la informacion',
-  type: 'warning',                         // 'default', 'success', 'info', 'warning'
-  container: 'center',                // where to position the notifications
-  animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
-  animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
-  dismiss: {
-    duration: 3000
-  }
-})
-*/
 
 
 }
 
 
 async envioNuevo(obj){
-  console.log("enviando", JSON.stringify(obj))
+  //console.log("enviando", JSON.stringify(obj))
   const url = 'http://api.gdsnet.com:3009/post_intranet_planilla';
   const config =  {
       method: 'POST',
@@ -208,7 +188,7 @@ return data;
 }
 
 async envioNuevoBack(obj){
-  console.log("enviando", JSON.stringify(obj))
+  //console.log("enviando", JSON.stringify(obj))
   const url = 'http://api.gdsnet.com:3009/post_intranet_planilla';
   const config =  {
       method: 'POST',
@@ -352,6 +332,9 @@ let response = await  fetch(url, config)
                           maxFileSize={1000000}
                         />
                     </View>
+                    <View style={styles.columna}>
+                        <EstadoEnvio valor={fila.envio_estado} detalle={fila.envio_comentario} />
+                    </View>
                             
               </View>
                
@@ -378,13 +361,28 @@ let response = await  fetch(url, config)
 
   funTitulos(){
     const {data_sala, dataPlanilla, data_plataforma, estado} = this.props;
+
+
     try {
+      var cantidadOK = dataPlanilla.filter(function(value, index) {return value.envio_estado === 1;})
+
+      if(Object.keys(dataPlanilla).length===cantidadOK.length){
+        this.funPlanillaEnviadaOK()
+
+      }
+      
+      
+
+
 
       return (
         <View style={styles.planilla}>
         <View style={styles.planilla}>
             <View style={styles.resumen}>
-            <Text style={styles.txt_sub_resumen}>ID USUARIO:  {JSON.stringify(this.props.id_profile)} - Cantidad de Productos {Object.keys(dataPlanilla).length}</Text>
+            
+
+            <Text style={styles.txt_sub_resumen}>ID USUARIO:  {JSON.stringify(this.props.id_profile)} - Cantidad de Productos {Object.keys(dataPlanilla).length} -  Cantidad de Enviados {cantidadOK.length}</Text>
+            <Text style={styles.txt_sub_resumen}>Estado:{estado}</Text>
                 <Text style={styles.txt_resumen}>SALA:  {JSON.stringify(data_sala.id_sala)} / {data_sala.desc_sala}</Text>
                 <Text style={styles.txt_resumen}>Plataforma:  {JSON.stringify(data_plataforma.desc_plataforma)}</Text>
                 
@@ -412,6 +410,28 @@ let response = await  fetch(url, config)
 
       
     }
+  }
+
+
+  funPlanillaEnviadaOK(){
+    const { history, PlanillaLimpiar} = this.props;
+    
+    PlanillaLimpiar()
+
+    store.addNotification({
+      title: 'Enviado OK',
+      message: 'Datos guardados con exito',
+      type: 'success',                         // 'default', 'success', 'info', 'warning'
+      container: 'center',                // where to position the notifications
+      animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+      animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+      dismiss: {
+        duration: 3000
+      }
+    })
+     
+    
+    history.push('/Ecommerce')
   }
  
 
