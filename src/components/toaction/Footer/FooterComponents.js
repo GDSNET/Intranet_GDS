@@ -214,17 +214,17 @@ const styles = StyleSheet.create({
   menu_icon_icon: {
     flex: 1,
     alignItems: 'center',
-    textAlign:'center',
+    
     alignSelf: 'flex-start',
-    textAlignVertical: 'center',
+   
   },
   view_menu_icon_derecha: {
  
     flex: 1,
     flexDirection: 'row',
-    textAlign:  'center',
+ 
     alignItems:  'center',
-    textAlignVertical: 'center',
+   
 
   },
   title: {
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   },
   view_title:{
     alignItems: 'center',
-    textAlign:'center',
+    
 
     
   },

@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 0.5,
-    textAlign:  'right',
+ 
     
   },
   txtFooter: {
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   containerTitile:{
     flex:1,
     padding: 10,
-    textAlign:  'center',
+ 
 
     
   },

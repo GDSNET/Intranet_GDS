@@ -252,7 +252,7 @@ flex: 1.7,
   },
   etiqueta: {
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     justifyContent: 'center',
     borderRadius: 5,

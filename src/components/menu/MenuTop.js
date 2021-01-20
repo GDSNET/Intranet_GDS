@@ -89,7 +89,7 @@ handleScroll = () => {
                             
                         <LottieOnPress
                           icon={toggleAnimation}
-                          width={40}
+                          width={"40"}
                           funPress={()=>this.funCambiaEstado()}
                         />
                          
@@ -219,17 +219,17 @@ const styles = StyleSheet.create({
   menu_icon_icon: {
     flex: 1,
     alignItems: 'center',
-    textAlign:'center',
+    
     alignSelf: 'flex-start',
-    textAlignVertical: 'center',
+   
   },
   view_menu_icon_derecha: {
  
     flex: 1,
     flexDirection: 'row-reverse',
-    textAlign:  'center',
+ 
     alignItems:  'center',
-    textAlignVertical: 'center',
+   
 
   },
   title: {
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
   view_title:{
     flex: 1,
     alignItems: 'center',
-    textAlign:'center',
+    
 
     
   },

@@ -49,7 +49,7 @@ class CardTitle extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     marginHorizontal:10,
   
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     padding:0,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     margin:10,
     borderRadius: 5,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   container_interno:{
     marginTop: -10,
     backgroundColor: colores.COLOR_WHITE,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     height: 40,
     paddingHorizontal: 20, 

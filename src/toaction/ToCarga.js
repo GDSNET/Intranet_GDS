@@ -65,7 +65,7 @@ container: {
   marginTop:20,
   backgroundColor: colores.COLOR_PRIMARIO_CLARO,
   height: '100%',
-  textAlign:  'center',
+ 
   alignItems:  'center',
   
 },
@@ -75,13 +75,13 @@ container_abajo: {
   marginTop:20,
   height: '100%',
   flexDirection: 'row',
-  textAlign:  'center',
+ 
   alignItems:  'center',
   
 },
 header: {
   
-  textAlign:  'center',
+ 
   alignItems:  'center',
 
   
@@ -112,7 +112,7 @@ header: {
     },
     view_usuario: {
       flex: 1,
-      textAlign:  'center',
+   
       alignItems:  'center',
 
   

@@ -71,14 +71,14 @@ const styles = StyleSheet.create({
   },
   div_filas: {
     backgroundColor: colores.COLOR_PRIMARIO,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     flexDirection: 'column',
     
   },
   div_titulo: {
     backgroundColor: colores.COLOR_PRIMARIO,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     padding: 10,
     borderRadius: 50,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     alignItem: 'center',
     flexDirection: 'column',
     flex: 2,
-    textAlign:  'center',
+ 
     alignItems:  'center',
   },
   div_porcentaje_icono: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   div_diferencias: {
     flexDirection: 'row',
     
-    textAlign:  'center',
+ 
     alignItems:  'center',
 
     
@@ -120,14 +120,14 @@ const styles = StyleSheet.create({
   div_anterior: {
     
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
    
   },
   div_anterior_titulo: {
     
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
   },
   div_anterior_titulo_text: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   div_anterior_dato: {
     
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     paddingTop: 5,
     
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   div_diferencia: {
     
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     borderLeftWidth: 1,
     borderColor: colores.COLOR_GRIS_CLARO,   
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   div_diferencia_titulo: {
     
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
   },
   div_diferencia_titulo_text: {
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   div_diferencia_dato: {
     
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     paddingTop: 5,
   },

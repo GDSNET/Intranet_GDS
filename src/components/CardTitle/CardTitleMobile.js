@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     color: colores.COLOR_CUATERNARIO,
   },
   v_icon: {flex: 1, padding: 5, paddingHorizontal: 20,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     justifyContent: 'center',},
   v_titles: {flex: 5, padding: 10},

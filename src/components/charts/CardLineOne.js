@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 1,
-    textAlign: 'right',
+    
     padding: 10,
 
     
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
-    textAlign: 'right'
+   
     
   },
   txtFooter: {
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   },
   txtIndicador: {
     fontSize: 20,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     
     color: COLOR_PRIMARIO,
@@ -173,14 +173,14 @@ const styles = StyleSheet.create({
     marginTop: -20,
     marginLeft: 10,
     
-    textAlign:  'center',
+ 
     alignItems:  'center',
     justifyContent: 'center',
     borderRadius: 5,
     boxShadow: "3px 3px 3px #555",
   },
   view_anterior: {
-    textAlign:  'center',
+ 
     alignItems:  'center',
     flex: 1,
     fontSize: 20,
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     
   },
   view_diferencia: {
-    textAlign:  'center',
+ 
     alignItems:  'center',
     flex: 1,
     fontSize: 20,

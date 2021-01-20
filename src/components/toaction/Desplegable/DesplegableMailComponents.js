@@ -118,7 +118,7 @@ class DesplegableMail extends Component {
     marginTop:20,
     backgroundColor: colores.COLOR_PRIMARIO_CLARO,
     height: '100%',
-    textAlign:  'center',
+ 
     alignItems:  'center',
     
   },
@@ -128,7 +128,7 @@ class DesplegableMail extends Component {
     marginTop:20,
     height: '100%',
     flexDirection: 'row',
-    textAlign:  'center',
+ 
     alignItems:  'center',
     
   },
@@ -165,7 +165,7 @@ class DesplegableMail extends Component {
       },
       view_usuario: {
         flex: 1,
-        textAlign:  'center',
+     
         alignItems:  'center',
   
     

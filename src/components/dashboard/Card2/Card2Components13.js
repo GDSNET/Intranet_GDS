@@ -166,14 +166,14 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 0.5,
-    textAlign:  'right',
+ 
     
   },
 
   txttitulo: {
     fontSize: 25,
     color: colores.COLOR_WHITE,
-    textAlign:  'center',
+ 
     alignItems:  'center',
 
     
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   containerArriba:{
  
     padding: 10,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     borderRadius: 50,
     backgroundColor: colores.COLOR_PRIMARIO,
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     
     backgroundColor: colores.COLOR_WHITE,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     justifyContent: 'center',
     borderRadius: 5,
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
     
     backgroundColor: colores.COLOR_PRIMARIO,
     margin: 5,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     justifyContent: 'center',
     borderRadius: 5,

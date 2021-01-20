@@ -160,7 +160,7 @@ class Campana extends Component {
     marginTop:5,
     backgroundColor: colores.COLOR_WHITE,
     height: '100%',
-    textAlign:  'center',
+ 
     alignItems:  'center',
     
     
@@ -171,7 +171,7 @@ class Campana extends Component {
     marginTop:20,
     height: '100%',
     flexDirection: 'row',
-    textAlign:  'center',
+ 
     alignItems:  'center',
     
   },
@@ -181,7 +181,7 @@ class Campana extends Component {
   },
   header: {
     
-    textAlign:  'center',
+ 
     alignItems:  'center',
   
     
@@ -233,19 +233,19 @@ class Campana extends Component {
       txt_subtitle: {
         padding: 5,
         fontSize: 16,
-        textAlign:  'center',
+     
         alignItems:  'center',
         color: colores.COLOR_WHITE
       },
       text_subtext: {
         fontSize: 12,
-        textAlign:  'center',
+     
         alignItems:  'center',
         color: colores.COLOR_WHITE
       },
       view_usuario: {
         flex: 1,
-        textAlign:  'center',
+     
         alignItems:  'center',
   
     
@@ -254,7 +254,7 @@ class Campana extends Component {
         flex: 3,
       },
       view_detalle_info: {
-        textAlign:  'center',
+     
         alignItems:  'center',
   
         
@@ -286,7 +286,7 @@ class Campana extends Component {
         paddingHorizontal: 5
       },
       view_global_der: {
-        textAlign:  'center',
+     
         alignItems:  'center',
         flex: 3
       },

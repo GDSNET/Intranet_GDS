@@ -187,7 +187,7 @@ color: colores.COLOR_WHITE,
   },
   title: {
     flex: 1,
-    textAlign: 'right',
+    
     padding: 10,
 
     
@@ -195,7 +195,7 @@ color: colores.COLOR_WHITE,
   },
   footer: {
     flex: 1,
-    textAlign: 'right'
+   
     
   },
   txtFooter: {
@@ -213,7 +213,7 @@ color: colores.COLOR_WHITE,
   },
   txtIndicador: {
     fontSize: 20,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     
     color: COLOR_PRIMARIO,
@@ -226,14 +226,14 @@ color: colores.COLOR_WHITE,
     marginTop: -20,
     marginLeft: 10,
     
-    textAlign:  'center',
+ 
     alignItems:  'center',
     justifyContent: 'center',
     borderRadius: 5,
     boxShadow: "3px 3px 3px #555",
   },
   view_anterior: {
-    textAlign:  'center',
+ 
     alignItems:  'center',
     flex: 1,
     fontSize: 20,
@@ -242,7 +242,7 @@ color: colores.COLOR_WHITE,
     
   },
   view_diferencia: {
-    textAlign:  'center',
+ 
     alignItems:  'center',
     flex: 1,
     fontSize: 20,

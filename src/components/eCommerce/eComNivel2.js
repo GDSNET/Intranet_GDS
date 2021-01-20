@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
-import { MdDeleteSweep } from "react-icons/md";
-import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
+import {  IoMdArrowDroprightCircle, } from "react-icons/io";
+import * as constants from '../publica/constants'
 
 
  
@@ -81,11 +81,15 @@ funTouchableNivel1(item){
                 <td>{fila.desc_plataforma}</td>
                 <td>{data_sala.desc_sala}</td>
   
-                <td> 
-                  <TouchableOpacity  onClick={()=> {this.funTouchableNivel1(fila)}}>
-                  <IoMdCreate style={styles.touchable}/>
-                  </TouchableOpacity>
-                </td>
+                <td>
+                    <View  style={styles.view_tochable}> 
+                      <View  style={styles.view_tochable}> 
+                          <TouchableOpacity onClick={()=> {this.funTouchableNivel1(fila)}}  >
+                              <IoMdArrowDroprightCircle size={constants.SIZE_LETRA_XXXXX_LARGE} color={constants.COLOR_BLANCO}/>
+                          </TouchableOpacity>
+                        </View>
+                    </View>
+               </td>
                
     </tr>
   )
@@ -127,6 +131,10 @@ funTouchableNivel1(item){
                        
                </tbody>
            </table>
+
+       
+
+
            </div>
     );
   }
@@ -159,11 +167,19 @@ return bindActionCreators(
 export default connect(mapStateToProps, mapDispatchToProps)(eComN2);
 
 
+
 const styles = StyleSheet.create({
 
- touchable: {
-  alignItem: 'center',
-  },
+  
+  icon: {
+    alignItem: 'center',
+    size: constants.SIZE_LETRA_XXXXX_LARGE,
 
+    },
+  view_tochable: {padding: 3, alignItem: 'center', alignSelf: 'center'},
+  view_text: {padding: 100, alignItem: 'center', alignSelf: 'center'},
+  
+  text_titulo: {fontSize: constants.SIZE_LETRA_XXXXX_LARGE, color: constants.COLOR_GRIS_D, },
+  text_informacion: {fontSize: constants.SIZE_LETRA_LARGE, color: constants.COLOR_GRIS_D, },
 
 })

@@ -167,7 +167,7 @@ class Campana extends Component {
   container: {
     
     backgroundColor: colores.COLOR_WHITE,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     flexDirection: 'row',
     
@@ -176,7 +176,7 @@ class Campana extends Component {
 
   header: {
     
-    textAlign:  'center',
+ 
     alignItems:  'center',
   
     
@@ -233,13 +233,13 @@ class Campana extends Component {
       txt_subtitle: {
         padding: 5,
         fontSize: 16,
-        textAlign:  'center',
+     
         alignItems:  'center',
         color: colores.COLOR_QUINTENARIO
       },
       view_usuario: {
         flex: 1,
-        textAlign:  'center',
+     
         alignItems:  'center',
         flexDirection: 'row'
     
@@ -277,11 +277,11 @@ class Campana extends Component {
       view_global_izq: {
         flex: 0.5, 
         
-        textAlign:  'center',
+     
         alignItems:  'center',
       },
       view_global_der: {
-        textAlign:  'center',
+     
         alignItems:  'center',
         flex: 2
       },

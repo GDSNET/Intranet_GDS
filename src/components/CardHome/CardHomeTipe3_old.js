@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 0.5,
-    textAlign:  'right',
+ 
     
   },
 
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
     
     backgroundColor: colores.COLOR_PRIMARIO,
     margin: 5,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     justifyContent: 'center',
     borderRadius: 5,
@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
   etiqueta: {
     width: '100%',
     padding:5,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     margin:10,
     height: 30,
@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
   container_interno:{
     marginTop: -10,
     backgroundColor: colores.COLOR_WHITE,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     height: 40,
     paddingHorizontal: 20, 

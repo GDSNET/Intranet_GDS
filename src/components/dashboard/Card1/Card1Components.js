@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   },
   div_indicador: {
 
-    textAlign:  'center',
+ 
     alignItems:  'center',
 
   },
@@ -128,13 +128,13 @@ const styles = StyleSheet.create({
     paddingRight:10,
   },
   div_titulo_text: {
-    textAlign:  'left',
+ 
     color: colores.COLOR_WHITE,
     fontSize: 20
   },
   div_titulo_subtext: {
     
-    textAlign:  'right',
+ 
     color: colores.COLOR_GRIS_CLARO,
     fontSize: 15
   }

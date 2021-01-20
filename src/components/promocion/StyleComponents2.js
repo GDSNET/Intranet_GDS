@@ -49,12 +49,12 @@ export const styles2 = StyleSheet.create({
   },
   title: {
     flex: 1,
-    textAlign: 'right',
+    
     padding: 5,
 },
   footer: {
     flex: 1,
-    textAlign: 'right'
+   
     
   },
   txtFooter: {
@@ -71,7 +71,7 @@ export const styles2 = StyleSheet.create({
   },
   txtIndicador: {
     fontSize: 12,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     
     color: COLOR_PRIMARIO,
@@ -84,14 +84,14 @@ export const styles2 = StyleSheet.create({
     marginTop: -20,
     marginLeft: 10,
     
-    textAlign:  'center',
+ 
     alignItems:  'center',
     justifyContent: 'center',
     borderRadius: 5,
     boxShadow: "3px 3px 3px #555",
   },
   view_anterior: {
-    textAlign:  'center',
+ 
     alignItems:  'center',
     flex: 1,
     fontSize: 12,
@@ -100,7 +100,7 @@ export const styles2 = StyleSheet.create({
     
   },
   view_diferencia: {
-    textAlign:  'center',
+ 
     alignItems:  'center',
     flex: 1,
     fontSize: 12,

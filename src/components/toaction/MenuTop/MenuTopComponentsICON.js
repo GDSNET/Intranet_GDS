@@ -73,7 +73,7 @@ funCambiaDesplegable(valor){
                             
                             <LottieOnPress
                           icon={toggleAnimation}
-                          width={40}
+                          width={"40"}
                           funPress={()=>this.funCambiaEstado()}
 
                         />
@@ -187,17 +187,17 @@ const styles = StyleSheet.create({
   menudos_icon_icon: {
     
     alignItems: 'center',
-    textAlign:'center',
+    
     alignSelf: 'flex-start',
-    textAlignVertical: 'center',
+   
   },
   view_menudos_icon_derecha: {
  
     flex: 1,
     flexDirection: 'row',
-    textAlign:  'center',
+ 
     alignItems:  'center',
-    textAlignVertical: 'center',
+   
 
   },
   title: {
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   },
   view_title:{
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     
   },

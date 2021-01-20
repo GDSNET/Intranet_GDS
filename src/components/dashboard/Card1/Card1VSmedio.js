@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   titulo:{
     flex: 1,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     padding: 10,
     borderBottomWidth: 1,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   indicador:{
     flex: 3,
-    textAlign:  'center',
+ 
     alignItems:  'center',
     padding: 20,
  

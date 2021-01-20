@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 0.5,
-    textAlign:  'right',
+ 
     
   },
 

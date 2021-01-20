@@ -107,7 +107,7 @@ imagen: {
   flex: 1
 }, 
 divtexto: {
-  textAlign:  'right',
+  
   alignItems:  'right',
   flex: 1,
     zIndex: 0,
