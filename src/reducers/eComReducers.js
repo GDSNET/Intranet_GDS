@@ -1,5 +1,6 @@
 
 import * as types from '../constants/eComConstants'
+import * as fechas from '../components/publica/Fechas'
 const initialState = {
    id_profile: false,
    estado: 'Inicio Estado = E-COMMERCE',
@@ -81,6 +82,7 @@ const eComReducers = (state = initialState, action) => {
                         valor.alerta = false
                         valor.envio_estado = 0
                         valor.envio_comentario = "lista para enviar"
+                        valor.periodo = fechas.fechaSQL2()
                     })
                     return {
                     ...state,
@@ -102,6 +104,7 @@ case types.ECOM_GUARDA_PRESENCIA:
    state.dataPlanilla.map(todo => {
     if (todo.id_sku_sap === action.id_sku_sap) {
       todo.presencia=action.presencia
+      todo.periodo = fechas.fechaSQL2()
     }
   })
   return {
@@ -128,6 +131,7 @@ case types.ECOM_GUARDA_DESCRIPCION_SKU:
 state.dataPlanilla.map(todo => {
  if (todo.id_sku_sap === action.id_sku_sap) {
    todo.descripcion=action.descripcion
+   todo.periodo = fechas.fechaSQL2()
  }
 })
 return {
@@ -140,6 +144,7 @@ case types.ECOM_GUARDA_STOCK:
    state.dataPlanilla.map(todo => {
     if (todo.id_sku_sap === action.id_sku_sap) {
       todo.stock=action.stock
+      todo.periodo = fechas.fechaSQL2()
     }
   })
   return {
@@ -153,6 +158,7 @@ case types.ECOM_GUARDA_VALOR_IMAGEN:
    state.dataPlanilla.map(todo => {
     if (todo.id_sku_sap === action.id_sku_sap) {
       todo.imagen=action.imagen
+      todo.periodo = fechas.fechaSQL2()
     }
   })
   return {
@@ -166,6 +172,7 @@ case types.ECOM_GUARDA_PRECIO_UNITARIO:
    state.dataPlanilla.map(todo => {
     if (todo.id_sku_sap === action.id_sku_sap) {
       todo.precio_unitario=action.precio_unitario
+      todo.periodo = fechas.fechaSQL2()
     }
   })
   return {
@@ -179,6 +186,7 @@ case types.ECOM_GUARDA_PRECIO_DESCUENTO:
    state.dataPlanilla.map(todo => {
     if (todo.id_sku_sap === action.id_sku_sap) {
       todo.precio_descuento=action.precio_descuento
+      todo.periodo = fechas.fechaSQL2()
     }
   })
   return {
@@ -192,6 +200,7 @@ case types.ECOM_GUARDA_MECANICA:
    state.dataPlanilla.map(todo => {
     if (todo.id_sku_sap === action.id_sku_sap) {
       todo.mecanica=action.mecanica
+      todo.periodo = fechas.fechaSQL2()
     }
   })
   return {
@@ -205,6 +214,7 @@ case types.ECOM_GUARDA_ALERTA_QUIEBRE:
    state.dataPlanilla.map(todo => {
     if (todo.id_sku_sap === action.id_sku_sap) {
       todo.alerta=action.alerta
+      todo.periodo = fechas.fechaSQL2()
     }
   })
   return {

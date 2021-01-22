@@ -67,7 +67,7 @@ class CardSellOutTipe4 extends Component {
                           height={height}
                           funPress={()=>this.funVacia()}
                           speed={speed}
-                          height={height}
+            
                         />
                 
            </View>    

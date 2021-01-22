@@ -4,7 +4,7 @@ import Lottie from 'lottie-react-web'
 import {View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native-web'
 
 
-export default class LoginInput extends Component {
+export default class LottieLoop extends Component {
 
   constructor(props){
     super(props)
@@ -22,7 +22,7 @@ export default class LoginInput extends Component {
 
   render() {    
 
-    const {icon, funPress, height, speed} = this.props;
+    const {icon, funPress, width, speed} = this.props;
 
     return (
     <View>
@@ -33,7 +33,8 @@ export default class LoginInput extends Component {
         onPress={()=>funPress()}>
         
         <Lottie  style={styles.viewlottie} 
-            height={height}
+            width={width}
+            height={width}
             speed= {speed}
             direction={this.state.isToggled ? 1 : -1}
             options={{

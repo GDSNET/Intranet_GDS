@@ -4,7 +4,7 @@ import Lottie from 'lottie-react-web'
 import {View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native-web'
 
 
-export default class LoginInput extends Component {
+export default class LottieHoverPress extends Component {
 
   constructor(props){
     super(props)

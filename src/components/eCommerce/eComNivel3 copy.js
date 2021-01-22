@@ -56,7 +56,7 @@ await  fetch(url, config)
         .then((response) => {
          return response.json()})
         .then((json) => {
-          console.log("guardando Plataforma" + JSON.stringify(json))
+          //console.log("guardando Plataforma" + JSON.stringify(json))
           PlanillaOK(json)
         });
         

@@ -40,7 +40,7 @@ await  fetch(url, config)
         .then((response) => {
          return response.json()})
         .then((json) => {
-          console.log("guardando datos" + JSON.stringify(json))
+          //console.log("guardando datos" + JSON.stringify(json))
           funCalGuardaDataDetalle(json.b_detalle)
         });
         
@@ -116,7 +116,7 @@ await  fetch(url, config)
         .then((response) => {
          return response.json()})
         .then((json) => {
-          console.log("guardando datos" + JSON.stringify(json))
+          //console.log("guardando datos" + JSON.stringify(json))
           funCalGuardaRespuesta(json.data)
         });
         

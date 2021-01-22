@@ -4,12 +4,11 @@ import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity, Image} from 'react-native-web';
 import * as constants from "../publica/constants"
-import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
+
 
 //VARIABLES
 import Presencia from './variables/Presencia'
 import Stock from './variables/Stock'
-import Descripcion from './variables/Descripcion'
 import PrecioUnitario from './variables/PrecioUnitario'
 import PrecioDescuento from './variables/PrecioDescuento'
 import Alerta from './variables/Alerta'
@@ -24,6 +23,11 @@ import 'animate.css';
 
 import ImageUploader from "react-images-upload";
 
+import * as fechas from '../publica/Fechas'
+
+import LottieLoop from '../../lottie/components/LottieLoop'
+import toggleAnimation from  '../../lottie/images/20431-cloud-storage.json'
+
 
 
 
@@ -31,16 +35,18 @@ import ImageUploader from "react-images-upload";
 class eComN2 extends Component {
   constructor(props) {
     super(props);
-    this.state = { pictures: [], envios: [] };
+    this.state = { pictures: [], envios: [],  showBoton: true, };
     this.onDrop = this.onDrop.bind(this);
+ 
 
   }
 
   onDrop(pictureFiles, pictureDataURLs) {
-    console.log("Upload:" +  JSON.stringify(pictureDataURLs) )
+   // console.log("Upload:" +  JSON.stringify(pictureDataURLs) )
     this.setState({
       pictures: this.state.pictures.concat(pictureDataURLs),
       solicitar: false
+  
     });
   }
 
@@ -73,7 +79,7 @@ componentDidMount(){
 }
 
 async funFetch(obj){
-console.log('intentando enviar',  JSON.stringify(obj))
+//console.log('intentando enviar',  JSON.stringify(obj))
 
 const url = 'http://api.gdsnet.com:3009/post_intranet_planilla';
 
@@ -91,7 +97,7 @@ await  fetch(url, config)
     .then((response) => {
      return response.json()})
     .then((json) => {
-      console.log("enviando Planilla" + JSON.stringify(json))
+      //console.log("enviando Planilla" + JSON.stringify(json))
       if(json.data==="ok"){
         console.log("OK INGRESADO")
      this.state.envios.push({"estado": "ok"})
@@ -122,7 +128,34 @@ await  fetch(url, config)
 
 
 
+funBoton() {
+  if (this.state.showBoton) {
+      return (
+        <View visible={false} style={styles.ViewBoton} >
+            <TouchableOpacity style={styles.Boton}  onClick={()=>this.funEnviando()}>
+                  <Text style={styles.txt_boton}>Enviar Planilla</Text>
+            </TouchableOpacity>
+      </View>
+      );
+  } else {
+      return (
+        
+        <View visible={false} style={styles.ViewBoton} >
+                <LottieLoop
+                icon={toggleAnimation}
+                width={150}
+                
+              />
+      </View>
+      )
+  }
+}
+
 async funEnviando(){
+
+ await  this.setState({
+    showBoton: !this.state.showBoton
+  });
     
 const {dataPlanilla, funEnvio} = this.props;
 
@@ -157,11 +190,7 @@ else{
  await funEnvio(value.id_sku_sap, 2, 'enviado Error')
 }
 
-
-
-
 })
-
 
 
 
@@ -244,7 +273,7 @@ let response = await  fetch(url, config)
           .then((response) => {
            return response.json()})
           .then((json) => {
-            console.log("guardando Planilla" + JSON.stringify(json))
+            //console.log("guardando Planilla" + JSON.stringify(json))
             PlanillaOK(json)
             funSolicitarPlanilla(true)
           });
@@ -334,6 +363,7 @@ let response = await  fetch(url, config)
                     </View>
                     <View style={styles.columna}>
                         <EstadoEnvio valor={fila.envio_estado} detalle={fila.envio_comentario} />
+
                     </View>
                             
               </View>
@@ -380,18 +410,15 @@ let response = await  fetch(url, config)
         <View style={styles.planilla}>
             <View style={styles.resumen}>
             
-
+            
+            
             <Text style={styles.txt_sub_resumen}>ID USUARIO:  {JSON.stringify(this.props.id_profile)} - Cantidad de Productos {Object.keys(dataPlanilla).length} -  Cantidad de Enviados {cantidadOK.length}</Text>
             <Text style={styles.txt_sub_resumen}>Estado:{estado}</Text>
                 <Text style={styles.txt_resumen}>SALA:  {JSON.stringify(data_sala.id_sala)} / {data_sala.desc_sala}</Text>
                 <Text style={styles.txt_resumen}>Plataforma:  {JSON.stringify(data_plataforma.desc_plataforma)}</Text>
                 
           </View>
-        <View style={styles.ViewBoton} >
-          <TouchableOpacity style={styles.Boton}  onClick={()=>this.funEnviando()}>
-                <Text style={styles.txt_boton}>Enviar Planilla</Text>
-          </TouchableOpacity>
-        </View>
+  
 
    
 
@@ -467,8 +494,9 @@ let response = await  fetch(url, config)
     return (
       <View style={styles.contenedor}>
       
-     
+
         {this.funSolicitarPlanilla()}
+        {this.funBoton()}
         {this.funTitulos()}
          <View style={styles.notification}>
         </View>

@@ -1,3 +1,5 @@
+
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../../actions/index";
@@ -32,7 +34,7 @@ class gdsActualizaSalaLog extends Component {
             .then((response) => {
              return response.json()})
             .then((json) => {
-              console.log("guardando datos" + JSON.stringify(json))
+              //console.log("guardando datos" + JSON.stringify(json))
               funGdsGuardaDataSemana(json.semana)
             });
     

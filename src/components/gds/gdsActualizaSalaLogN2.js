@@ -57,7 +57,7 @@ async componentDidMount(){
           .then((response) => {
            return response.json()})
           .then((json) => {
-            console.log("guardando datos" + JSON.stringify(json))
+           // console.log("guardando datos" + JSON.stringify(json))
             funGdsSelectLog(json.log)
           });
   }
