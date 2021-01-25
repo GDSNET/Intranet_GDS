@@ -100,6 +100,23 @@ export function   funSolicitarPlanillaSku(valor) {
        cliente:dato
     }
  };
+
+ export function funEcomCategoria(dato)  {
+   return {
+       type: types.CALIDAD_ECOM_CATEGORIA,
+       estado: '...Guardando Categoria',
+       categoria:dato
+    }
+ };
+
+ export function funEcomDataCategoria(dato)  {
+   return {
+       type: types.CALIDAD_ECOM_DATA_CATEGORIA,
+       estado: '...Guardando Data Categoria',
+       dataCategoria:dato
+    }
+ };
+
  export function funCalGuardaSku(dato)  {
    return {
        type: types.CALIDAD_GUARDA_SKU,

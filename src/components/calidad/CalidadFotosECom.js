@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
-import {StyleSheet, View, Text,TouchableOpacity, Image} from 'react-native-web';
+import {StyleSheet, View, Text,TouchableOpacity, Image, Picker} from 'react-native-web';
 import * as constants from "../publica/constants"
 
 
@@ -31,10 +31,42 @@ class calFotos extends Component {
     super(props);
     this.state = { pictures: [], envios: [],  showBoton: true, };
     this.onDrop = this.onDrop.bind(this);
+    this.funEnviando = this.funEnviando.bind(this)
  
 
   }
 
+
+async funBuscaDataCategoria(){
+  const {funEcomDataCategoria} = this.props;
+  const url = 'http://api.gdsnet.com:3009/post_intranet_select_categoria_sku';
+ 
+ let body_data = JSON.stringify({
+   })
+ 
+     const config =  {
+       method: 'POST',
+       body: body_data,
+       headers: {
+       "Content-Type": "application/json",
+       },
+     }  
+       
+ try {
+ await  fetch(url, config)
+         .then((response) => {
+          return response.json()})
+         .then((json) => {
+           console.log("guardando datos" + JSON.stringify(json))
+           funEcomDataCategoria(json)
+         });
+         
+       } catch (e) {
+         console.log(e.message)
+   
+       }  
+}
+  
   onDrop(pictureFiles, pictureDataURLs) {
    // console.log("Upload:" +  JSON.stringify(pictureDataURLs) )
     this.setState({
@@ -46,7 +78,8 @@ class calFotos extends Component {
 
 componentDidMount(){
 
- { this.funCargaPlataforma()}
+ //this.funCargaPlataforma()
+ this.funBuscaDataCategoria()
 
 
 }
@@ -78,10 +111,7 @@ funBoton(id_sku_sap,imagen, valor) {
 
 async funEnviando(id_sku_sap,imagen){
 
- await  this.setState({
-    showBoton: !this.state.showBoton
-  });
-    
+
 const {dataPlanilla, funEnvioCal} = this.props;
 
 let obj = []
@@ -99,6 +129,20 @@ await console.log(JSON.stringify(respuesta))
 if (respuesta.data === "ok"){
  console.log("RESPUESTA OK")
  await funEnvioCal(id_sku_sap, 1, 'enviado OK')
+
+ store.addNotification({
+  title: 'Imagen OK',
+  message: 'imagen guardada',
+  type: 'success',                         // 'default', 'success', 'info', 'warning'
+  container: 'center',                // where to position the notifications
+  animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+  animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+  dismiss: {
+    duration: 3000
+  }
+})
+ 
+
 }
 else{
  console.log("Error", JSON.stringify(respuesta))
@@ -126,20 +170,24 @@ return data;
 }
 
 
-  async funCargaPlataforma(){
+  async funCargaPlataforma(value){
+    console.log("buscando categoria: ", value)
     
     const {PlanillaOKCal, funSolicitarPlanillaSku} = this.props;
     console.log("Solicitando planilla")
     
-   
-   const url = 'http://api.gdsnet.com:3009/post_intranet_select_sku';
-  
-      const config =  {
+   let obj = JSON.stringify({"desc_categoria" : value})
+
+    console.log("enviando", JSON.stringify(obj))
+    const url = 'http://api.gdsnet.com:3009/post_intranet_select_sku';
+    const config =  {
         method: 'POST',
+        body: obj,
         headers: {
         "Content-Type": "application/json",
         },
-      }  
+      }
+  
   
         
   try {
@@ -188,7 +236,7 @@ return data;
   const planilla = dataPlanilla.map((fila,i) => {
   
   return(  
-      <View style={styles.contenedor_fila} key={i}>  
+      <View style={styles.View} key={i}>  
           <View style={styles.contenedor_titulos} key={"fila1" + i}>    
               
            
@@ -202,30 +250,18 @@ return data;
          </View>
       
     <View style={styles.fila} key={i}>  
-              <View style={styles.filaImagen} key={"filaImagen" + i}> 
-                        <Text style={styles.txt_titulos} >Imagen referencial</Text>   
-                        <Image style={styles.imagen} source={{uri: fila.desc_imagen_sku}}/>
-                </View> 
+        
  
           <View style={styles.fila2} key={"fila2" + i}>                  
-
-                    <View style={styles.columna}>
-                         <Imagen  valor={fila.imagen} funExecute={null} />
-                         <ImageUploader
-                         label=""
-                         withPreview={true}
-                          withIcon={false}
-                          buttonText="Seleccione Imagen"
-                          onChange={(pictureFiles, pictureDataURLs)=>this.funGuardaImagenConvierte(fila.id_sku_sap, pictureDataURLs)}
-                          imgExtension={[".jpg", ".gif", ".png", ".gif", ".jpeg"]}
-                          maxFileSize={1000000}
-                        />
-                    </View>       
+                <View style={styles.filaImagen} key={"filaImagen" + i}>      
+                        <Image style={styles.imagen} source={{uri: fila.desc_imagen_sku}}/>
+                </View> 
+               
               </View>  
 
               <View style={styles.filaImagen} key={"filaBoton" + i}> 
-              {this.funBoton(id_sku_sap,imagen)}
-              <CalidadFotosEComBottonEnviar funEnviando={this.funEnviando()} id_sku_sap={id_sku_sap} imagen={imagen} />
+              
+              <CalidadFotosEComBottonEnviar funEnviando={this.funEnviando} id_sku_sap={fila.id_sku_sap} />
               </View> 
 
                
@@ -255,11 +291,8 @@ return data;
 
 
     try {
-      var cantidadOK = dataPlanilla.filter(function(value, index) {return value.envio_estado === 1;})
+      
 
-      if(Object.keys(dataPlanilla).length===cantidadOK.length){
-        this.funPlanillaEnviadaOK()
-      }
       
       
 
@@ -293,8 +326,8 @@ return data;
     PlanillaLimpiar()
 
     store.addNotification({
-      title: 'Enviado OK',
-      message: 'Datos guardados con exito',
+      title: 'Imagen Guardada',
+      message: 'Cuando refresque la Categoria, apareceran las imagenes',
       type: 'success',                         // 'default', 'success', 'info', 'warning'
       container: 'center',                // where to position the notifications
       animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
@@ -323,11 +356,49 @@ return data;
 
   }
 
+  funCambioCat(value){
+    const {funEcomCategoria} = this.props;
+    funEcomCategoria(value)
+    this.funCargaPlataforma(value)
+  }
+
+
+
+  funSemama(){
+    const {dataCategoria, categoria} = this.props;
+    try {
+
+      return(
+        <Picker 
+        className="style_picker"
+        mode="dropdown"
+        selectedValue={categoria || ''}
+        onValueChange={(value)=>{this.funCambioCat(value)}}>
+      <Picker.Item label='Seleccione Categoria' value='' key={null}/>
+        {dataCategoria.map((item, key) => {
+            return (
+            <Picker.Item label={item.desc_categoria} value={item.desc_categoria} key={key}/>) 
+        })}
+          
+    </Picker>
+      )
+      
+      
+    } catch (error) {
+      
+    }
+  }
+
   render() {
+    const {funEcomCategoria, categoria, dataCategoria} = this.props;
+
+
 
     return (
       <View style={styles.contenedor}>
-
+        <Text> Categoria seleccionada: {categoria}</Text>
+        
+        {this.funSemama()}
         {this.funTitulos()}
          <View style={styles.notification}>
         </View>
@@ -346,7 +417,8 @@ function mapStateToProps(state){
     estado:  state.calidad.estado,
     id_sku_sap:  state.calidad.id_sku_sap,
     imagen: state.calidad.imagen,
-    
+    categoria: state.calidad.categoria,
+    dataCategoria: state.calidad.dataCategoria,
 
   }
 }
@@ -377,8 +449,8 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     imagen: {
-      width: 150,
-      height: 150
+      width: 300,
+      height: 300
     },
     contenedor_fila: {
     flex: 1,

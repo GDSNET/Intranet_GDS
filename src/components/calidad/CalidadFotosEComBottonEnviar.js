@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import combinaActions from "../../actions/index";
-import {bindActionCreators} from 'redux';
-import {StyleSheet, View, Text,TouchableOpacity, Image} from 'react-native-web';
+import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
 import * as constants from "../publica/constants"
+import ImageUploader from "react-images-upload";
 
 
 
@@ -15,10 +13,10 @@ import LottieLoop from '../../lottie/components/LottieLoop'
 import toggleAnimation from  '../../lottie/images/20431-cloud-storage.json'
 
 
+ 
 
 
-
-class CalidadFotosEComBottonEnviar extends Component {
+export default class CalidadFotosEComBottonEnviar extends Component {
   constructor(props) {
     super(props);
     this.state = {showBoton: true, };
@@ -27,23 +25,71 @@ class CalidadFotosEComBottonEnviar extends Component {
   }
 
 
-  funExec(){
-const {funEnviando, id_sku_sap,imagen} = this.props.
+  resizeImage (base64Str, maxWidth = 500, maxHeight = 400) {
+    return new Promise((resolve) => {
+      let img = new Image()
+      img.src = base64Str
+      img.onload = () => {
+        let canvas = document.createElement('canvas')
+        const MAX_WIDTH = maxWidth
+        const MAX_HEIGHT = maxHeight
+        let width = img.width
+        let height = img.height
+  
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width
+            width = MAX_WIDTH
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height
+            height = MAX_HEIGHT
+          }
+        }
+        canvas.width = width
+        canvas.height = height
+        let ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, width, height)
+        resolve(canvas.toDataURL())
+      }
+    })
+  }
+
+
+
+
+
+  async funExec(imagen){
+const {id_sku_sap, funEnviando} = this.props;
+   
+
+
+const result = await this.resizeImage(imagen);
+   
+ await funEnviando(id_sku_sap,result)
+
     this.setState({
-      showBoton: false
+      showBoton: true
     })
 
-    funEnviando(id_sku_sap,imagen)
-
   }
+
+  funEditar(){
+    this.setState({
+          showBoton: false
+        })
+    
+      }
+    
 
 
 funBoton(id_sku_sap,imagen) {
   if (this.state.showBoton) {
       return (
         <View visible={false} style={styles.ViewBoton} >
-            <TouchableOpacity style={styles.Boton}  onClick={()=>this.funExec()}>
-                  <Text style={styles.txt_boton}>Guardar</Text>
+            <TouchableOpacity style={styles.Boton}  onClick={()=>this.funEditar()}>
+                  <Text style={styles.txt_boton}>Editar</Text>
             </TouchableOpacity>
       </View>
       );
@@ -51,11 +97,17 @@ funBoton(id_sku_sap,imagen) {
       return (
         
         <View visible={false} style={styles.ViewBoton} >
-                <LottieLoop
-                icon={toggleAnimation}
-                width={50}
-                
-              />
+  
+               <ImageUploader
+                         label=""
+                         withPreview={true}
+                          withIcon={false}
+                          buttonText="Seleccione Imagen"
+                          onChange={(pictureFiles, pictureDataURLs)=>this.funExec(pictureDataURLs)}
+                          imgExtension={[".jpg", ".gif", ".png", ".gif", ".jpeg"]}
+                          maxFileSize={1000000}
+                />
+
       </View>
       )
   }
@@ -77,32 +129,6 @@ render() {
 }
 
 
-function mapStateToProps(state){
-  return{
-    dataPlanilla: state.calidad.dataPlanilla,
-    planillaSku:  state.calidad.planillaSku,
-    estado:  state.calidad.estado,
-    id_sku_sap:  state.calidad.id_sku_sap,
-    imagen: state.calidad.imagen,
-    
-
-  }
-}
-
-function mapDispatchToProps (dispatch) {
- const combiner = Object.assign({},
-  combinaActions,
-{dispatch}
-);
-return bindActionCreators(
-  combiner,
-  dispatch,
-);
-}
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(CalidadFotosEComBottonEnviar);
 
 
 const styles = StyleSheet.create({

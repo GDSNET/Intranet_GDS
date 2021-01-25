@@ -30,12 +30,8 @@ let body_data = JSON.stringify({
       "Content-Type": "application/json",
       },
     }  
-
       
 try {
-  
-
-
 await  fetch(url, config)
         .then((response) => {
          return response.json()})

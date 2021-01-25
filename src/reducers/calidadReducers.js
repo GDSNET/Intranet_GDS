@@ -31,13 +31,32 @@ const initialState = {
    nro_exhibidor_old:null,
    predominante_old:null,
    planillaSku:null,
-   dataPlanilla:[]
+   dataPlanilla:[],
+   categoria: "",
+   dataCategoria:[
+    {
+        "desc_categoria": "NARA"
+    }],
 }
 
 
   
 const calidadReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.CALIDAD_ECOM_DATA_CATEGORIA:
+            return {...state,
+                estado: action.estado,
+                dataCategoria: action.dataCategoria,
+    
+            };
+        break;
+        case types.CALIDAD_ECOM_CATEGORIA:
+            return {...state,
+                estado: action.estado,
+                categoria: action.categoria,
+    
+            };
+        break;
         case types.CALIDAD_STOP_ACTION:
         return {...state,
             visible: action.visible,

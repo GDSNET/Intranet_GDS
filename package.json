@@ -6,6 +6,7 @@
     "@nivo/line": "^0.59.3",
     "animate.css": "^4.1.1",
     "d3-ease": "^1.0.5",
+    "jquery": "^3.5.1",
     "lottie-react-web": "^2.1.4",
     "pure-react-carousel": "^1.22.0",
     "rc-progress": "^2.5.2",
