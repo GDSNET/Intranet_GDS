@@ -2,7 +2,44 @@
 
 import * as types from '../constants/calidadConstants'
 
+export function  funEnvioCal(id_sku_sap, envio_estado, envio_comentario) {
+   console.log('enviando');
+   return {
+     type: types.CALIDAD_ENVIA,
+     id_sku_sap: id_sku_sap,
+     envio_estado: envio_estado,
+     envio_comentario: envio_comentario,
+     estado: 'Enviando: ' + id_sku_sap
+   }
+ } 
 
+export function   funGuardaImagenCal(id_sku_sap, valor) {
+   console.log('guarda Imagen');
+   return {
+     type: types.CALIDAD_GUARDA_VALOR_IMAGEN,
+     id_sku_sap: id_sku_sap,
+     imagen: valor,
+     estado: 'guarda imagen:'
+   }
+ } 
+
+export function   PlanillaOKCal(api_salas) {
+   console.log('Planilla OK');
+   return {
+     type: types.CALIDAD_GET_PLANILLA_OK,
+     dataPlanilla: api_salas,
+     estado: 'Planilla OK'
+   }
+ }
+
+export function   funSolicitarPlanillaSku(valor) {
+   console.log('Solicita Planilla');
+   return {
+     type: types.CALIDAD_SOLICITAR_PLANILLA_SKU,
+     planillaSku: valor,
+     estado: 'Solicita Planilla SKU?' + valor
+   }
+ } 
 
   export function startActionCalidad()  {
     return {

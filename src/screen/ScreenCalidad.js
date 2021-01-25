@@ -16,6 +16,8 @@ import CalidadN2InsertExh from "../components/calidad/CalidadN2InsertExh";
 import CalidadN1 from "../components/calidad/CalidadN1";
 import CalidadN3Update from "../components/calidad/CalidadN3Update";
 import CalidadN2Insert from "../components/calidad/CalidadN2Insert";
+import CalidadFotosECom from "../components/calidad/CalidadFotosECom";
+
 
 import gdsAlarmasHtml from "../components/gds/gdsAlarmasHtml";
 import gdsAlarmasHtml00 from "../components/gds/gdsAlarmasHtml00";
@@ -115,7 +117,7 @@ class ScreenCalidad extends Component {
                   <li onClick={()=>this.funLeee()}><NavLink to="/Calidad"> <IoMdContacts className='icon_menu' />Modificaciones</NavLink></li>
                   <li onClick={()=>this.funLeee()}><NavLink to="/gdsAlarmasHtml00"> <IoIosArrowForward className='icon_menu' /> Liberar Alertas</NavLink></li>              
                   <li onClick={()=>this.funLeee()}><NavLink to="/gdsActualizaSalaLog"> <IoIosRocket className='icon_menu' /> Actualiza estado Log</NavLink></li>              
-                  
+                  <li onClick={()=>this.funLeee()}><NavLink to="/CalidadFotosECom"> <IoIosRocket className='icon_menu' /> Administracion de fotos E-COMMERCE</NavLink></li>   
                 </ul>
               </div>
             <div  className={top_dash_class}>
@@ -135,7 +137,8 @@ class ScreenCalidad extends Component {
                     <Route path="/gdsAlarmasHtml00" component={gdsAlarmasHtml00}/>
                     <Route path="/gdsActualizaSalaLog" component={gdsActualizaSalaLog}/>
                     <Route path="/gdsActualizaSalaLogN2" component={gdsActualizaSalaLogN2}/>
-
+                    <Route path="/CalidadFotosECom" component={CalidadFotosECom}/>
+                    
                     
 
 

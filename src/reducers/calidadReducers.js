@@ -29,7 +29,9 @@ const initialState = {
    predominante:null,
    nro_exhibidor:null,
    nro_exhibidor_old:null,
-   predominante_old:null
+   predominante_old:null,
+   planillaSku:null,
+   dataPlanilla:[]
 }
 
 
@@ -42,6 +44,52 @@ const calidadReducer = (state = initialState, action) => {
             estado: action.estado,
             
         };
+        break;
+        case types.CALIDAD_ENVIA: 
+        state.dataPlanilla.map(todo => {
+         if (todo.id_sku_sap === action.id_sku_sap) {
+           todo.envio_estado=action.envio_estado
+           todo.envio_comentario=action.envio_comentario
+         }
+       })
+       return {
+         ...state,
+         estado: action.estado,  
+          
+         }
+     break;
+        case types.CALIDAD_GUARDA_VALOR_IMAGEN: 
+        state.dataPlanilla.map(todo => {
+            if (todo.id_sku_sap === action.id_sku_sap) {
+            todo.imagen=action.imagen
+            }
+        })
+        return {
+            ...state,
+            estado: action.estado,  
+            
+            }
+        break;
+
+        case types.CALIDAD_GET_PLANILLA_OK:
+            console.log('data:' +action.dataPlanilla)
+            return {...state,
+
+                dataPlanilla: action.dataPlanilla,
+                estado: action.estado,
+            };
+    
+    
+            break;
+
+        case types.CALIDAD_SOLICITAR_PLANILLA_SKU:
+        return {...state,
+            planillaSku: action.planillaSku,
+            estado: action.estado,
+            
+        };
+
+
         break;
         case types.CALIDAD_START_ACTION:
         return {...state,

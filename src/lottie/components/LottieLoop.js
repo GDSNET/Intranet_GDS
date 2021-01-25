@@ -20,7 +20,7 @@ export default class LottieLoop extends Component {
     
   }
 
-  render() {    
+  render() {
 
     const {icon, funPress, width, speed} = this.props;
 
