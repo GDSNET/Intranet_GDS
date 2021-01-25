@@ -18,10 +18,9 @@ import 'animate.css';
 
 import ImageUploader from "react-images-upload";
 
-import * as fechas from '../publica/Fechas'
-
 import LottieLoop from '../../lottie/components/LottieLoop'
 import toggleAnimation from  '../../lottie/images/20431-cloud-storage.json'
+import CalidadFotosEComBottonEnviar from './CalidadFotosEComBottonEnviar'
 
 
 
@@ -49,39 +48,16 @@ componentDidMount(){
 
  { this.funCargaPlataforma()}
 
-  /*  try {
-
-      console.log("pasando por componentDidMount")
-      const {data_sala, id_profile, dataPlanilla, data_plataforma, PlanillaERROR, funSolicitarPlanillaSku} = this.props;
-      if( id_profile ===  dataPlanilla[0].id_usuario 
-       && data_sala.id_sala ===  dataPlanilla[0].id_sala
-       && data_plataforma.id_plataforma ===    dataPlanilla[0].id_plataforma){
-         console.log("pasando por SI")
-         funSolicitarPlanillaSku(true)
-       } else {
-        funSolicitarPlanillaSku(false)
-         console.log("pasando por NO")
-         PlanillaERROR()
-       return(
-         console.log("pasando por NO")
-       )
-       }  
-      
-    } catch (error) {
-
-      
-      
-    }*/
 
 }
 
 
 
-funBoton() {
+funBoton(id_sku_sap,imagen, valor) {
   if (this.state.showBoton) {
       return (
         <View visible={false} style={styles.ViewBoton} >
-            <TouchableOpacity style={styles.Boton}  onClick={()=>this.funEnviando()}>
+            <TouchableOpacity style={styles.Boton}  onClick={()=>this.funEnviando(id_sku_sap,imagen)}>
                   <Text style={styles.txt_boton}>Actualizar SKU'S</Text>
             </TouchableOpacity>
       </View>
@@ -249,6 +225,7 @@ return data;
 
               <View style={styles.filaImagen} key={"filaBoton" + i}> 
               {this.funBoton(id_sku_sap,imagen)}
+              <CalidadFotosEComBottonEnviar funEnviando={this.funEnviando()} id_sku_sap={id_sku_sap} imagen={imagen} />
               </View> 
 
                
