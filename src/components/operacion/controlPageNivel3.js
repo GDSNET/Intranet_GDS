@@ -109,7 +109,7 @@ funCatch(){
   render() {
     const {estado,profile, punto,tarea,history,tarea_det,data_nivel3} = this.props;
     if(!profile){
-      history.push('/Control')
+      history.push('/Operacion')
     }
 
     if (data_nivel3.length > 0){
