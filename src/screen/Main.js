@@ -11,10 +11,10 @@ import {GiGluttony, GiDread, GiDinosaurRex,GiBearFace,GiDiplodocus} from 'react-
 import Home from "./Home";
 
 
-import Control from "./Control";
-import ControlPage1 from "../components/control/controlPageNivel1";
-import ControlPage2 from "../components/control/controlPageNivel2";
-import ControlPage3 from "../components/control/controlPageNivel3";
+import Control from "./Operacion";
+import ControlPage1 from "../components/operacion/controlPageNivel1";
+import ControlPage2 from "../components/operacion/controlPageNivel2";
+import ControlPage3 from "../components/operacion/controlPageNivel3";
 
 import Gds from "./gds";
 import gdsAlarmasHtml from "../components/gds/gdsAlarmasHtml";

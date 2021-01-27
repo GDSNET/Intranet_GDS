@@ -6,12 +6,12 @@ import {bindActionCreators} from 'redux';
 import {IoIosRocket, IoMdContacts} from "react-icons/io";
 
 import Desarrollo from "../components/toaction/Pagina/DesarrolloPagina";
-import Control from '../screen/Control'
+import Operacion from '../screen/Operacion'
 
 import logo from '../images/logogds2020_01blanco.svg';
-import ControlPage1 from "../components/control/controlPageNivel1";
-import ControlPage2 from "../components/control/controlPageNivel2";
-import ControlPage3 from "../components/control/controlPageNivel3";
+import ControlPage1 from "../components/operacion/controlPageNivel1";
+import ControlPage2 from "../components/operacion/controlPageNivel2";
+import ControlPage3 from "../components/operacion/controlPageNivel3";
 
 
 import {
@@ -104,7 +104,7 @@ class ScreenCalidad extends Component {
                 <ul>
        
                 
-                  <li onClick={()=>this.funLeee()}><NavLink to="/Control"> <IoMdContacts className='icon_menu' /> Control</NavLink></li>
+                  <li onClick={()=>this.funLeee()}><NavLink to="/Operacion"> <IoMdContacts className='icon_menu' /> Control</NavLink></li>
                   
                 </ul>
               </div>
@@ -112,7 +112,7 @@ class ScreenCalidad extends Component {
               <div  className={"dash_body"}>
                 <div  className={"dash_body_right"}>
                         <Route path="/Desarrollo" component={Desarrollo}/>
-                        <Route path="/Control" component={Control}/>
+                        <Route path="/Operacion" component={Operacion}/>
                         
             <Route path="/ControlPageNivel1" component={ControlPage1}/>
             <Route path="/ControlPageNivel2" component={ControlPage2}/>

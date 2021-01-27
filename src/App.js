@@ -192,7 +192,7 @@ funSwitchlogin(){
           
           
         case 'COMERCIAL':
-          return (  <ToAction Pantalla={ScreenComercial} /> )
+          return (<ToAction Pantalla={ScreenComercial} />)
 
         case 'SISTEMAS':
             return (  <ToAction Pantalla={ScreenComercial} /> )

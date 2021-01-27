@@ -8,7 +8,7 @@ import Button from '../components/publica/buttonComponents';
 
 
  
-class Control extends Component {
+class Operacion extends Component {
 
   componentDidMount(){
     this.funApiSeamana();
@@ -111,7 +111,7 @@ return bindActionCreators(
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Control);
+export default connect(mapStateToProps, mapDispatchToProps)(Operacion);
 
 
 const styles = StyleSheet.create({
