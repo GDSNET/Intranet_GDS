@@ -131,7 +131,7 @@ funCatch(){
     const {estado,profile, punto,data_nivel2,history } = this.props;
 
     if(!profile){
-      history.push('/Control')
+      history.push('/Operacion')
     }
 
     if (data_nivel2.length > 0){

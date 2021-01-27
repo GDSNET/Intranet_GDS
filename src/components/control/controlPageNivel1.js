@@ -47,7 +47,7 @@ await  fetch(url, config)
 funBuscaSemana(){
 const {data_semana, numero,history} = this.props;
 if(!numero){
-  history.push('/Control')
+  history.push('/Operacion')
 }
 
   return data_semana.map((item) => {
@@ -144,7 +144,7 @@ try {
           return (
             <div>
             
-            <GoBack history={this.props.history} varIr={'Control'}/>
+            <GoBack history={this.props.history} varIr={'Operacion'}/>
             
                <h1>Detalle Punto Servicio</h1>
                <p>Semana Id Seleccion: {numero} - Profile: {profile}</p>
@@ -175,7 +175,7 @@ try {
         }
         else{
           return(<div className='div_prof'>
-            <GoBack history={this.props.history} varIr={'Control'}/>
+            <GoBack history={this.props.history} varIr={'Operacion'}/>
             EL PROFILE {profile} NO TIENE MEDICION PARA LA SEMANA SELECCIONADA  
           </div>)
         }
@@ -185,7 +185,7 @@ else
 {
   return (
 <div>
-  <GoBack history={this.props.history} varIr={'Control'}/>
+  <GoBack history={this.props.history} varIr={'Operacion'}/>
   <ActivityIndicator  color='#FFF' size='100' />
 
     
