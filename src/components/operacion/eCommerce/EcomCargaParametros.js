@@ -9,6 +9,7 @@ import GdsPicker from './EcommercePicker'
 import Button from './EcommerceButton'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+import EcomControlCarga from './EcomControlCarga'
 
 
 class Comercial extends Component {
@@ -84,6 +85,7 @@ const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicad
     return (
   
     <View style={styles.container}>
+      <EcomControlCarga />
 
       <Text  style={styles.TextRespuesta} >{JSON.stringify(res_fetch)}</Text> 
               <View style={styles.StyleSelectorCli}>

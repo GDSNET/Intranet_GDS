@@ -121,6 +121,9 @@ class ExcelReader extends Component {
     } else {
       reader.readAsArrayBuffer(this.state.file);
     };
+
+    //window.location.reload(false)
+
   }
 
  funForArray(){
