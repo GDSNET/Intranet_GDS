@@ -12,6 +12,7 @@ import logo from '../images/logogds2020_01blanco.svg';
 import ControlPage1 from "../components/operacion/controlPageNivel1";
 import ControlPage2 from "../components/operacion/controlPageNivel2";
 import ControlPage3 from "../components/operacion/controlPageNivel3";
+import CargaParametros from "../components/operacion/eCommerce/EcomCargaParametros"
 
 
 import {
@@ -105,6 +106,7 @@ class ScreenCalidad extends Component {
        
                 
                   <li onClick={()=>this.funLeee()}><NavLink to="/Operacion"> <IoMdContacts className='icon_menu' /> Control</NavLink></li>
+                  <li onClick={()=>this.funLeee()}><NavLink to="/CargaParametros"> <IoMdContacts className='icon_menu' /> Carga Parametros</NavLink></li>
                   
                 </ul>
               </div>
@@ -117,7 +119,8 @@ class ScreenCalidad extends Component {
             <Route path="/ControlPageNivel1" component={ControlPage1}/>
             <Route path="/ControlPageNivel2" component={ControlPage2}/>
             <Route path="/ControlPageNivel3" component={ControlPage3}/>
-
+            <Route path="/CargaParametros" component={CargaParametros}/>
+            
          
             
                   </div>

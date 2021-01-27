@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
-import Picker from '../components/control/PickerComponents';
+import Picker from '../components/operacion/PickerComponents';
 import {TextInput, StyleSheet, ActivityIndicator} from 'react-native-web';
 import Button from '../components/publica/buttonComponents';
 
