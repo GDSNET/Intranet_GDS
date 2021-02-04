@@ -84,7 +84,7 @@ async componentDidMount(){
 
  const url = 'http://api.gdsnet.com:3009/post_intranet_ecomerce_count_image';
  let respuesta = await conexiones.Conexion(url, null)
- .then((res) => funImagenCount(JSON.stringify(res)))
+ .then((res) => funImagenCount(res))
 
 
 }
@@ -395,13 +395,19 @@ return data;
   }
 
   render() {
-    const {funEcomCategoria, categoria, dataCategoria} = this.props;
+    const {funEcomCategoria, categoria, data_image_count} = this.props;
 
+let porcentaje_cumplimiento_imagen = "ASDFGHJKLKJHG"
 
+porcentaje_cumplimiento_imagen = JSON.stringify(data_image_count[0].imagen_cargada) / JSON.stringify(data_image_count[0].imagen_total) * 100
 
     return (
       <View style={styles.contenedor}>
-        <Text> Categoria seleccionada: {categoria}</Text>
+        <Text style={styles.txt_titulo1}> Categoria seleccionada: {categoria}</Text>
+        <Text style={styles.txt_titulo2}> cantidad de imagenes cargadas {JSON.stringify(data_image_count[0].imagen_cargada)} de {JSON.stringify(data_image_count[0].imagen_total)}</Text>
+        <Text style={styles.txt_titulo3}> en porcentaje: {porcentaje_cumplimiento_imagen.toString().substr(0, 4)}%</Text>
+    
+        
         
         {this.funSemama()}
         {this.funTitulos()}
@@ -424,6 +430,7 @@ function mapStateToProps(state){
     imagen: state.calidad.imagen,
     categoria: state.calidad.categoria,
     dataCategoria: state.calidad.dataCategoria,
+    data_image_count: state.calidad.data_image_count
 
   }
 }
@@ -482,6 +489,24 @@ const styles = StyleSheet.create({
   },
   resumen: {
     flexDirection: "column"
+  },
+  txt_titulo1: {
+    fontSize: constants.SIZE_LETRA_XXX_LARGE,
+    color: constants.COLOR_BLANCO,
+    margin: 5,
+    
+  },
+  txt_titulo2: {
+    fontSize: constants.SIZE_LETRA_XX_LARGE,
+    color: constants.COLOR_BLANCO,
+    margin: 5,
+    
+  },
+  txt_titulo3: {
+    fontSize: constants.SIZE_LETRA_XXXX_LARGE,
+    color: constants.COLOR_BLANCO,
+    margin: 5,
+    
   },
   txt_resumen: {
     fontSize: constants.SIZE_LETRA_XXXXX_LARGE,
