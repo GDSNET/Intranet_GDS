@@ -2,6 +2,8 @@
 
 import * as types from '../constants/calidadConstants'
 
+
+
 export function  funEnvioCal(id_sku_sap, envio_estado, envio_comentario) {
    console.log('enviando');
    return {
@@ -275,3 +277,12 @@ export function funGuardaPredominanteOld(predominante_old)  {
       predominante_old : predominante_old
    }
 };
+export function funImagenCount(data_image_count)  {
+   console.log('Imagen Count' + data_image_count);
+   return {
+       type: types.CALIDAD_IMAGE_COUNT,
+       data_image_count: data_image_count,
+       estado: 'Imagen Count: ' + data_image_count
+    }
+ };
+

@@ -1,6 +1,8 @@
 
 import * as types from '../constants/calidadConstants'
 const initialState = {
+
+    data_image_count: [],
   visible: false,
    estado: 'calidad',
    numero: null,
@@ -43,11 +45,16 @@ const initialState = {
   
 const calidadReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.CALIDAD_IMAGE_COUNT:
+            return {...state,
+                estado: action.estado,
+                data_image_count: action.data_image_count,
+            };
+        break;
         case types.CALIDAD_ECOM_DATA_CATEGORIA:
             return {...state,
                 estado: action.estado,
                 dataCategoria: action.dataCategoria,
-    
             };
         break;
         case types.CALIDAD_ECOM_CATEGORIA:

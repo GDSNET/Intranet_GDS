@@ -4,6 +4,7 @@ import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity, Image, Picker} from 'react-native-web';
 import * as constants from "../publica/constants"
+import * as conexiones from '../../util/Funciones'
 
 
 //VARIABLES
@@ -76,10 +77,14 @@ async funBuscaDataCategoria(){
     });
   }
 
-componentDidMount(){
+async componentDidMount(){
 
- //this.funCargaPlataforma()
- this.funBuscaDataCategoria()
+ const {funImagenCount} = this.props;
+ await this.funBuscaDataCategoria()
+
+ const url = 'http://api.gdsnet.com:3009/post_intranet_ecomerce_count_image';
+ let respuesta = await conexiones.Conexion(url, null)
+ .then((res) => funImagenCount(JSON.stringify(res)))
 
 
 }
