@@ -10,7 +10,7 @@ import * as fechas from '../../publica/Fechas'
 export default class EcomControlCarga extends Component {
   constructor(props) {
     super(props);
-    this.state = { errores: null };
+    this.state = { errores: [] };
     //this.funEnviando = this.funEnviando.bind(this)
   }
 
@@ -18,6 +18,20 @@ export default class EcomControlCarga extends Component {
   componentDidMount(){
     this.funCargaErrores()
   }
+
+  
+    componentDidUpdate(prevProps, prevState) {
+      // Uso tipico (no olvides de comparar las props):
+      console.log("prevState", prevProps.actualizar)
+      console.log("New State", this.props.actualizar)
+      if (this.state.actualizar !== prevState.actualizar) {
+        console.log("pasando componentDidUpdate")
+        this.funCargaErrores()
+      }
+
+      
+    }
+ 
 
 
   async funCargaErrores(){
@@ -50,12 +64,14 @@ export default class EcomControlCarga extends Component {
            console.log(e.message)
      
          }  
+
+         
   }
 
   recorreFilas(data){
 try {
   return  data.map((value, i)=>{
-    console.log("pasando por error", value.desc_error)
+    
 return( 
 <View style={styles.view_grid_cont}>
 <View style={styles.view_grid}>
@@ -119,6 +135,7 @@ const {cliente}=this.props
     return (
   
     <View style={styles.container}>
+          <Text  style={styles.TextRespuesta} >dato: {this.state.errores.length}</Text> 
           <Text  style={styles.TextRespuesta} >hola EcomControlCarga</Text> 
           {this.funRecorreError()}
           

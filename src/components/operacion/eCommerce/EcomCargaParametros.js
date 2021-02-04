@@ -10,9 +10,26 @@ import Button from './EcommerceButton'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import EcomControlCarga from './EcomControlCarga'
-
+import * as fechas from '../../publica/Fechas'
 
 class Comercial extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      actualizar: "ultima actulizacion: " + fechas.fechaSQL2(),
+      count: 1
+   };
+    this.funActualizar = this.funActualizar.bind(this)
+  }
+
+
+  funActualizar(){
+    this.setState({
+
+      actualizar: this.state.count + "ultima actulizacion: " + fechas.fechaSQL2(),
+      count: this.state.count + 1
+    })
+  }
 
   componentDidMount(){
     
@@ -85,8 +102,8 @@ const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicad
     return (
   
     <View style={styles.container}>
-      <EcomControlCarga />
-
+      <EcomControlCarga actualizar={this.state.actualizar}/>
+      <Text  style={styles.TextRespuesta} >{this.state.actualizar}</Text> 
       <Text  style={styles.TextRespuesta} >{JSON.stringify(res_fetch)}</Text> 
               <View style={styles.StyleSelectorCli}>
                  <GdsPicker
@@ -111,7 +128,7 @@ const {cliente,funGuardaCli,sel_cliente,funGuardaIndicador,indicador,sel_indicad
               </View>
 
       <NotificationContainer/>   
-      <ReadExcel/>
+      <ReadExcel funActualizar={this.funActualizar}/>
     
       </View>
     );

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import XLSX from 'xlsx';
 import { make_cols } from './MakeColumns';
 import { SheetJSFT } from './types';
-import {View, StyleSheet,Button} from 'react-native-web'
+import {View, StyleSheet,Text} from 'react-native-web'
 import { connect } from "react-redux";
 import combinaActions from "../../../../actions/index";
 import {bindActionCreators} from 'redux';
+import * as constants from '../../../publica/constants'
 
 class ExcelReader extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class ExcelReader extends Component {
     this.state = {
       file: {},
       data: [],
-      cols: []
+      cols: [],
+      sending: false,
     }
     this.handleFile = this.handleFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -82,6 +84,10 @@ class ExcelReader extends Component {
 
   handleFile() {
     /* Boilerplate to set up FileReader */
+this.setState({
+  sending: !this.state.sending
+})
+
     const reader = new FileReader();
     const rABS = !!reader.readAsBinaryString;
     const {funGuardaDataExcel} = this.props;
@@ -122,7 +128,16 @@ class ExcelReader extends Component {
       reader.readAsArrayBuffer(this.state.file);
     };
 
-    //window.location.reload(false)
+
+
+   
+    setTimeout(() => {
+      window.location.reload()
+      this.setState({
+        sending: !this.state.sending
+      })
+    }, 5000);
+    
 
   }
 
@@ -177,6 +192,35 @@ funArmarJsonBody(){
 }
 
 
+funSending(){
+
+  if(!this.state.sending){
+    return(
+      <View style={styles.container}>
+ 
+      <br />
+      <input type="file" id="file" accept={SheetJSFT} onChange={this.handleChange}    className="style_picker" />
+      
+      <br />
+
+            <input type='submit' 
+              value="Cargar Archivo"
+              onClick={this.handleFile}
+              className="style_picker"
+               />
+
+    </View>
+    )
+  }
+  else {
+    return(
+      <Text style={styles.txt_ON}> enviando ...</Text>
+    )
+  }
+
+}
+
+
 
   render() {
     const {data_json_body} = this.props;
@@ -184,18 +228,8 @@ funArmarJsonBody(){
     return (
       <View style={styles.container}>
  
-        <br />
-        <input type="file" id="file" accept={SheetJSFT} onChange={this.handleChange} />
-        <br />
-
-              <input type='submit' 
-                value="Cargar Archivo"
-                onClick={this.handleFile}
-                className={styles.touch}
-                 />
-
-      </View>
-      
+    {this.funSending()}
+    </View>
     )
   }
 }
@@ -251,6 +285,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
 
   },
+  txt_ON:{
+    color: constants.COLOR_PRIMARIO_CLARO,
+    fontSize: constants.SIZE_LETRA_XXXXX_LARGE,
+   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
