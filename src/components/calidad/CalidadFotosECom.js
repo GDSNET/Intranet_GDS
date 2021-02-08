@@ -22,6 +22,7 @@ import ImageUploader from "react-images-upload";
 import LottieLoop from '../../lottie/components/LottieLoop'
 import toggleAnimation from  '../../lottie/images/20431-cloud-storage.json'
 import CalidadFotosEComBottonEnviar from './CalidadFotosEComBottonEnviar'
+import { contains } from "jquery";
 
 
 
@@ -227,14 +228,6 @@ return data;
   mostrarResultado = () => {
     const {data_sala, 
       dataPlanilla, 
-      id_sku_sap,
-      imagen,
-      
-      funGuardaPrecioUnitario, 
-      funGuardaPrecioDescuento,
-      funGuardaMecanica,
-      funGuardaAlertaQuiebre,
-      funGuardaDescripcion,
     } = this.props;
   try {
   
@@ -394,25 +387,107 @@ return data;
     }
   }
 
+
+  funCount(){
+    const {data_image_count} = this.props;
+    
+
+ 
+    try {
+
+
+   return data_image_count.map((value, i) => {
+
+    let porcentaje_cumplimiento_imagen = (JSON.stringify(value.imagen_cargada) / value.imagen_total) * 100
+    let color = value.imagen_cargada===value.imagen_total?styles.styleON:styles.styleOFF
+   
+
+      return(
+        
+         <View  style={[styles.view_container_conteo, {background: 'linear-gradient(to right , #231f20, #454041)'}]} key={'v'+ i}> 
+              <Text key={'tc'+ i} style={[styles.txt_titulo1, color]}> Categoria: {value.desc_categoria} <Text  key={'td'+ i}  style={styles.txt_titulo3}> {JSON.stringify(value.imagen_cargada)} de {JSON.stringify(value.imagen_total)}</Text> {porcentaje_cumplimiento_imagen.toString().substr(0, 4)}%</Text>
+
+        </View>
+            )
+
+    })
+
+
+
+      
+      
+    } catch (error) {
+      
+    }
+  }
+
+
+
+
+  funCountTotales(){
+    const {data_image_count} = this.props;
+    
+
+ 
+    try {
+
+      let porcentaje_cumplimiento_imagen = ""
+
+
+var msgTotal = data_image_count.reduce(function(prev, cur) 
+{
+     return prev + cur.imagen_total ;
+}, 0); 
+var msgCargada = data_image_count.reduce(function(prev, cur) 
+{
+     return prev + cur.imagen_cargada ;
+}, 0); 
+
+porcentaje_cumplimiento_imagen = msgCargada / msgTotal * 100
+
+return (
+        
+  <View> 
+      
+    <Text style={styles.txt_titulo2}> cantidad de imagenes cargadas {msgCargada} de {msgTotal}</Text>
+    <Text style={styles.txt_titulo1}> en porcentaje: {porcentaje_cumplimiento_imagen.toString().substr(0, 4)}%</Text>
+</View>
+)
+
+
+
+      
+      
+    } catch (error) {
+      
+    }
+  }
+
+
   render() {
     const {funEcomCategoria, categoria, data_image_count} = this.props;
 
-let porcentaje_cumplimiento_imagen = "ASDFGHJKLKJHG"
 
-porcentaje_cumplimiento_imagen = JSON.stringify(data_image_count[0].imagen_cargada) / JSON.stringify(data_image_count[0].imagen_total) * 100
 
     return (
       <View style={styles.contenedor}>
-        <Text style={styles.txt_titulo1}> Categoria seleccionada: {categoria}</Text>
-        <Text style={styles.txt_titulo2}> cantidad de imagenes cargadas {JSON.stringify(data_image_count[0].imagen_cargada)} de {JSON.stringify(data_image_count[0].imagen_total)}</Text>
-        <Text style={styles.txt_titulo3}> en porcentaje: {porcentaje_cumplimiento_imagen.toString().substr(0, 4)}%</Text>
-    
         
+          <View style={styles.view_container_conteo}>
+            <View style={styles.view_container_conteo}>
+                {this.funCount()}
+            </View>
+          </View>
         
-        {this.funSemama()}
-        {this.funTitulos()}
-         <View style={styles.notification}>
+        <View style={styles.view_container_imagen}>
+            <Text style={styles.txt_titulo1}> Categoria seleccionada: {categoria}</Text>
+            {this.funCountTotales()}
+            {this.funSemama()}
+            {this.funTitulos()}
+            <View style={styles.notification}>
+            </View>
+            
         </View>
+   
         
         </View>
         
@@ -456,6 +531,7 @@ const styles = StyleSheet.create({
     flex: 1,
      alignItem: 'center',
     margin: 50,
+    flexDirection: 'row'
     },
     view_imagen: {
       flex: 1,
@@ -463,6 +539,17 @@ const styles = StyleSheet.create({
     imagen: {
       width: 300,
       height: 300
+    },
+    view_container_conteo: {
+      flex: 0.5,
+      alignContent: 'flex-start',
+      alignItem: 'flex-start',
+      alignSelf: 'flex-start'
+
+    },
+    view_container_imagen: {
+flex: 1,
+alignContent: 'flex-start'
     },
     contenedor_fila: {
     flex: 1,
@@ -491,19 +578,21 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   txt_titulo1: {
-    fontSize: constants.SIZE_LETRA_XXX_LARGE,
+    fontSize: constants.SIZE_LETRA_XX_LARGE,
     color: constants.COLOR_BLANCO,
     margin: 5,
+    alignContent: 'flex-start',
+    alignItem: 'flex-start',
     
   },
   txt_titulo2: {
-    fontSize: constants.SIZE_LETRA_XX_LARGE,
+    fontSize: constants.SIZE_LETRA_X_LARGE,
     color: constants.COLOR_BLANCO,
     margin: 5,
     
   },
   txt_titulo3: {
-    fontSize: constants.SIZE_LETRA_XXXX_LARGE,
+    fontSize: constants.SIZE_LETRA_LARGE,
     color: constants.COLOR_BLANCO,
     margin: 5,
     
@@ -581,5 +670,7 @@ title_sku: {
     alignSelf: 'center',
 
 },
+styleON: {color: constants.COLOR_PRIMARIO},
+styleOFF: {color: constants.COLOR_SECUNDARIO},
 
 })
