@@ -448,7 +448,6 @@ porcentaje_cumplimiento_imagen = msgCargada / msgTotal * 100
 return (
         
   <View> 
-      
     <Text style={styles.txt_titulo2}> cantidad de imagenes cargadas {msgCargada} de {msgTotal}</Text>
     <Text style={styles.txt_titulo1}> en porcentaje: {porcentaje_cumplimiento_imagen.toString().substr(0, 4)}%</Text>
 </View>
