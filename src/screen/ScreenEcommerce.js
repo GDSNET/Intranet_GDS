@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
-import {IoIosRocket} from "react-icons/io";
+import {IoIosRocket, IoLogoGameControllerA} from "react-icons/io";
 import logo from '../images/logogds2020_01blanco.svg';
 
 import Ecommerce from "./Ecommerce";
 import eComNivel1 from "../components/eCommerce/eComNivel1"
 import eComNivel2 from "../components/eCommerce/eComNivel2"
 import eComNivel3 from "../components/eCommerce/eComNivel3"
+import ControlEcomerce from '../components/controlEcomerce/ControlEcomerce'
 
 import {
   Route,
@@ -101,7 +102,7 @@ class ScreenEcommerce extends Component {
        
                   
                   <li onClick={()=>this.funLeee()}><NavLink to="/Ecommerce"> <IoIosRocket className='icon_menu' />E-commerce</NavLink></li>
-                  
+                  <li onClick={()=>this.funLeee()}><NavLink to="/ControlEcomerce"> <IoLogoGameControllerA className='icon_menu' /> Control Ecomerce</NavLink></li>
                 
                   
                 </ul>
@@ -114,6 +115,7 @@ class ScreenEcommerce extends Component {
                     <Route path="/eComNivel1" component={eComNivel1}/>
                     <Route path="/eComNivel2" component={eComNivel2}/>
                     <Route path="/eComNivel3" component={eComNivel3}/>
+                    <Route path="/ControlEcomerce" component={ControlEcomerce}/>
                     
 
                   </div>

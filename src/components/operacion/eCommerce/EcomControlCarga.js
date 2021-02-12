@@ -74,20 +74,18 @@ try {
     
 return( 
 <View style={styles.view_grid_cont}>
-<View style={styles.view_grid}>
-      <Text style={styles.txt_grid}>Ultima Carga: {fechas.fechaConvierteSQLTZ(value.fecha)}</Text>
-  </View>  
+    <View style={styles.view_grid}>
+          <Text style={styles.txt_grid}>Ultima Carga: {fechas.fechaConvierteSQLTZ(value.fecha)}</Text>
+      </View>  
 
-  <View style={styles.view_grid}>
-  <Text style={styles.txt_grid}>Tipo Error: {value.desc_error}</Text>
-  </View>  
+      <View style={styles.view_grid}>
+      <Text style={styles.txt_grid}>Tipo Error: {value.desc_error}</Text>
+      </View>  
 
-  <View style={styles.view_grid_detalle}>
-  <Text style={styles.txt_grid}>Detalles: {value.id_erroneos}</Text>
-  </View>    
-      
-      
-      
+      <View style={styles.view_grid_detalle}>
+      <Text style={styles.txt_grid}>Detalles: {value.id_erroneos}</Text>
+      </View>    
+  
 </View>   
 )
 })

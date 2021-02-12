@@ -4,10 +4,11 @@ import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
 
-import {IoIosArrowForward, IoIosRocket, IoMdContacts, IoMdPerson} from "react-icons/io";
+import {IoIosArrowForward, IoIosRocket, IoMdContacts, IoLogoGameControllerA} from "react-icons/io";
 
 import Home from "../components/toaction/Pagina/HomePagina";
 import Pagina from '../screen/Calidad'
+import ControlEcomerce from '../components/controlEcomerce/ControlEcomerce'
 
 import Lanzamientos from '../screen/Lanzamientos3'
 import logo from '../images/logogds2020_01blanco.svg';
@@ -103,7 +104,8 @@ class ScreenComercial extends Component {
        
                   <li onClick={()=>this.funLeee()}><NavLink to="/Home"> <IoIosArrowForward className='icon_menu' /> Home</NavLink></li>              
                   <li onClick={()=>this.funLeee()}><NavLink to="/Pagina"> <IoMdContacts className='icon_menu' /> Arbol de Perdida</NavLink></li>
-                  
+                  <li onClick={()=>this.funLeee()}><NavLink to="/ControlEcomerce"> <IoLogoGameControllerA className='icon_menu' /> Control Ecomerce</NavLink></li>
+
                 </ul>
               </div>
             <div  className={top_dash_class}>
@@ -111,6 +113,7 @@ class ScreenComercial extends Component {
                 <div  className={"dash_body_right"}>
                         <Route path="/Home" component={Home}/>
                         <Route path="/Pagina" component={Pagina}/>
+                        <Route path="/ControlEcomerce" component={ControlEcomerce}/>
             
                   </div>
               </div>

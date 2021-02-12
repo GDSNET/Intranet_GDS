@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
 
-import {IoIosArrowForward, IoIosRocket, IoMdContacts, IoMdPerson} from "react-icons/io";
+import {IoIosArrowForward, IoIosRocket, IoMdContacts, IoLogoGameControllerA} from "react-icons/io";
 
 import logo from '../images/logogds2020_01blanco.svg';
 
@@ -18,6 +18,7 @@ import CalidadN3Update from "../components/calidad/CalidadN3Update";
 import CalidadN2Insert from "../components/calidad/CalidadN2Insert";
 import CalidadFotosECom from "../components/calidad/CalidadFotosECom";
 
+import ControlEcomerce from '../components/controlEcomerce/ControlEcomerce'
 
 import gdsAlarmasHtml from "../components/gds/gdsAlarmasHtml";
 import gdsAlarmasHtml00 from "../components/gds/gdsAlarmasHtml00";
@@ -118,6 +119,8 @@ class ScreenCalidad extends Component {
                   <li onClick={()=>this.funLeee()}><NavLink to="/gdsAlarmasHtml00"> <IoIosArrowForward className='icon_menu' /> Liberar Alertas</NavLink></li>              
                   <li onClick={()=>this.funLeee()}><NavLink to="/gdsActualizaSalaLog"> <IoIosRocket className='icon_menu' /> Actualiza estado Log</NavLink></li>              
                   <li onClick={()=>this.funLeee()}><NavLink to="/CalidadFotosECom"> <IoIosRocket className='icon_menu' /> Administracion de fotos E-COMMERCE</NavLink></li>   
+                  <li onClick={()=>this.funLeee()}><NavLink to="/ControlEcomerce"> <IoLogoGameControllerA className='icon_menu' /> Control Ecomerce</NavLink></li>
+
                 </ul>
               </div>
             <div  className={top_dash_class}>
@@ -138,6 +141,8 @@ class ScreenCalidad extends Component {
                     <Route path="/gdsActualizaSalaLog" component={gdsActualizaSalaLog}/>
                     <Route path="/gdsActualizaSalaLogN2" component={gdsActualizaSalaLogN2}/>
                     <Route path="/CalidadFotosECom" component={CalidadFotosECom}/>
+                    
+                    <Route path="/ControlEcomerce" component={ControlEcomerce}/>
                     
                     
 

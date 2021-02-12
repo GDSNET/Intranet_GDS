@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import combinaActions from "../actions/index";
 import {bindActionCreators} from 'redux';
 
-import {IoIosRocket, IoMdContacts} from "react-icons/io";
+import {IoIosRocket, IoMdContacts, IoLogoGameControllerA} from "react-icons/io";
+
 
 import Desarrollo from "../components/toaction/Pagina/DesarrolloPagina";
 import Operacion from '../screen/Operacion'
+import ControlEcomerce from '../components/controlEcomerce/ControlEcomerce'
 
 import logo from '../images/logogds2020_01blanco.svg';
 import ControlPage1 from "../components/operacion/controlPageNivel1";
@@ -105,8 +107,9 @@ class ScreenCalidad extends Component {
                 <ul>
        
                 
-                  <li onClick={()=>this.funLeee()}><NavLink to="/Operacion"> <IoMdContacts className='icon_menu' /> Control</NavLink></li>
-                  <li onClick={()=>this.funLeee()}><NavLink to="/CargaParametros"> <IoMdContacts className='icon_menu' /> Carga Parametros</NavLink></li>
+                  <li onClick={()=>this.funLeee()}><NavLink to="/Operacion"> <IoMdContacts  className='icon_menu' /> Control</NavLink></li>
+                  <li onClick={()=>this.funLeee()}><NavLink to="/CargaParametros"> <IoIosRocket className='icon_menu' /> Carga Parametros</NavLink></li>
+                  <li onClick={()=>this.funLeee()}><NavLink to="/ControlEcomerce"> <IoLogoGameControllerA className='icon_menu' /> Control Ecomerce</NavLink></li>
                   
                 </ul>
               </div>
@@ -115,6 +118,8 @@ class ScreenCalidad extends Component {
                 <div  className={"dash_body_right"}>
                         <Route path="/Desarrollo" component={Desarrollo}/>
                         <Route path="/Operacion" component={Operacion}/>
+                        <Route path="/ControlEcomerce" component={ControlEcomerce}/>
+                        
                         
             <Route path="/ControlPageNivel1" component={ControlPage1}/>
             <Route path="/ControlPageNivel2" component={ControlPage2}/>

@@ -14,7 +14,7 @@ export default class ComercialButton extends Component {
 
         <TouchableOpacity style={styles.touch}  onClick={()=>{varExec()}}>
 
-        <FiDownloadCloud color={'#FFF'} size={30} />
+            <FiDownloadCloud color={'#FFF'} size={30} />
 
         </TouchableOpacity>
 
