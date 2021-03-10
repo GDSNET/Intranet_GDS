@@ -94,7 +94,6 @@ await  fetch(url, config)
   
   
                 <th scope="row" key={i}>{i}</th>
-                <td>{fila.estado}</td>
                 <td>{fila.id_sala}</td>
                 <td>{fila.desc_sala}</td>
                 <td>
@@ -143,7 +142,6 @@ await  fetch(url, config)
                           <thead className="theadPauta">
                               <tr className="bg-primary">
                                   <th  scope="col">#</th>
-                                  <th scope="col">ESTADO</th>
                                   <th scope="col">ID SALA</th>
                                   <th scope="col">DESCRIPCIÓN SALA</th>
                                   <th scope="col">SELECCIÓN</th>   

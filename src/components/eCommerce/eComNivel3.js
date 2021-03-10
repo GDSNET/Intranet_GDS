@@ -439,11 +439,48 @@ let response = await  fetch(url, config)
     }
   }
 
+async  funUpdateEstadoPauta(){
+    const { data_sala ,data_plataforma} = this.props;
+
+    const url = 'http://api.gdsnet.com:3009/post_intranet_ecomerce_udate_';
+   
+
+    let body_data = JSON.stringify({
+     "id_sala" : data_sala.id_sala,
+     "id_plataforma" : data_plataforma.id_plataforma,
+     "estado":'ENVIADA'
+     })
+   
+       const config =  {
+         method: 'POST',
+         body: body_data,
+         headers: {
+         "Content-Type": "application/json",
+         },
+       }  
+   
+         
+   try {
+     
+   await  fetch(url, config)
+           .then((response) => {
+            return response.json()})
+           .then((json) => {
+             console.log("Actualizando estado")
+           });
+           
+         } catch (e) {
+           console.log(e.message)
+     
+         }  
+
+  }
 
   funPlanillaEnviadaOK(){
     const { history, PlanillaLimpiar} = this.props;
     
     PlanillaLimpiar()
+
 
     store.addNotification({
       title: 'Enviado OK',

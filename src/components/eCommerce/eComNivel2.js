@@ -77,10 +77,10 @@ funTouchableNivel1(item){
   
   
                 <th scope="row" key={i}>{i}</th>
+                <td>{data_sala.estado}</td>
                 <td>{fila.id_plataforma}</td>
                 <td>{fila.desc_plataforma}</td>
                 <td>{data_sala.desc_sala}</td>
-  
                 <td>
                     <View  style={styles.view_tochable}> 
                       <View  style={styles.view_tochable}> 
@@ -120,6 +120,7 @@ funTouchableNivel1(item){
                <thead className="theadPauta">
                    <tr className="bg-primary">
                        <th  scope="col">#</th>
+                       <th scope="col">ESTADO</th>
                        <th scope="col">ID PLATAFORMA</th>
                        <th scope="col">DESC PLATAFORMA</th>
                        <th scope="col">DESCRIPCIÓN SALA</th>

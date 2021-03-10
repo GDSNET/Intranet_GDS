@@ -22,7 +22,7 @@ import ImageUploader from "react-images-upload";
 import LottieLoop from '../../lottie/components/LottieLoop'
 import toggleAnimation from  '../../lottie/images/20431-cloud-storage.json'
 import CalidadFotosEComBottonEnviar from './CalidadFotosEComBottonEnviar'
-import { contains } from "jquery";
+
 
 
 
