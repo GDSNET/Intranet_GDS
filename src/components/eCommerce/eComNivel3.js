@@ -35,7 +35,7 @@ import toggleAnimation from  '../../lottie/images/20431-cloud-storage.json'
 class eComN2 extends Component {
   constructor(props) {
     super(props);
-    this.state = { pictures: [], envios: [],  showBoton: true, };
+    this.state = { pictures: [], envios: [],  showBoton: true};
     this.onDrop = this.onDrop.bind(this);
  
 
@@ -187,12 +187,12 @@ if (respuesta.data === "ok"){
 }
 else{
  console.log("Error", JSON.stringify(respuesta))
- await funEnvio(value.id_sku_sap, 2, 'enviado Error')
+ await funEnvio(value.id_sku_sap, 2, JSON.stringify(respuesta))
 }
 
 })
 
-
+this.funUpdateEstadoPauta()
 
 
 }
@@ -479,6 +479,7 @@ async  funUpdateEstadoPauta(){
   funPlanillaEnviadaOK(){
     const { history, PlanillaLimpiar} = this.props;
     
+   
     PlanillaLimpiar()
 
 
@@ -531,7 +532,6 @@ async  funUpdateEstadoPauta(){
     return (
       <View style={styles.contenedor}>
       
-
         {this.funSolicitarPlanilla()}
         {this.funBoton()}
         {this.funTitulos()}
@@ -551,6 +551,7 @@ function mapStateToProps(state){
     id_profile: state.eCom.id_profile,
     dataPlanilla: state.eCom.dataPlanilla,
     data_plataforma:  state.eCom.data_plataforma,
+    envio_comentario: state.eCom.envio_comentario,
     estado:  state.eCom.estado,
     planilla:  state.eCom.planilla,
     exhibiciones: state.eCom.exhibiciones,

@@ -10,13 +10,20 @@ const initialState = {
    dataPlataforma:[], 
    dataPlanilla: [],
    planilla: false,
-   exhibiciones: []
+   exhibiciones: [],
+   mensaje: null
 }
 
 
   
 const eComReducers = (state = initialState, action) => {
     switch (action.type) {
+      case types.ECOM_GUARDA_MENSAJE:
+        return {...state,
+          mensaje: action.mensaje,
+            estado: action.estado,            
+        };
+        break;
         case types.ECOM_GUARDA_ID_PROFILE:
         return {...state,
             id_profile: action.id_profile,

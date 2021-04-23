@@ -2,7 +2,13 @@
 import * as types from '../constants/eComConstants'
 
 
-
+export function funGuardaMensaje(mensaje)  {
+  return {
+      type: types.ECOM_GUARDA_MENSAJE,
+      mensaje: mensaje,
+      estado: 'Guardando Mensaje'
+   }
+};
 
   export function funGuardaProfile(id_profile)  {
     return {

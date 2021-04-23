@@ -4,6 +4,7 @@ import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
 import {  IoMdArrowDroprightCircle, } from "react-icons/io";
+import { MdDeleteSweep } from "react-icons/md";
 import * as constants from '../publica/constants'
 
 
@@ -12,6 +13,7 @@ class eComN2 extends Component {
 
   componentDidMount(){
     const {} = this.props;
+
   this.funCargaPlataforma()
 
   }
@@ -56,12 +58,79 @@ await  fetch(url, config)
 }
 
 funTouchableNivel1(item){
-  const { history, funGuardaPlataforma} = this.props;
+  const { history, funGuardaPlataforma,dataPlataforma,data_sala} = this.props;
   
   funGuardaPlataforma(item)
 
-  console.log(history)
   history.push('/eComNivel3')
+
+}
+
+async funApiDelete(id_plataforma, id_sala ,id_profile){
+
+  const {funGuardaMensaje} = this.props;
+
+ const url = 'http://api.gdsnet.com:3009/post_intranet_ecomerce_delete';
+ 
+ let body_data = JSON.stringify({
+   "id_plataforma" : id_plataforma,
+   "id_sala" : id_sala,
+   "id_profile" : id_profile
+   })
+ 
+     const config =  {
+       method: 'POST',
+       body: body_data,
+       headers: {
+       "Content-Type": "application/json",
+       },
+     }  
+ 
+       
+ try {
+ 
+ await  fetch(url, config)
+         .then((response) => {
+          return response.json()})
+         .then((json) => {
+           console.log("guardando datos" + JSON.stringify(json.mensaje))
+           funGuardaMensaje(JSON.stringify(json.mensaje))
+         });
+         
+       } catch (e) {
+         console.log(e.message)
+   
+       }  
+
+}
+
+async funDelete(item){
+
+  const {data_sala, mensaje ,id_profile} = this.props;
+
+  if (window.confirm('¿Esta seguro de ELIMINAR esta medicion? ' 
+                     +' Plataforma: ' +item.desc_plataforma 
+                     +' Sala: ' +data_sala.desc_sala)) 
+  {   
+    var person = prompt("Ingrese la Clave", '');
+    if (person == 'Operacion1') {
+
+    await this.funApiDelete(item.id_plataforma, data_sala.id_sala ,id_profile);
+
+    await this.funCargaPlataforma()
+
+    window.alert(mensaje)
+    } 
+    else
+    {
+      window.alert('Contraseña incorrecta.')
+    }
+  }
+  else    
+   { 
+
+  }
+
 
 }
 
@@ -77,7 +146,7 @@ funTouchableNivel1(item){
   
   
                 <th scope="row" key={i}>{i}</th>
-                <td>{data_sala.estado}</td>
+                <td>{fila.estado}</td>
                 <td>{fila.id_plataforma}</td>
                 <td>{fila.desc_plataforma}</td>
                 <td>{data_sala.desc_sala}</td>
@@ -86,6 +155,15 @@ funTouchableNivel1(item){
                       <View  style={styles.view_tochable}> 
                           <TouchableOpacity onClick={()=> {this.funTouchableNivel1(fila)}}  >
                               <IoMdArrowDroprightCircle size={constants.SIZE_LETRA_XXXXX_LARGE} color={constants.COLOR_BLANCO}/>
+                          </TouchableOpacity>
+                        </View>
+                    </View>
+               </td>
+               <td>
+                    <View  style={styles.view_tochable}> 
+                      <View  style={styles.view_tochable}> 
+                          <TouchableOpacity onClick={()=> {this.funDelete(fila)}}  >
+                              <MdDeleteSweep size={constants.SIZE_LETRA_XXXXX_LARGE} color={constants.COLOR_BLANCO}/>
                           </TouchableOpacity>
                         </View>
                     </View>
@@ -125,6 +203,7 @@ funTouchableNivel1(item){
                        <th scope="col">DESC PLATAFORMA</th>
                        <th scope="col">DESCRIPCIÓN SALA</th>
                        <th scope="col">SELECCIÓN</th>   
+                       <th scope="col">ELIMINAR</th>   
                    </tr>
                </thead>
                <tbody>
@@ -147,7 +226,7 @@ function mapStateToProps(state){
     data_sala: state.eCom.data_sala,
     id_profile: state.eCom.id_profile,
     dataPlataforma: state.eCom.dataPlataforma,
-    
+    mensaje: state.eCom.mensaje,
 
   }
 }

@@ -108,12 +108,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text_desc: {
-    color: constants.COLOR_PRIMARIO,
-    fontSize: constants.SIZE_LETRA_LARGE
+    color: constants.COLOR_PRIMARIO
   },
   textJson: {
-    color: constants.COLOR_BLANCO,
-    fontSize: constants.SIZE_LETRA_MEDIUM
+    color: constants.COLOR_BLANCO
   }   
 
 
