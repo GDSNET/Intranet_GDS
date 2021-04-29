@@ -13,6 +13,7 @@ const initialState = {
    data_b_detalle: [],
    data_cliente: [],
    data_semana: [],
+   data_acciones:[],
    item:[],
    exh: null,
    data_exh: [],
@@ -45,6 +46,13 @@ const initialState = {
   
 const calidadReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.CALIDAD_GUARDA_ACCIONES:
+            return {...state,
+                estado: action.estado,
+                data_acciones: action.data_acciones,
+            };
+        break;
+
         case types.CALIDAD_IMAGE_COUNT:
             return {...state,
                 estado: action.estado,

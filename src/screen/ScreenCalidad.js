@@ -19,6 +19,7 @@ import CalidadN2Insert from "../components/calidad/CalidadN2Insert";
 import CalidadFotosECom from "../components/calidad/CalidadFotosECom";
 
 import ControlEcomerce from '../components/controlEcomerce/ControlEcomerce'
+import CalidadAcciones from '../components/calidad/ControlAcciones'
 
 import gdsAlarmasHtml from "../components/gds/gdsAlarmasHtml";
 import gdsAlarmasHtml00 from "../components/gds/gdsAlarmasHtml00";
@@ -120,6 +121,7 @@ class ScreenCalidad extends Component {
                   <li onClick={()=>this.funLeee()}><NavLink to="/gdsActualizaSalaLog"> <IoIosRocket className='icon_menu' /> Actualiza estado Log</NavLink></li>              
                   <li onClick={()=>this.funLeee()}><NavLink to="/CalidadFotosECom"> <IoIosRocket className='icon_menu' /> Administracion de fotos E-COMMERCE</NavLink></li>   
                   <li onClick={()=>this.funLeee()}><NavLink to="/ControlEcomerce"> <IoLogoGameControllerA className='icon_menu' /> Control Ecomerce</NavLink></li>
+                  <li onClick={()=>this.funLeee()}><NavLink to="/CalidadAcciones"> <IoLogoGameControllerA className='icon_menu' /> Control Acciones</NavLink></li>
 
                 </ul>
               </div>
@@ -143,6 +145,7 @@ class ScreenCalidad extends Component {
                     <Route path="/CalidadFotosECom" component={CalidadFotosECom}/>
                     
                     <Route path="/ControlEcomerce" component={ControlEcomerce}/>
+                    <Route path="/CalidadAcciones" component={CalidadAcciones}/>
                     
                     
 

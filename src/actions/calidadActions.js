@@ -3,6 +3,13 @@
 import * as types from '../constants/calidadConstants'
 
 
+export function funGuardaAcciones(data_acciones) {
+   return {
+     type: types.CALIDAD_GUARDA_ACCIONES,
+     data_acciones: data_acciones,
+     estado: 'Guardando acciones'
+   }
+ }
 
 export function  funEnvioCal(id_sku_sap, envio_estado, envio_comentario) {
    console.log('enviando');
