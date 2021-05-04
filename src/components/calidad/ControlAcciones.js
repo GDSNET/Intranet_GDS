@@ -4,9 +4,10 @@ import combinaActions from "../../actions/index";
 import {bindActionCreators} from 'redux';
 import {StyleSheet, View, Text,TouchableOpacity} from 'react-native-web';
 import { MdDeleteSweep } from "react-icons/md";
-import { IoIosAddCircle, IoMdCreate, } from "react-icons/io";
+import { IoIosRefreshCircle, IoMdCreate, } from "react-icons/io";
 import GoBack from '../publica/ButtonGoBack';
-import CliPicker from '../gds/GdsPickerComponentsLogCliente';
+import CliPicker from '../calidad/CalPickerClientesAPP';
+import PickerItem from './CalPickerComponents'; 
 
 class AccionesN1 extends Component {
 
@@ -19,12 +20,15 @@ class AccionesN1 extends Component {
   }
  
 async funCargaSelect(){
-  const { funGuardaAcciones} = this.props;
+  const { funGuardaAcciones,cliente_app,semana} = this.props;
 
  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
 const url = 'http://api.gdsnet.com:3009/post_intranet_view_acciones';
 
-let body_data = JSON.stringify({})
+let body_data = JSON.stringify({
+  "id_cliente": cliente_app,
+  "id_tie_semana": semana
+})
 
     const config =  {
       method: 'POST',
@@ -77,13 +81,18 @@ async funApiSeamana(){
   }
 
   async funApiCliente(){
-    const {funGdsGuardaDataClienteHtml} = this.props;
+    const {funGuardaDataClienteApp} = this.props;
     
     //const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = 'http://api.gdsnet.com:3005/api_gds_select_cliente_html';
+    const url = 'http://api.gdsnet.com:3009/post_select_from';
+
+    let body_data = JSON.stringify({
+      "tabla" : 'app_cfg_cliente'
+      })
     
         const config =  {
           method: 'POST',
+          body: body_data,
           headers: {
           "Content-Type": "application/json",
           },
@@ -94,7 +103,7 @@ async funApiSeamana(){
              return response.json()})
             .then((json) => {
               console.log("guardando datos" + JSON.stringify(json))
-              funGdsGuardaDataClienteHtml(json.cliente)
+              funGuardaDataClienteApp(json)
             });
     
     }
@@ -145,21 +154,30 @@ return(
 }
 }
 
+funTouchable(){
+  this.funCargaSelect()
+  this.mostrarResultado()
+}
      
   render() {
     const {estado, data_acciones} = this.props;
     
-
-
     return (
-      <div>
-           <CliPicker></CliPicker>
+     <div>
+      <View style={styles.styles_view_principal}>
+       <PickerItem/> 
+      <CliPicker></CliPicker>
+
+      <TouchableOpacity onClick={()=> {this.funTouchable()}}>
+                  <IoIosRefreshCircle className ='style_image_ir'/>
+      </TouchableOpacity> 
+
+      </View>
             <div className ='tabla'>
                <table id="TablaClick" className="TablaPauta table table-hover">
                         <thead className="theadPauta">
                             <tr className="bg-primary">
                                 <th  scope="col">#</th>
-                                
                                 <th scope="col">DESC CLIENTE</th>
                                 <th scope="col">ID USUARIO</th>
                                 <th scope="col">NOMBRE</th>
@@ -184,10 +202,7 @@ return(
         <div className={'style_status'}>
             <h5 className='style_status_text'>{estado}</h5>
         </div>
-
       </div>
-        
-
     );
   }
 }
@@ -197,7 +212,9 @@ function mapStateToProps(state){
   return{
     
     estado: state.calidad.estado,
-    data_acciones:state.calidad.data_acciones
+    data_acciones:state.calidad.data_acciones,
+    cliente_app: state.calidad.cliente_app,
+    semana: state.calidad.semana
   }
 }
 
@@ -225,10 +242,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     alignItem: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#fff',
     margin: 30
-
   },
   styles_view_encabezado: {
 

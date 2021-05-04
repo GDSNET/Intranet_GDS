@@ -2,6 +2,20 @@
 
 import * as types from '../constants/calidadConstants'
 
+export function funGuardaDataClienteApp(data) {
+   return {
+     type: types.CALIDAD_GUARDA_DATA_CLIENTE_APP,
+     data_cliente_app: data,
+     estado: 'Guardando cliente APP'
+   }
+ }
+export function funGuardaClienteApp(data) {
+   return {
+     type: types.CALIDAD_GUARDA_CLIENTE_APP,
+     cliente_app: data,
+     estado: 'Guardando cliente APP'
+   }
+ }
 
 export function funGuardaAcciones(data_acciones) {
    return {

@@ -36,6 +36,8 @@ const initialState = {
    planillaSku:null,
    dataPlanilla:[],
    categoria: "",
+   data_cliente_app:[],
+   cliente_app:[],
    dataCategoria:[
     {
         "desc_categoria": "NARA"
@@ -46,6 +48,18 @@ const initialState = {
   
 const calidadReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.CALIDAD_GUARDA_DATA_CLIENTE_APP:
+            return {...state,
+                estado: action.estado,
+                data_cliente_app: action.data_cliente_app,
+            };
+        break;
+        case types.CALIDAD_GUARDA_CLIENTE_APP:
+            return {...state,
+                estado: action.estado,
+                cliente_app: action.cliente_app,
+            };
+        break;
         case types.CALIDAD_GUARDA_ACCIONES:
             return {...state,
                 estado: action.estado,
