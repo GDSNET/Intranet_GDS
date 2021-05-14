@@ -6,7 +6,6 @@ import ToAction from './toaction/ToRoot'
 
 import ControlActions from "./actions";
 
-
 import ScreenCalidad from './screen/ScreenCalidad'
 import ScreenOperacion from './screen/ScreenOperacion';
 import ScreenComercial from './screen/ScreenComercial';
