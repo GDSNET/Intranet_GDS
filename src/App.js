@@ -10,7 +10,7 @@ import ScreenCalidad from './screen/ScreenCalidad'
 import ScreenOperacion from './screen/ScreenOperacion';
 import ScreenComercial from './screen/ScreenComercial';
 import ScreenEcommerce from './screen/ScreenEcommerce';
-
+import ScreenDemo from './screen/ScreenDemo';
 
 import {TextInput,Image, TouchableOpacity, Text, StyleSheet,View} from 'react-native-web';
 import gdsImagen from './images/logogds2020.svg';
@@ -180,25 +180,19 @@ funLogin(){
 }
 
 funSwitchlogin(){
-
-    //console.log(this.props.desPerfil)
       switch (this.props.desPerfil) {
         case 'CALIDAD':
           return ( <ToAction Pantalla={ScreenCalidad}>   </ToAction> )
-          
         case 'OPERACION':
           return (  <ToAction Pantalla={ScreenOperacion} /> )
-          
-          
         case 'COMERCIAL':
           return (<ToAction Pantalla={ScreenComercial} />)
-
         case 'SISTEMAS':
-            return (  <ToAction Pantalla={ScreenComercial} /> )
+	  return (  <ToAction Pantalla={ScreenComercial} /> )
         case 'E-COMMERCE':
-              return (  <ToAction Pantalla={ScreenEcommerce} /> )
-            
-          
+          return (  <ToAction Pantalla={ScreenEcommerce} /> )
+        case 'DEMO':
+          return (  <ToAction Pantalla={ScreenDemo} /> )
         case 'error':
           default:      return <h1>Ups!, Perfil no creado </h1>
       }

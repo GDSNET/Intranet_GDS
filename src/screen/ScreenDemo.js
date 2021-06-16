@@ -107,9 +107,7 @@ class ToRootMenuDesktop extends Component {
                   <li onClick={()=>this.funLeee()}><NavLink to="/SellOut"> <IoMdPerson className='icon_menu' /> SellOut</NavLink></li>
                   <li onClick={()=>this.funLeee()}><NavLink to="/Pagina"> <IoMdContacts className='icon_menu' /> Arbol de Perdida</NavLink></li>
                   <li onClick={()=>this.funLeee()}><NavLink to="/Supervisor"> <IoMdContacts className='icon_menu' /> Supervisor</NavLink></li>
-                  <li onClick={()=>this.funLeee()}><NavLink to="/Lanzamientos"> <IoIosRocket className='icon_menu' /> Lanzamientos</NavLink></li>
-                  <li onClick={()=>this.funLeee()}><NavLink to="/Desarrollo"> <IoIosRocket className='icon_menu' /> Desarrollo</NavLink></li>
-                  
+                
                 </ul>
               </div>
             <div  className={top_dash_class}>
